@@ -1,11 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://rffmu5nc3g5s"]
+[gd_scene load_steps=3 format=3 uid="uid://rffmu5nc3g5s"]
 
 [ext_resource type="Texture2D" uid="uid://dloo5ju1g4de6" path="res://Fish/GenericFish1.png" id="1_0oikl"]
+[ext_resource type="Script" path="res://Fish/Player.gd" id="1_ix3g4"]
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ix3g4")
 
 [node name="CollisionBody" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-117, -29, -19, -82, 61, -99, 167, -67, 222, -31, 246, -28, 201, 20, 249, 52, 215, 56, 149, 94, 116, 85, 79, 96, -35, 94, -107, 56, -168, 25)
+polygon = PackedVector2Array(4, -18, 23, -17, 37, -11, 43, -6, 46, -2, 46, 4, 45, 9, 38, 13, 29, 16, 6, 19, -14, 17, -34, 7, -24, -3, -12, -12)
 
 [node name="PlayerSprite" type="Sprite2D" parent="CollisionBody"]
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_0oikl")
