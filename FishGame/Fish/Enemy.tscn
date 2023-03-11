@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmprrll3jk1rb"]
+
+[ext_resource type="Texture2D" uid="uid://4gluu442cri7" path="res://Fish/GenericFish2.png" id="1_s3fho"]
+
+[node name="Enemy" type="CharacterBody2D"]
+
+[node name="CollisionBody" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-35, -2, 15, -8, 47, -3, 46, 5, 33, 8, 6, 8, -34, 5, -41, 3)
+
+[node name="EnemySprite" type="Sprite2D" parent="CollisionBody"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_s3fho")
