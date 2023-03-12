@@ -9,9 +9,9 @@ var sprite_flipped = false
 
 func _ready():
 	if spawn_side == 0:
-		position.x = 0
+		position.x = 100
 	elif spawn_side == 1:
-		position.x = 800
+		position.x = 700
 		sprite.flip_h = true
 	else:
 		print("Spawn side not ready.")
@@ -25,6 +25,6 @@ func _process(delta):
 		velocity.x = 0
 	move_and_slide()
 	
-	if position.x < 0 or position.x > 800:
+	if position.x < -200 or position.x > 1000:
 		queue_free()
 	

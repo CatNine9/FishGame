@@ -1,15 +1,19 @@
 extends Node
 
-
+@onready var enemy_spawn_delay = $EnemySpawnDelay
 
 var number_of_child_nodes = null
 
 
 func _ready():
 	spawn_enemy()
+	enemy_spawn_delay.start()
 	
 func _process(delta):
 	pass
+
+func _on_enemy_spawn_delay_timeout():
+	spawn_enemy()
 
 func spawn_enemy():
 	var random_side_value = randi() % 2
@@ -28,5 +32,4 @@ func spawn_enemy():
 	enemy_spawn.position.y = random_height_value
 	add_child(enemy_spawn)
 	
-
 
