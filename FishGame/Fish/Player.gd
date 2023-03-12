@@ -35,15 +35,8 @@ func _physics_process(delta):
 func _on_area_body_area_entered(area):
 	print("Touching enemy!")
 	var enemy = area.get_child(0, true)
-	if scale < enemy.scale:
+	print("The player thinks the enemy is ", enemy.scale.x, "x", enemy.scale.y)
+	print("The player thinks itself is ", collision_shape.scale.x, "x", collision_shape.scale.y)
+	if collision_shape.scale.x < enemy.scale.x:
 		print("Dead!")
 		queue_free()
-
-
-
-#func _on_area_body_body_entered(body):
-#	print("Touching!")
-#	var enemy = body
-#	if scale < enemy.scale:
-#		print("Dead!")
-#		queue_free()
