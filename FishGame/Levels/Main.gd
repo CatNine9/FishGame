@@ -3,6 +3,7 @@ extends Node
 
 
 @onready var enemy_spawn_delay = $EnemySpawnDelay
+@onready var player = $Player
 @onready var player_collision = $Player/AreaBody/CollisionBody
 
 
@@ -18,13 +19,11 @@ func _ready():
 
 
 
-func _process(delta):
-	pass
-
-
-
 func _on_enemy_spawn_delay_timeout():
-	spawn_enemy()
+	if player == null:
+		enemy_spawn_delay.stop()
+	else:
+		spawn_enemy()
 
 
 
@@ -33,7 +32,7 @@ func spawn_enemy():
 		
 	var random_height_value = randi_range(0, 600)
 	
-	var random_size_value = randf_range(player_collision.scale.x * 0.85, player_collision.scale.x * 1.25)
+	var random_size_value = randf_range(player_collision.scale.x * 0.75, player_collision.scale.x * 1.25)
 	
 	var enemy_preload = preload("res://Fish/Enemy.tscn")
 	var enemy_spawn = enemy_preload.instantiate()
