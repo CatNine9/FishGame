@@ -21,5 +21,8 @@ func spawn_enemy():
 	
 	var enemy_preload = preload("res://Fish/Enemy.tscn")
 	var enemy_spawn = enemy_preload.instantiate()
+	enemy_spawn.spawn_side = random_side_value
 	add_child(enemy_spawn)
+	
+
 
