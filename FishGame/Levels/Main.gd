@@ -29,12 +29,6 @@ func _on_enemy_spawn_delay_timeout():
 
 func spawn_enemy():
 	var random_side_value = randi() % 2
-	if random_side_value == 0:
-		print("Enemy spawning Left")
-	elif random_side_value == 1:
-		print("Enemy spawning Right")
-	else:
-		print("Invalid side value, side value is: ", random_side_value)
 		
 	var random_height_value = randi_range(0, 600)
 	

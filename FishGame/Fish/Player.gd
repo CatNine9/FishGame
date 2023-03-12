@@ -10,8 +10,7 @@ extends CharacterBody2D
 
 
 func _ready():
-	var player_size_str = str(collision_shape.scale.x)
-	size_label.text = player_size_str
+	size_label.text = str(collision_shape.scale.x)
 
 
 
@@ -27,16 +26,15 @@ func _physics_process(delta):
 		velocity.y = y_direction * SPEED
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
-
 	move_and_slide()
 
 
 
 func _on_area_body_area_entered(area):
-	print("Touching enemy!")
 	var enemy = area.get_child(0, true)
-	print("The player thinks the enemy is ", enemy.scale.x, "x", enemy.scale.y)
-	print("The player thinks itself is ", collision_shape.scale.x, "x", collision_shape.scale.y)
 	if collision_shape.scale.x < enemy.scale.x:
-		print("Dead!")
 		queue_free()
+	elif collision_shape.scale.x > enemy.scale.x:
+		collision_shape.scale.x += 0.25
+		collision_shape.scale.y += 0.25
+		size_label.text = str(collision_shape.scale.x)
