@@ -24,7 +24,7 @@ func spawn_enemy():
 	else:
 		print("Invalid side value, side value is: ", random_side_value)
 		
-	var random_height_value = randi_range(0, 800)
+	var random_height_value = randi_range(0, 600)
 	
 	var enemy_preload = preload("res://Fish/Enemy.tscn")
 	var enemy_spawn = enemy_preload.instantiate()

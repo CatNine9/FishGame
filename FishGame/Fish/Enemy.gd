@@ -9,12 +9,13 @@ var sprite_flipped = false
 
 func _ready():
 	if spawn_side == 0:
-		position.x = 100
+		position.x = 0
 	elif spawn_side == 1:
-		position.x = 700
+		position.x = 800
 		sprite.flip_h = true
 	else:
 		print("Spawn side not ready.")
+	print("Spawned at y ", position.y)
 
 func _process(delta):
 	if spawn_side == 0:
