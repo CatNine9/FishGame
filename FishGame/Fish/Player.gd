@@ -35,6 +35,6 @@ func _on_area_body_area_entered(area):
 	if collision_shape.scale.x < enemy.scale.x:
 		queue_free()
 	elif collision_shape.scale.x > enemy.scale.x:
-		collision_shape.scale.x += 0.25
-		collision_shape.scale.y += 0.25
+		collision_shape.scale.x += 0.1
+		collision_shape.scale.y += 0.1
 		size_label.text = str(collision_shape.scale.x)
