@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var sprite = $CollisionBody/EnemySprite
+@onready var sprite = $AreaBody/CollisionBody/EnemySprite
 
 @export var SPEED = 300.0
 
@@ -28,4 +28,7 @@ func _process(delta):
 	
 	if position.x < -200 or position.x > 1000:
 		queue_free()
-	
+
+func _on_area_body_area_entered(area):
+	print("Dead!")
+	queue_free()

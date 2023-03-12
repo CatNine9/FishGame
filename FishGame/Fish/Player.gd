@@ -17,3 +17,8 @@ func _physics_process(delta):
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	move_and_slide()
+
+
+func _on_area_body_area_entered(area):
+	print("Dead!")
+	queue_free()

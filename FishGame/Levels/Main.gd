@@ -3,6 +3,7 @@ extends Node
 @onready var enemy_spawn_delay = $EnemySpawnDelay
 
 var number_of_child_nodes = null
+var enemies = []
 
 
 func _ready():
@@ -31,5 +32,6 @@ func spawn_enemy():
 	enemy_spawn.spawn_side = random_side_value
 	enemy_spawn.position.y = random_height_value
 	add_child(enemy_spawn)
+	enemies.append(enemy_spawn)
 	
 
