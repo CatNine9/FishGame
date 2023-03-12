@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var sprite = $AreaBody/CollisionBody/EnemySprite
 @onready var collision_shape = $AreaBody/CollisionBody
 @onready var size_label = $SizeLabel
+@onready var size_display_delay = $SizeDisplayDelay
 
 
 
@@ -18,10 +19,6 @@ var sprite_flipped = false
 
 
 func _ready():
-	var enemy_size_str = str(collision_shape.scale.x)
-	size_label.text = enemy_size_str
-	
-	
 	if spawn_side == 0:
 		position.x = 0
 	elif spawn_side == 1:
@@ -56,9 +53,6 @@ func _on_area_body_area_entered(area):
 
 
 
-#func _on_area_body_body_entered(body):
-#	print("Touching!")
-#	var player = body
-#	if scale < player.scale:
-#		print("Dead!")
-#		queue_free()
+func _on_size_display_delay_timeout():
+	var enemy_size_str = str(collision_shape.scale.x)
+	size_label.text = enemy_size_str
