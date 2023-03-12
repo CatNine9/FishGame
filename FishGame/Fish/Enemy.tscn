@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Fish/Enemy.gd" id="1_xknvd"]
 
 [node name="Enemy" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_xknvd")
 
 [node name="CollisionBody" type="CollisionPolygon2D" parent="."]

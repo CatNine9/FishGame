@@ -1,6 +1,7 @@
-extends Node2D
+extends Node
 
 
+var number_of_child_nodes = null
 
 
 func _ready():
@@ -10,11 +11,15 @@ func _process(delta):
 	pass
 
 func spawn_enemy():
-	var random_side_value = randi() % 2
+	var random_side_value = randi()  % 2
 	if random_side_value == 0:
-		print("Left")
+		print("Enemy spawning Left")
 	elif random_side_value == 1:
-		print("Right")
+		print("Enemy spawning Right")
 	else:
-		print("Invalid side value, side value is:")
-		print(random_side_value)
+		print("Invalid side value, side value is: ", random_side_value)
+	
+	var enemy_preload = preload("res://Fish/Enemy.tscn")
+	var enemy_spawn = enemy_preload.instantiate()
+	add_child(enemy_spawn)
+

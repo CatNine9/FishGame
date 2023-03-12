@@ -1,14 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfg7ame4n0wbj"]
+[gd_scene load_steps=3 format=3 uid="uid://bfg7ame4n0wbj"]
 
 [ext_resource type="PackedScene" uid="uid://rffmu5nc3g5s" path="res://Fish/Player.tscn" id="1_cvetj"]
 [ext_resource type="Script" path="res://Levels/Main.gd" id="1_x3kem"]
-[ext_resource type="PackedScene" uid="uid://dmprrll3jk1rb" path="res://Fish/Enemy.tscn" id="3_djhdl"]
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node"]
 script = ExtResource("1_x3kem")
 
 [node name="Player" parent="." instance=ExtResource("1_cvetj")]
 position = Vector2(399, 180)
-
-[node name="Enemy" parent="." instance=ExtResource("3_djhdl")]
-position = Vector2(768, 307)
