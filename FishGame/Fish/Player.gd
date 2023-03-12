@@ -37,5 +37,5 @@ func _on_area_body_area_entered(area):
 	elif collision_shape.scale.x > enemy.scale.x:
 		collision_shape.scale.x += 0.1
 		collision_shape.scale.y += 0.1
-		size_label.text = str(collision_shape.scale.x)
+		size_label.text = str(snapped(collision_shape.scale.x, 0.01))
 		get_parent().increment_score()
