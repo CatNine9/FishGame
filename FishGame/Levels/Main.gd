@@ -5,17 +5,23 @@ extends Node
 @onready var enemy_spawn_delay = $EnemySpawnDelay
 @onready var player = $Player
 @onready var player_collision = $Player/AreaBody/CollisionBody
+@onready var score_label = $ScoreLabel
 
 
 
 var number_of_child_nodes = null
 var enemies = []
+var score = 0
+
+
+signal score_incremented
 
 
 
 func _ready():
 	spawn_enemy()
 	enemy_spawn_delay.start()
+	score_label.text = str(score)
 
 
 
@@ -43,4 +49,6 @@ func spawn_enemy():
 	
 	enemy_spawn.collision_shape.scale *= random_size_value
 	
-
+func increment_score():
+	score += 1
+	score_label.text = str(score)
