@@ -1,13 +1,27 @@
 extends CharacterBody2D
 
+
+
 @onready var sprite = $AreaBody/CollisionBody/EnemySprite
+@onready var collision_shape = $AreaBody/CollisionBody
+@onready var size_label = $SizeLabel
+
+
 
 @export var SPEED = 300.0
+
+
 
 var spawn_side = null
 var sprite_flipped = false
 
+
+
 func _ready():
+	var enemy_size_str = str(collision_shape.scale.x)
+	size_label.text = enemy_size_str
+	
+	
 	if spawn_side == 0:
 		position.x = 0
 	elif spawn_side == 1:
@@ -16,6 +30,8 @@ func _ready():
 	else:
 		print("Spawn side not ready.")
 	print("Spawned at y ", position.y)
+
+
 
 func _process(delta):
 	if spawn_side == 0:
@@ -29,6 +45,20 @@ func _process(delta):
 	if position.x < -200 or position.x > 1000:
 		queue_free()
 
+
+
 func _on_area_body_area_entered(area):
-	print("Dead!")
-	queue_free()
+	print("Touching player!")
+	var player = area.get_child(0, true)
+	if scale < player.scale:
+		print("Dead!")
+		queue_free()
+
+
+
+#func _on_area_body_body_entered(body):
+#	print("Touching!")
+#	var player = body
+#	if scale < player.scale:
+#		print("Dead!")
+#		queue_free()
