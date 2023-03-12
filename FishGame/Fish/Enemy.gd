@@ -24,5 +24,7 @@ func _process(delta):
 	else:
 		velocity.x = 0
 	move_and_slide()
-
+	
+	if position.x < 0 or position.x > 800:
+		queue_free()
 	
