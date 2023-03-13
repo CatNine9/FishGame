@@ -12,16 +12,16 @@ extends Node
 var number_of_child_nodes = null
 var enemies = []
 var score = 0
-
-
-signal score_incremented
+var score_format = "Score: %d"
+var score_string = score_format % [score]
 
 
 
 func _ready():
 	spawn_enemy()
 	enemy_spawn_delay.start()
-	score_label.text = str(score)
+
+	score_label.text = score_string
 
 
 
@@ -51,4 +51,7 @@ func spawn_enemy():
 	
 func increment_score():
 	score += 1
-	score_label.text = str(score)
+	print("Score: ", score)
+	score_string = score_format % [score]
+	score_label.text = score_string
+
