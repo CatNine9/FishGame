@@ -6,6 +6,7 @@ extends Node
 @onready var player = $Player
 @onready var player_collision = $Player/AreaBody/CollisionBody
 @onready var score_label = $ScoreLabel
+@onready var pause_menu = $Control
 
 
 
@@ -22,6 +23,9 @@ func _ready():
 	enemy_spawn_delay.start()
 
 	score_label.text = score_string
+	
+	if GlobalVariables.is_paused == true:
+		pause_menu.visible = true
 
 
 
