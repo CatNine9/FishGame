@@ -55,3 +55,5 @@ func increment_score():
 	score_string = score_format % [score]
 	score_label.text = score_string
 
+
+

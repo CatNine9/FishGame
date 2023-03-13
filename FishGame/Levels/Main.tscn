@@ -83,3 +83,5 @@ offset_bottom = 46.0
 text = "Score"
 
 [connection signal="timeout" from="EnemySpawnDelay" to="." method="_on_enemy_spawn_delay_timeout"]
+[connection signal="button_up" from="Control/CenterContainer/ColorRect/PauseVbox/ResumeButton" to="Control" method="_on_resume_button_button_up"]
+[connection signal="button_up" from="Control/CenterContainer/ColorRect/PauseVbox/SettingsButton" to="Control" method="_on_settings_button_button_up"]
