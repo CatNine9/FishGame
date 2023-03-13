@@ -21,6 +21,8 @@ func _input(event):
 	elif event.is_action_pressed("ui_right"):
 		sprite.flip_h = false
 
+
+
 func _physics_process(delta):
 	var x_direction = Input.get_axis("ui_left", "ui_right")
 	var y_direction = Input.get_axis("ui_up", "ui_down")
