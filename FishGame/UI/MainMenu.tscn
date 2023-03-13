@@ -68,3 +68,6 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [connection signal="button_up" from="CenterContainer/MenuVbox/StartButton" to="." method="_on_start_button_button_up"]
+[connection signal="button_up" from="CenterContainer/MenuVbox/SettingsButton" to="." method="_on_settings_button_button_up"]
+[connection signal="button_up" from="CenterContainer/MenuVbox/LeaderBoardButton" to="." method="_on_leader_board_button_button_up"]
+[connection signal="button_up" from="CenterContainer/MenuVbox/QuitButton" to="." method="_on_quit_button_button_up"]
