@@ -19,6 +19,20 @@ func _on_settings_button_button_up():
 
 
 
+func _on_exit_button_button_up():
+	get_tree().paused = false
+	GlobalVariables.is_paused = false
+	visible = false
+	var main_menu_packed = load("res://UI/MainMenu.tscn")
+	get_tree().change_scene_to_packed(main_menu_packed)
+
+
+
+func _on_quit_button_button_up():
+	get_tree().quit()
+
+ 
+
 func toggle_pause():
 	if get_parent().get_parent().get_tree().paused == false:
 		get_parent().get_tree().paused = true
@@ -28,3 +42,9 @@ func toggle_pause():
 		get_parent().get_tree().paused = false
 		visible = false
 		GlobalVariables.is_paused = false
+
+
+
+
+
+
