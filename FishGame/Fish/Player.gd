@@ -40,6 +40,8 @@ func _physics_process(delta):
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 	move_and_slide()
+	
+	GlobalVariables.player_position = position
 
 
 

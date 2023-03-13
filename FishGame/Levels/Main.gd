@@ -26,6 +26,7 @@ func _ready():
 	
 	if GlobalVariables.is_paused == true:
 		pause_menu.visible = true
+		player.position = GlobalVariables.player_position
 
 
 
