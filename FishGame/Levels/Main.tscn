@@ -7,12 +7,11 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_x3kem")
 
-[node name="ScoreLabel" type="Label" parent="."]
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 63.0
-offset_bottom = 46.0
-text = "Score"
+[node name="Player" parent="." instance=ExtResource("1_cvetj")]
+position = Vector2(399, 300)
+
+[node name="EnemySpawnDelay" type="Timer" parent="."]
+wait_time = 1.5
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -40,10 +39,11 @@ grow_vertical = 2
 text = "PAUSE"
 script = ExtResource("3_ymtrg")
 
-[node name="Player" parent="." instance=ExtResource("1_cvetj")]
-position = Vector2(399, 180)
-
-[node name="EnemySpawnDelay" type="Timer" parent="."]
-wait_time = 1.5
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 63.0
+offset_bottom = 46.0
+text = "Score"
 
 [connection signal="timeout" from="EnemySpawnDelay" to="." method="_on_enemy_spawn_delay_timeout"]

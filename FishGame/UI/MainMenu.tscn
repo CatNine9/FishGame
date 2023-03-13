@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cutqtpxte1qwl"]
+[gd_scene load_steps=3 format=3 uid="uid://cutqtpxte1qwl"]
+
+[ext_resource type="Script" path="res://UI/MainMenu.gd" id="1_dtkbm"]
 
 [sub_resource type="Theme" id="Theme_2qdnr"]
 
@@ -9,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_dtkbm")
 
 [node name="Panel" type="ColorRect" parent="."]
 modulate = Color(0, 0.498039, 0.611765, 1)
@@ -63,3 +66,5 @@ layout_mode = 2
 text = "FISH GAME"
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[connection signal="button_up" from="CenterContainer/MenuVbox/StartButton" to="." method="_on_start_button_button_up"]
