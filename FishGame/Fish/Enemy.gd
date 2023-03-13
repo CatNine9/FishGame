@@ -24,9 +24,6 @@ func _ready():
 	elif spawn_side == 1:
 		position.x = 800
 		sprite.flip_h = true
-	else:
-		print("Spawn side not ready.")
-	print("Spawned at y ", position.y)
 
 	if GlobalVariables.size_visibility == false:
 		size_label.visible = false

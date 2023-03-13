@@ -51,7 +51,6 @@ func spawn_enemy():
 	
 func increment_score():
 	score += 1
-	print("Score: ", score)
 	score_string = score_format % [score]
 	score_label.text = score_string
 
