@@ -1,4 +1,4 @@
-extends Label
+extends Control
 
 
 func _input(event):
@@ -9,10 +9,10 @@ func _input(event):
 func toggle_pause():
 	if get_parent().get_parent().get_tree().paused == false:
 		print("Isn't paused. Pausing...")
-		get_parent().get_parent().get_tree().paused = true
+		get_parent().get_tree().paused = true
 		visible = true
 	else:
 		print("Is paused. Unpausing...")
-		get_parent().get_parent().get_tree().paused = false
+		get_parent().get_tree().paused = false
 		visible = false
 		print("The script got past visible = false.")
