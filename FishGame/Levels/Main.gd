@@ -27,6 +27,9 @@ func _ready():
 	if GlobalVariables.is_paused == true:
 		pause_menu.visible = true
 		player.position = GlobalVariables.player_position
+		score = GlobalVariables.player_score
+		score_string = score_format % [score]
+		score_label.text = score_string
 
 
 
@@ -58,6 +61,7 @@ func increment_score():
 	score += 1
 	score_string = score_format % [score]
 	score_label.text = score_string
+	GlobalVariables.player_score = score
 
 
 
