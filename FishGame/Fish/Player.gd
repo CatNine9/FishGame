@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 @onready var size_label = $SizeLabel
 @onready var collision_shape = $AreaBody/CollisionBody
+@onready var sprite = $AreaBody/CollisionBody/PlayerSprite
 
 @export var SPEED = 300.0
 
@@ -13,6 +14,12 @@ func _ready():
 	size_label.text = str(collision_shape.scale.x)
 
 
+
+func _input(event):
+	if event.is_action_pressed("ui_left"):
+		sprite.flip_h = true
+	elif event.is_action_pressed("ui_right"):
+		sprite.flip_h = false
 
 func _physics_process(delta):
 	var x_direction = Input.get_axis("ui_left", "ui_right")
