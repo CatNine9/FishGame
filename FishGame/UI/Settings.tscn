@@ -69,4 +69,5 @@ text = "SETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[connection signal="button_up" from="CenterContainer/MenuVbox/BackButton" to="." method="_on_quit_button_button_up"]
+[connection signal="toggled" from="CenterContainer/MenuVbox/HBoxContainer/Toggle" to="." method="_on_toggle_toggled"]
+[connection signal="button_up" from="CenterContainer/MenuVbox/BackButton" to="." method="_on_back_button_button_up"]

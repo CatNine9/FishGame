@@ -1,11 +1,16 @@
 extends Control
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+
+func _on_toggle_toggled(button_pressed):
+	if GlobalVariables.size_visibility == false:
+		GlobalVariables.size_visibility = true
+	else:
+		GlobalVariables.size_visibility = false
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+
+func _on_back_button_button_up():
+	var main_menu = load("res://UI/MainMenu.tscn")
+	get_tree().change_scene_to_packed(main_menu)
+

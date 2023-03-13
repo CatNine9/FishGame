@@ -28,6 +28,11 @@ func _ready():
 		print("Spawn side not ready.")
 	print("Spawned at y ", position.y)
 
+	if GlobalVariables.size_visibility == false:
+		size_label.visible = false
+	else:
+		size_label.visible = true
+
 
 
 func _process(delta):

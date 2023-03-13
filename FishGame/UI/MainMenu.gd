@@ -12,7 +12,8 @@ func _on_start_button_button_up():
 
 
 func _on_settings_button_button_up():
-	pass # Replace with function body.
+	var game_settings = load("res://UI/Settings.tscn")
+	get_tree().change_scene_to_packed(game_settings)
 
 
 func _on_leader_board_button_button_up():

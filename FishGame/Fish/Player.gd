@@ -12,6 +12,10 @@ extends CharacterBody2D
 
 func _ready():
 	size_label.text = str(collision_shape.scale.x)
+	if GlobalVariables.size_visibility == false:
+		size_label.visible = false
+	else:
+		size_label.visible = true
 
 
 
