@@ -18,6 +18,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_0oikl")
 
 [node name="SizeLabel" type="Label" parent="."]
+visible = false
 offset_left = -40.0
 offset_top = -55.0
 offset_right = 40.0

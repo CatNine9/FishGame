@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://cutqtpxte1qwl"]
+
+[sub_resource type="Theme" id="Theme_2qdnr"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="ColorRect" parent="."]
+modulate = Color(0, 0.498039, 0.611765, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_2qdnr")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuVbox" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="CenterContainer/MenuVbox"]
+layout_mode = 2
+text = "START GAME"
+
+[node name="SettingsButton" type="Button" parent="CenterContainer/MenuVbox"]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="LeaderBoardButton" type="Button" parent="CenterContainer/MenuVbox"]
+layout_mode = 2
+text = "LEADER BOARD"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/MenuVbox"]
+layout_mode = 2
+text = "QUIT"
+
+[node name="TitleVbox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 125.0
+grow_horizontal = 2
+
+[node name="TitleLabel" type="Label" parent="TitleVbox"]
+custom_minimum_size = Vector2(200, 125)
+layout_mode = 2
+text = "FISH GAME"
+horizontal_alignment = 1
+vertical_alignment = 2
