@@ -13,7 +13,7 @@ position = Vector2(399, 300)
 [node name="EnemySpawnDelay" type="Timer" parent="."]
 wait_time = 1.5
 
-[node name="Control" type="Control" parent="."]
+[node name="PauseControl" type="Control" parent="."]
 process_mode = 3
 visible = false
 layout_mode = 3
@@ -24,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_ymtrg")
 
-[node name="CenterContainer" type="CenterContainer" parent="Control"]
+[node name="CenterContainer" type="CenterContainer" parent="PauseControl"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,12 +32,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Control/CenterContainer"]
+[node name="ColorRect" type="ColorRect" parent="PauseControl/CenterContainer"]
 custom_minimum_size = Vector2(150, 210)
 layout_mode = 2
 color = Color(0, 0.756863, 1, 0.462745)
 
-[node name="PauseVbox" type="VBoxContainer" parent="Control/CenterContainer/ColorRect"]
+[node name="PauseVbox" type="VBoxContainer" parent="PauseControl/CenterContainer/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -51,7 +51,7 @@ offset_bottom = 95.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PauseLabel" type="Label" parent="Control/CenterContainer/ColorRect/PauseVbox"]
+[node name="PauseLabel" type="Label" parent="PauseControl/CenterContainer/ColorRect/PauseVbox"]
 process_mode = 3
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -59,19 +59,19 @@ text = "PAUSED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ResumeButton" type="Button" parent="Control/CenterContainer/ColorRect/PauseVbox"]
+[node name="ResumeButton" type="Button" parent="PauseControl/CenterContainer/ColorRect/PauseVbox"]
 layout_mode = 2
 text = "RESUME"
 
-[node name="SettingsButton" type="Button" parent="Control/CenterContainer/ColorRect/PauseVbox"]
+[node name="SettingsButton" type="Button" parent="PauseControl/CenterContainer/ColorRect/PauseVbox"]
 layout_mode = 2
 text = "SETTINGS"
 
-[node name="ExitButton" type="Button" parent="Control/CenterContainer/ColorRect/PauseVbox"]
+[node name="ExitButton" type="Button" parent="PauseControl/CenterContainer/ColorRect/PauseVbox"]
 layout_mode = 2
 text = "EXIT TO MENU"
 
-[node name="QuitButton" type="Button" parent="Control/CenterContainer/ColorRect/PauseVbox"]
+[node name="QuitButton" type="Button" parent="PauseControl/CenterContainer/ColorRect/PauseVbox"]
 layout_mode = 2
 text = "QUIT"
 
@@ -83,7 +83,7 @@ offset_bottom = 46.0
 text = "Score"
 
 [connection signal="timeout" from="EnemySpawnDelay" to="." method="_on_enemy_spawn_delay_timeout"]
-[connection signal="button_up" from="Control/CenterContainer/ColorRect/PauseVbox/ResumeButton" to="Control" method="_on_resume_button_button_up"]
-[connection signal="button_up" from="Control/CenterContainer/ColorRect/PauseVbox/SettingsButton" to="Control" method="_on_settings_button_button_up"]
-[connection signal="button_up" from="Control/CenterContainer/ColorRect/PauseVbox/ExitButton" to="Control" method="_on_exit_button_button_up"]
-[connection signal="button_up" from="Control/CenterContainer/ColorRect/PauseVbox/QuitButton" to="Control" method="_on_quit_button_button_up"]
+[connection signal="button_up" from="PauseControl/CenterContainer/ColorRect/PauseVbox/ResumeButton" to="PauseControl" method="_on_resume_button_button_up"]
+[connection signal="button_up" from="PauseControl/CenterContainer/ColorRect/PauseVbox/SettingsButton" to="PauseControl" method="_on_settings_button_button_up"]
+[connection signal="button_up" from="PauseControl/CenterContainer/ColorRect/PauseVbox/ExitButton" to="PauseControl" method="_on_exit_button_button_up"]
+[connection signal="button_up" from="PauseControl/CenterContainer/ColorRect/PauseVbox/QuitButton" to="PauseControl" method="_on_quit_button_button_up"]

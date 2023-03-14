@@ -6,7 +6,7 @@ extends Node
 @onready var player = $Player
 @onready var player_collision = $Player/AreaBody/CollisionBody
 @onready var score_label = $ScoreLabel
-@onready var pause_menu = $Control
+@onready var pause_menu = $PauseControl
 
 
 
