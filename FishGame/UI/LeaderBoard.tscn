@@ -47,7 +47,13 @@ layout_mode = 2
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 0
-text = "Name"
+text = "Name:"
+
+[node name="ExampleNameLabel" type="Label" parent="CenterContainer/MenuVbox/HBoxContainer/NameVbox"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Example Name"
 
 [node name="DateVbox" type="VBoxContainer" parent="CenterContainer/MenuVbox/HBoxContainer"]
 layout_mode = 2
@@ -56,7 +62,13 @@ layout_mode = 2
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 0
-text = "Date"
+text = "Date:"
+
+[node name="ExampleDateLabel" type="Label" parent="CenterContainer/MenuVbox/HBoxContainer/DateVbox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 0
+text = "DD/MM/YY"
 
 [node name="ScoreVbox" type="VBoxContainer" parent="CenterContainer/MenuVbox/HBoxContainer"]
 layout_mode = 2
@@ -65,7 +77,13 @@ layout_mode = 2
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 0
-text = "Score"
+text = "Score:"
+
+[node name="ExampleScoreLabel" type="Label" parent="CenterContainer/MenuVbox/HBoxContainer/ScoreVbox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 0
+text = "0"
 
 [node name="BackButton" type="Button" parent="CenterContainer/MenuVbox"]
 custom_minimum_size = Vector2(50, 0)
