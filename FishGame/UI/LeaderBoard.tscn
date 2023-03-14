@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfb1yhlqxoy73"]
+[gd_scene load_steps=3 format=3 uid="uid://37p2k3hif0eg"]
 
 [ext_resource type="Script" path="res://UI/LeaderBoard.gd" id="1_sx1qm"]
 
@@ -32,63 +32,57 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MenuVbox" type="VBoxContainer" parent="CenterContainer"]
-custom_minimum_size = Vector2(0, 400)
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(0, 450)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MenuVbox"]
-custom_minimum_size = Vector2(0, 400)
+[node name="HeadingHbox" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="NameVbox" type="VBoxContainer" parent="CenterContainer/MenuVbox/HBoxContainer"]
-layout_mode = 2
-
-[node name="NameHeadingLabel" type="Label" parent="CenterContainer/MenuVbox/HBoxContainer/NameVbox"]
+[node name="NameHeadingLabel" type="Label" parent="CenterContainer/VBoxContainer/HeadingHbox"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 0
 text = "Name:"
 
-[node name="ExampleNameLabel" type="Label" parent="CenterContainer/MenuVbox/HBoxContainer/NameVbox"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_vertical = 0
-text = "Example Name"
-
-[node name="DateVbox" type="VBoxContainer" parent="CenterContainer/MenuVbox/HBoxContainer"]
-layout_mode = 2
-
-[node name="DateHeadingLabel" type="Label" parent="CenterContainer/MenuVbox/HBoxContainer/DateVbox"]
+[node name="DateHeadingLabel" type="Label" parent="CenterContainer/VBoxContainer/HeadingHbox"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 0
 text = "Date:"
 
-[node name="ExampleDateLabel" type="Label" parent="CenterContainer/MenuVbox/HBoxContainer/DateVbox"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_vertical = 0
-text = "DD/MM/YY"
-
-[node name="ScoreVbox" type="VBoxContainer" parent="CenterContainer/MenuVbox/HBoxContainer"]
-layout_mode = 2
-
-[node name="ScoreHeadingLabel" type="Label" parent="CenterContainer/MenuVbox/HBoxContainer/ScoreVbox"]
+[node name="ScoreHeadingLabel" type="Label" parent="CenterContainer/VBoxContainer/HeadingHbox"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 0
 text = "Score:"
 
-[node name="ExampleScoreLabel" type="Label" parent="CenterContainer/MenuVbox/HBoxContainer/ScoreVbox"]
+[node name="ExampleHbox" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ExampleNameLabel" type="Label" parent="CenterContainer/VBoxContainer/ExampleHbox"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Cat9"
+
+[node name="ExampleDateLabel" type="Label" parent="CenterContainer/VBoxContainer/ExampleHbox"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 0
-text = "0"
+text = "13/03/23"
 
-[node name="BackButton" type="Button" parent="CenterContainer/MenuVbox"]
+[node name="ExampleScoreLabel" type="Label" parent="CenterContainer/VBoxContainer/ExampleHbox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 0
+text = "11"
+
+[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 10
 text = "BACK"
 
 [node name="TitleVbox" type="VBoxContainer" parent="."]
@@ -107,4 +101,4 @@ layout_mode = 2
 text = "LEADER BOARD"
 vertical_alignment = 2
 
-[connection signal="button_up" from="CenterContainer/MenuVbox/BackButton" to="." method="_on_back_button_button_up"]
+[connection signal="button_up" from="CenterContainer/VBoxContainer/BackButton" to="." method="_on_back_button_button_up"]

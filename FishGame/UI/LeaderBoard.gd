@@ -2,6 +2,8 @@ extends Control
 
 
 
+
+
 func _ready():
 	if GlobalVariables.player_name == null:
 		pass
