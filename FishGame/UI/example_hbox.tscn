@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd60xiycjf7mi"]
+
+[ext_resource type="Script" path="res://UI/example_hbox.gd" id="1_wxufy"]
+
+[node name="ExampleHbox" type="HBoxContainer"]
+script = ExtResource("1_wxufy")
+
+[node name="ExampleNameLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Cat9"
+
+[node name="ExampleDateLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 0
+text = "13/03/23"
+
+[node name="ExampleScoreLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 0
+text = "11"

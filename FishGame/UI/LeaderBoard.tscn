@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://37p2k3hif0eg"]
+[gd_scene load_steps=4 format=3 uid="uid://37p2k3hif0eg"]
 
 [ext_resource type="Script" path="res://UI/LeaderBoard.gd" id="1_sx1qm"]
+[ext_resource type="PackedScene" uid="uid://dd60xiycjf7mi" path="res://UI/example_hbox.tscn" id="2_4rymq"]
 
 [sub_resource type="Theme" id="Theme_2qdnr"]
 
@@ -57,26 +58,8 @@ layout_mode = 2
 size_flags_vertical = 0
 text = "Score:"
 
-[node name="ExampleHbox" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="ExampleHbox" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_4rymq")]
 layout_mode = 2
-
-[node name="ExampleNameLabel" type="Label" parent="CenterContainer/VBoxContainer/ExampleHbox"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_vertical = 0
-text = "Cat9"
-
-[node name="ExampleDateLabel" type="Label" parent="CenterContainer/VBoxContainer/ExampleHbox"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_vertical = 0
-text = "13/03/23"
-
-[node name="ExampleScoreLabel" type="Label" parent="CenterContainer/VBoxContainer/ExampleHbox"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_vertical = 0
-text = "11"
 
 [node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
