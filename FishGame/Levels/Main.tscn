@@ -13,6 +13,48 @@ position = Vector2(399, 300)
 [node name="EnemySpawnDelay" type="Timer" parent="."]
 wait_time = 1.5
 
+[node name="DeathControl" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="DeathControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="DeathControl/CenterContainer"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+color = Color(0.603922, 0, 0, 0.466667)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeathControl/CenterContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DeadLabel" type="Label" parent="DeathControl/CenterContainer/ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "YOU GOT EATEN!"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="NextButton" type="Button" parent="DeathControl/CenterContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = ">> Next >>"
+
 [node name="PauseControl" type="Control" parent="."]
 process_mode = 3
 visible = false

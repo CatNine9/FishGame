@@ -49,6 +49,8 @@ func _on_area_body_area_entered(area):
 	var enemy = area.get_child(0, true)
 	if collision_shape.scale.x < enemy.scale.x:
 		queue_free()
+		GlobalVariables.player_alive = false
+		get_parent().death_window.visible = true
 	elif collision_shape.scale.x > enemy.scale.x:
 		collision_shape.scale.x += 0.1
 		collision_shape.scale.y += 0.1

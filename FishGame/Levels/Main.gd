@@ -7,6 +7,7 @@ extends Node
 @onready var player_collision = $Player/AreaBody/CollisionBody
 @onready var score_label = $ScoreLabel
 @onready var pause_menu = $PauseControl
+@onready var death_window = $DeathControl
 
 
 

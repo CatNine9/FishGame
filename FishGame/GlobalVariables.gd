@@ -12,3 +12,4 @@ var is_paused = false
 # Player:
 var player_position = Vector2(400, 300)
 var player_score = 0
+var player_alive = true
