@@ -17,7 +17,8 @@ func _on_settings_button_button_up():
 
 
 func _on_leader_board_button_button_up():
-	pass # Replace with function body.
+	var leader_board = load("res://UI/LeaderBoard.tscn")
+	get_tree().change_scene_to_packed(leader_board)
 
 
 func _on_quit_button_button_up():
