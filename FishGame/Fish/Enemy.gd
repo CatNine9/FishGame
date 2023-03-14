@@ -54,4 +54,4 @@ func _on_area_body_area_entered(area):
 
 
 func _on_size_display_delay_timeout():
-	size_label.text = str(collision_shape.scale.x)
+	size_label.text = str(snapped(collision_shape.scale.x, 0.01))
