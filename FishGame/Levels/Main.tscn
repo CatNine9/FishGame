@@ -98,6 +98,38 @@ size_flags_horizontal = 4
 size_flags_vertical = 10
 text = "NO"
 
+[node name="ColorRect3" type="ColorRect" parent="DeathControl/CenterContainer"]
+visible = false
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 2
+color = Color(0.603922, 0, 0, 0.466667)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeathControl/CenterContainer/ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NoNameLabel" type="Label" parent="DeathControl/CenterContainer/ColorRect3/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "You didn't input a name, or you didn't press Enter after."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DeathControl/CenterContainer/ColorRect3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="OKButton" type="Button" parent="DeathControl/CenterContainer/ColorRect3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+text = "OK"
+
 [node name="PauseControl" type="Control" parent="."]
 process_mode = 3
 visible = false
@@ -172,6 +204,7 @@ text = "Score"
 [connection signal="text_submitted" from="DeathControl/CenterContainer/ColorRect2/VBoxContainer/NameInputLineEdit" to="DeathControl" method="_on_name_input_line_edit_text_submitted"]
 [connection signal="button_up" from="DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer/YesButton" to="DeathControl" method="_on_yes_button_button_up"]
 [connection signal="button_up" from="DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer/NoButton" to="DeathControl" method="_on_no_button_button_up"]
+[connection signal="button_up" from="DeathControl/CenterContainer/ColorRect3/VBoxContainer/HBoxContainer/OKButton" to="DeathControl" method="_on_ok_button_button_up"]
 [connection signal="button_up" from="PauseControl/CenterContainer/ColorRect/PauseVbox/ResumeButton" to="PauseControl" method="_on_resume_button_button_up"]
 [connection signal="button_up" from="PauseControl/CenterContainer/ColorRect/PauseVbox/SettingsButton" to="PauseControl" method="_on_settings_button_button_up"]
 [connection signal="button_up" from="PauseControl/CenterContainer/ColorRect/PauseVbox/ExitButton" to="PauseControl" method="_on_exit_button_button_up"]
