@@ -16,6 +16,7 @@ var player_alive = true
 var player_name = null
 
 # Leaderboard:
+var entries = [["Cat9", "13/03/2023", 11],["", "", null], ["", "", null], ["", "", null], ["", "", null], ["", "", null], ["", "", null], ["", "", null], ["", "", null], ["", "", null]]
 var entry_1 = ["Cat9", "13/03/2023", str(11)]
 var entry_2 = ["","",""]
 var entry_3 = ["","",""]

@@ -2,10 +2,10 @@ extends Node
 
 
 var entry_slots_array = [GlobalVariables.entry_1, GlobalVariables.entry_2, GlobalVariables.entry_3, GlobalVariables.entry_4, GlobalVariables.entry_5, GlobalVariables.entry_6, GlobalVariables.entry_7, GlobalVariables.entry_8, GlobalVariables.entry_9, GlobalVariables.entry_10]
-var entries_array = [["Cat9", "13/03/2023", 11],["", "", null], ["", "", null], ["", "", null], ["", "", null], ["", "", null], ["", "", null], ["", "", null], ["", "", null], ["", "", null]]
 
 
 func _ready():
+	print(GlobalVariables.entries)
 	var datetime_dict = Time.get_date_dict_from_system()
 	var time_format = "%d/%d/%d"
 	var time_string = time_format % [datetime_dict["day"], datetime_dict["month"], datetime_dict["year"]]
@@ -13,22 +13,23 @@ func _ready():
 	if GlobalVariables.player_name == null:
 		print("player name = null")
 	else:
-		var entry_to_replace = entries_array.find(["", "", null])
-		entries_array[entry_to_replace] = [GlobalVariables.player_name, time_string, GlobalVariables.player_score]
-		entries_array.sort_custom(sort_descending)
-		print(entries_array)
+		var entry_to_replace = GlobalVariables.entries.find(["", "", null])
+		print(entry_to_replace)
+		GlobalVariables.entries[entry_to_replace] = [GlobalVariables.player_name, time_string, GlobalVariables.player_score]
+		GlobalVariables.entries.sort_custom(sort_descending)
+		print(GlobalVariables.entries)
 		#if entries_array.size() > 10:
 			#remove last entry
-		GlobalVariables.entry_1 = entries_array[0]
-		GlobalVariables.entry_2 = entries_array[1]
-		GlobalVariables.entry_3 = entries_array[2]
-		GlobalVariables.entry_4 = entries_array[3]
-		GlobalVariables.entry_5 = entries_array[4]
-		GlobalVariables.entry_6 = entries_array[5]
-		GlobalVariables.entry_7 = entries_array[6]
-		GlobalVariables.entry_8 = entries_array[7]
-		GlobalVariables.entry_9 = entries_array[8]
-		GlobalVariables.entry_10 = entries_array[9]
+		GlobalVariables.entry_1 = GlobalVariables.entries[0]
+		GlobalVariables.entry_2 = GlobalVariables.entries[1]
+		GlobalVariables.entry_3 = GlobalVariables.entries[2]
+		GlobalVariables.entry_4 = GlobalVariables.entries[3]
+		GlobalVariables.entry_5 = GlobalVariables.entries[4]
+		GlobalVariables.entry_6 = GlobalVariables.entries[5]
+		GlobalVariables.entry_7 = GlobalVariables.entries[6]
+		GlobalVariables.entry_8 = GlobalVariables.entries[7]
+		GlobalVariables.entry_9 = GlobalVariables.entries[8]
+		GlobalVariables.entry_10 = GlobalVariables.entries[9]
 	load_entries()
 
 func sort_descending(a, b):
