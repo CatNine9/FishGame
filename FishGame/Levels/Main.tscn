@@ -79,7 +79,7 @@ Name:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="DeathControl/CenterContainer/ColorRect2/VBoxContainer"]
+[node name="NameInputLineEdit" type="LineEdit" parent="DeathControl/CenterContainer/ColorRect2/VBoxContainer"]
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="DeathControl/CenterContainer/ColorRect2/VBoxContainer"]
@@ -169,6 +169,8 @@ text = "Score"
 
 [connection signal="timeout" from="EnemySpawnDelay" to="." method="_on_enemy_spawn_delay_timeout"]
 [connection signal="button_up" from="DeathControl/CenterContainer/ColorRect/VBoxContainer/NextButton" to="DeathControl" method="_on_next_button_button_up"]
+[connection signal="text_submitted" from="DeathControl/CenterContainer/ColorRect2/VBoxContainer/NameInputLineEdit" to="DeathControl" method="_on_name_input_line_edit_text_submitted"]
+[connection signal="button_up" from="DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer/YesButton" to="DeathControl" method="_on_yes_button_button_up"]
 [connection signal="button_up" from="DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer/NoButton" to="DeathControl" method="_on_no_button_button_up"]
 [connection signal="button_up" from="PauseControl/CenterContainer/ColorRect/PauseVbox/ResumeButton" to="PauseControl" method="_on_resume_button_button_up"]
 [connection signal="button_up" from="PauseControl/CenterContainer/ColorRect/PauseVbox/SettingsButton" to="PauseControl" method="_on_settings_button_button_up"]
