@@ -20,6 +20,7 @@ var score_string = score_format % [score]
 
 
 func _ready():
+	GlobalVariables.game_on = true
 	spawn_enemy()
 	enemy_spawn_delay.start()
 

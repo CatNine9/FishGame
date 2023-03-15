@@ -7,6 +7,7 @@ var size_visibility = false
 var size_vis_toggle_setting = false
 
 # Game:
+var game_on = false
 var is_paused = false
 
 # Player:

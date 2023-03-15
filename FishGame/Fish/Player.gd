@@ -48,6 +48,7 @@ func _physics_process(delta):
 func _on_area_body_area_entered(area):
 	var enemy = area.get_child(0, true)
 	if collision_shape.scale.x < enemy.scale.x:
+		GlobalVariables.game_on = false
 		queue_free()
 		GlobalVariables.player_alive = false
 		get_parent().death_window.visible = true
