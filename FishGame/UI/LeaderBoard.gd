@@ -1,5 +1,6 @@
 extends Node
 
+const save_path = "user://json"
 
 var entry_slots_array = [GlobalVariables.entry_1, GlobalVariables.entry_2, GlobalVariables.entry_3, GlobalVariables.entry_4, GlobalVariables.entry_5, GlobalVariables.entry_6, GlobalVariables.entry_7, GlobalVariables.entry_8, GlobalVariables.entry_9, GlobalVariables.entry_10]
 
@@ -18,8 +19,6 @@ func _ready():
 		GlobalVariables.entries[entry_to_replace] = [GlobalVariables.player_name, time_string, GlobalVariables.player_score]
 		GlobalVariables.entries.sort_custom(sort_descending)
 		print(GlobalVariables.entries)
-		#if entries_array.size() > 10:
-			#remove last entry
 		GlobalVariables.entry_1 = GlobalVariables.entries[0]
 		GlobalVariables.entry_2 = GlobalVariables.entries[1]
 		GlobalVariables.entry_3 = GlobalVariables.entries[2]
@@ -30,6 +29,8 @@ func _ready():
 		GlobalVariables.entry_8 = GlobalVariables.entries[7]
 		GlobalVariables.entry_9 = GlobalVariables.entries[8]
 		GlobalVariables.entry_10 = GlobalVariables.entries[9]
+		save_scoreboard()
+	load_scoreboard()
 	load_entries()
 
 func sort_descending(a, b):
@@ -47,6 +48,48 @@ func _on_back_button_button_up():
 	GlobalVariables.player_position = Vector2(400, 300)
 	var main_menu = load("res://UI/MainMenu.tscn")
 	get_tree().change_scene_to_packed(main_menu)
+
+
+
+func save_scoreboard():
+	var save_dict := {
+		"entries_array": GlobalVariables.entries,
+		"entry_1": GlobalVariables.entry_1,
+		"entry_2": GlobalVariables.entry_2,
+		"entry_3": GlobalVariables.entry_3,
+		"entry_4": GlobalVariables.entry_4,
+		"entry_5": GlobalVariables.entry_5,
+		"entry_6": GlobalVariables.entry_6,
+		"entry_7": GlobalVariables.entry_7,
+		"entry_8": GlobalVariables.entry_8,
+		"entry_9": GlobalVariables.entry_9,
+		"entry_10": GlobalVariables.entry_10,
+	}
+	var json = JSON.stringify(save_dict)
+	var save_file = FileAccess.open(save_path, FileAccess.WRITE)
+	save_file.store_line(json)
+	save_file.close()
+
+
+func load_scoreboard():
+	if not FileAccess.file_exists(save_path):
+		return
+	var save_file = FileAccess.open(save_path, FileAccess.READ)
+	var save_data = save_file.get_line()
+	var json = JSON.parse_string(save_data)
+	GlobalVariables.entries = json.entries_array
+	GlobalVariables.entry_1 = json.entry_1
+	GlobalVariables.entry_2 = json.entry_2
+	GlobalVariables.entry_3 = json.entry_3
+	GlobalVariables.entry_4 = json.entry_4
+	GlobalVariables.entry_5 = json.entry_5
+	GlobalVariables.entry_6 = json.entry_6
+	GlobalVariables.entry_7 = json.entry_7
+	GlobalVariables.entry_8 = json.entry_8
+	GlobalVariables.entry_9 = json.entry_9
+	GlobalVariables.entry_10 = json.entry_10
+
+
 
 func load_entries():
 	var entry_1_packed = load("res://UI/example_hbox.tscn")

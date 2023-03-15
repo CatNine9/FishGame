@@ -57,7 +57,9 @@ func spawn_enemy():
 	enemies.append(enemy_spawn)
 	
 	enemy_spawn.collision_shape.scale *= random_size_value
-	
+
+
+
 func increment_score():
 	score += 1
 	score_string = score_format % [score]
