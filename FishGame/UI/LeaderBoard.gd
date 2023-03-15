@@ -1,6 +1,6 @@
 extends Node
 
-const save_path = "user://json"
+const save_path =  "user://save_file.json" #"user://json"
 
 var entry_slots_array = [GlobalVariables.entry_1, GlobalVariables.entry_2, GlobalVariables.entry_3, GlobalVariables.entry_4, GlobalVariables.entry_5, GlobalVariables.entry_6, GlobalVariables.entry_7, GlobalVariables.entry_8, GlobalVariables.entry_9, GlobalVariables.entry_10]
 
