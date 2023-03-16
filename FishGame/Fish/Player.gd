@@ -26,6 +26,7 @@ var directions_dict = {
 
 
 func _ready():
+	GlobalVariables.player_alive = true
 	size_label.text = str(collision_shape.scale.x)
 	if GlobalVariables.size_visibility == false:
 		size_label.visible = false

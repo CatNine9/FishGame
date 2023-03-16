@@ -22,6 +22,7 @@ var score_string = score_format % [score]
 
 
 func _ready():
+	print(GlobalVariables.player_alive)
 	spawn_enemy()
 	enemy_spawn_delay.start()
 

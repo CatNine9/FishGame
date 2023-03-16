@@ -2,7 +2,7 @@ extends Control
 
 
 func _input(event):
-	if event.is_action_released("Pause"):
+	if event.is_action_released("Pause") and GlobalVariables.player_alive == true:
 		toggle_pause()
 
 

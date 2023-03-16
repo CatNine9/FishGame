@@ -42,7 +42,6 @@ func sort_descending(a, b):
 
 
 func _on_back_button_button_up():
-	GlobalVariables.player_alive = true
 	GlobalVariables.player_name = null
 	GlobalVariables.player_score = 0
 	GlobalVariables.player_position = Vector2(400, 300)
