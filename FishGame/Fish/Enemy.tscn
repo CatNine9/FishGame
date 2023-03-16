@@ -11,10 +11,11 @@ script = ExtResource("1_xknvd")
 collision_layer = 2
 
 [node name="CollisionBody" type="CollisionPolygon2D" parent="AreaBody"]
-polygon = PackedVector2Array(-206, -159, 127, -126, 306, -59, 341, 8, 317, 69, 132, 135, -203, 165, -359, 25)
+polygon = PackedVector2Array(-22, -15, 16, -12, 32, -5, 34, 1, 31, 7, 16, 13, -22, 17, -36, 2)
 
 [node name="EnemySprite" type="Sprite2D" parent="AreaBody/CollisionBody"]
 rotation = 1.5708
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_ack23")
 
 [node name="SizeLabel" type="Label" parent="."]

@@ -30,11 +30,12 @@ texture = ExtResource("2_iaj81")
 position = Vector2(399, 300)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_speed = 10.0
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="EnemySpawnDelay" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 0.2
 
 [node name="DeathControl" type="Control" parent="."]
 visible = false

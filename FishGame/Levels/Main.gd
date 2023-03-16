@@ -46,7 +46,7 @@ func _on_enemy_spawn_delay_timeout():
 func spawn_enemy():
 	var random_side_value = randi() % 2
 		
-	var random_height_value = randi_range(0, 600)
+	var random_height_value = randi_range(0, 3832)
 	
 	var random_size_value = randf_range(player_collision.scale.x * 0.75, player_collision.scale.x * 1.25)
 	

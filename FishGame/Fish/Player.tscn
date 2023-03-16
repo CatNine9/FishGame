@@ -11,10 +11,10 @@ script = ExtResource("1_ix3g4")
 collision_mask = 2
 
 [node name="CollisionBody" type="CollisionPolygon2D" parent="AreaBody"]
-scale = Vector2(0.1, 0.1)
-polygon = PackedVector2Array(91, -191, 147, -111, 171, 33, 166, 179, -1, 204, -182, 181, -189, 28, -172, -100, -105, -191)
+polygon = PackedVector2Array(9, -19, 16, -8, 17, 3, 16, 18, 0, 21, -18, 18, -19, 2, -18, -8, -10, -19)
 
 [node name="PlayerSprite" type="Sprite2D" parent="AreaBody/CollisionBody"]
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_mb3ac")
 
 [node name="SizeLabel" type="Label" parent="."]

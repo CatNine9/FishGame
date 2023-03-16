@@ -23,7 +23,7 @@ func _ready():
 	if spawn_side == 0:
 		position.x = 0
 	elif spawn_side == 1:
-		position.x = 800
+		position.x = 3848
 		sprite.flip_v = true
 
 	if GlobalVariables.size_visibility == false:
@@ -42,7 +42,7 @@ func _process(delta):
 		velocity.x = 0
 	move_and_slide()
 	
-	if position.x < -200 or position.x > 1000:
+	if position.x < -200 or position.x > 4000:
 		queue_free()
 
 
