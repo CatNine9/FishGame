@@ -11,6 +11,20 @@ extends CharacterBody2D
 
 
 
+# Will be used for animating:
+var directions_dict = {
+	"Up": Vector2(0, -1),
+	"Up_Right": Vector2(1, -1),
+	"Right": Vector2(1, 0),
+	"Down_Right": Vector2(1, 1),
+	"Down": Vector2(0, 1),
+	"Down_Left": Vector2(-1, 1),
+	"Left": Vector2(-1, 0),
+	"Up_Left": Vector2(-1, -1),
+}
+
+
+
 func _ready():
 	size_label.text = str(collision_shape.scale.x)
 	if GlobalVariables.size_visibility == false:
@@ -29,6 +43,8 @@ func _input(event):
 
 
 func _physics_process(delta):
+	
+	
 	var x_direction = Input.get_axis("ui_left", "ui_right")
 	var y_direction = Input.get_axis("ui_up", "ui_down")
 	if x_direction:

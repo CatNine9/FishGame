@@ -6,9 +6,9 @@ extends Node
 @onready var player = $Player
 @onready var player_collision = $Player/AreaBody/CollisionBody
 @onready var player_area = $Player/AreaBody
-@onready var score_label = $ScoreLabel
-@onready var pause_menu = $PauseControl
-@onready var death_window = $DeathControl
+@onready var score_label = $Player/Camera2D/ScoreLabel
+@onready var pause_menu = $Player/PauseControl
+@onready var death_window = $Player/DeathControl
 
 
 
