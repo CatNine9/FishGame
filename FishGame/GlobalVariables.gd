@@ -2,9 +2,11 @@ extends Node
 
 # Settings:
 var size_visibility = false
+var fps_visibility = false
 
 # UI:
 var size_vis_toggle_setting = false
+var fps_toggle_setting = false
 
 # Game:
 var is_paused = false

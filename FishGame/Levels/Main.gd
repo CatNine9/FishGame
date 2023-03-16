@@ -19,13 +19,17 @@ var enemies = []
 var score = 0
 var score_format = "Score: %d"
 var score_string = score_format % [score]
-var fps = 0
 
 
 func _ready():
 	print(GlobalVariables.player_alive)
 	spawn_enemy()
 	enemy_spawn_delay.start()
+
+	if GlobalVariables.fps_visibility == false:
+		fps_label.visible = false
+	else:
+		fps_label.visible = true
 
 	score_label.text = score_string
 	
@@ -35,6 +39,7 @@ func _ready():
 		score = GlobalVariables.player_score
 		score_string = score_format % [score]
 		score_label.text = score_string
+		fps_label.visible = GlobalVariables.fps_visibility
 
 
 
@@ -43,7 +48,6 @@ func _process(delta):
 	var fps_format = "FPS: %d"
 	var fps_string = fps_format % [fps]
 	fps_label.text = fps_string
-	print("FPS: ", Engine.get_frames_per_second())
 
 
 
