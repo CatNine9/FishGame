@@ -10,7 +10,7 @@ extends CharacterBody2D
 
 
 
-@export var SPEED = 300.0
+@export var SPEED = 200
 
 
 
@@ -33,7 +33,7 @@ func _ready():
 
 
 
-func _process(delta):
+func _physics_process(delta):
 	if spawn_side == 0:
 		velocity.x = 1 * SPEED
 	elif spawn_side == 1:
@@ -41,7 +41,7 @@ func _process(delta):
 	else:
 		velocity.x = 0
 	move_and_slide()
-	
+		
 	if position.x < -200 or position.x > 4000:
 		queue_free()
 

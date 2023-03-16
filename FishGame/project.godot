@@ -23,7 +23,6 @@ GlobalVariables="*res://GlobalVariables.gd"
 
 window/size/viewport_width=800
 window/size/viewport_height=600
-window/vsync/vsync_mode=0
 window/stretch/mode="canvas_items"
 window/quality/msaa_3d=2
 window/quality/msaa_2d=2
@@ -71,6 +70,10 @@ Pause={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemy"
 2d_physics/layer_3="Wall"
+
+[physics]
+
+common/physics_ticks_per_second=120
 
 [rendering]
 

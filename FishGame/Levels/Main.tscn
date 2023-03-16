@@ -44,6 +44,13 @@ offset_right = -336.0
 offset_bottom = -254.0
 text = "Score"
 
+[node name="FPSLabel" type="Label" parent="Player/Camera2D"]
+offset_left = -379.0
+offset_top = 280.0
+offset_right = -339.0
+offset_bottom = 306.0
+text = "FPS"
+
 [node name="DeathControl" type="Control" parent="Player/Camera2D"]
 visible = false
 layout_mode = 3

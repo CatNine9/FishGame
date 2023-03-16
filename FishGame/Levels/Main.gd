@@ -10,6 +10,7 @@ extends Node
 @onready var pause_menu = $Player/Camera2D/PauseControl
 @onready var death_window = $Player/Camera2D/DeathControl
 @onready var gameplay_camera = $Player/Camera2D
+@onready var fps_label = $Player/Camera2D/FPSLabel
 
 
 
@@ -18,7 +19,7 @@ var enemies = []
 var score = 0
 var score_format = "Score: %d"
 var score_string = score_format % [score]
-
+var fps = 0
 
 
 func _ready():
@@ -37,9 +38,12 @@ func _ready():
 
 
 
-func _physics_process(delta):
-	pass
-
+func _process(delta):
+	var fps = Engine.get_frames_per_second()
+	var fps_format = "FPS: %d"
+	var fps_string = fps_format % [fps]
+	fps_label.text = fps_string
+	print("FPS: ", Engine.get_frames_per_second())
 
 
 
