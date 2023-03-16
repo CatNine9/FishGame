@@ -43,20 +43,19 @@ func _input(event):
 
 
 func _physics_process(delta):
-	
-	
-	var x_direction = Input.get_axis("ui_left", "ui_right")
-	var y_direction = Input.get_axis("ui_up", "ui_down")
-	if x_direction:
-		velocity.x = x_direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	if GlobalVariables.player_alive == true:
+		var x_direction = Input.get_axis("ui_left", "ui_right")
+		var y_direction = Input.get_axis("ui_up", "ui_down")
+		if x_direction:
+			velocity.x = x_direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if y_direction:
-		velocity.y = y_direction * SPEED
-	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-	move_and_slide()
+		if y_direction:
+			velocity.y = y_direction * SPEED
+		else:
+			velocity.y = move_toward(velocity.y, 0, SPEED)
+		move_and_slide()
 	
 	GlobalVariables.player_position = position
 
@@ -65,7 +64,9 @@ func _physics_process(delta):
 func _on_area_body_area_entered(area):
 	var enemy = area.get_child(0, true)
 	if collision_shape.scale.x < enemy.scale.x:
-		queue_free()
+		GlobalVariables.camera_position = position
+		sprite.visible = false
+		collision_shape.set_deferred("disabled", true)
 		GlobalVariables.player_alive = false
 		get_parent().death_window.visible = true
 	elif collision_shape.scale.x > enemy.scale.x:

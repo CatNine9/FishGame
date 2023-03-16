@@ -29,38 +29,6 @@ offset_right = 3848.0
 offset_bottom = 3832.0
 texture = ExtResource("2_iaj81")
 
-[node name="TopWall" type="StaticBody2D" parent="."]
-collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
-position = Vector2(1950, 0)
-shape = SubResource("RectangleShape2D_qmgg6")
-
-[node name="LowerWall" type="StaticBody2D" parent="."]
-position = Vector2(0, 3850)
-collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerWall"]
-position = Vector2(1950, 0)
-shape = SubResource("RectangleShape2D_qmgg6")
-
-[node name="LeftWall" type="StaticBody2D" parent="."]
-rotation = 1.5708
-collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
-position = Vector2(1950, 0)
-shape = SubResource("RectangleShape2D_qmgg6")
-
-[node name="RightWall" type="StaticBody2D" parent="."]
-position = Vector2(3850, 0)
-rotation = 1.5708
-collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
-position = Vector2(1950, 0)
-shape = SubResource("RectangleShape2D_qmgg6")
-
 [node name="Player" parent="." instance=ExtResource("1_cvetj")]
 position = Vector2(399, 300)
 
@@ -82,10 +50,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -399.0
-offset_top = -300.0
-offset_right = -399.0
-offset_bottom = -300.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_oq8rl")
@@ -203,10 +167,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -399.0
-offset_top = -300.0
-offset_right = -399.0
-offset_bottom = -300.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_ymtrg")
@@ -264,6 +224,38 @@ text = "QUIT"
 
 [node name="EnemySpawnDelay" type="Timer" parent="."]
 wait_time = 0.2
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+position = Vector2(1950, 0)
+shape = SubResource("RectangleShape2D_qmgg6")
+
+[node name="LowerWall" type="StaticBody2D" parent="."]
+position = Vector2(0, 3850)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerWall"]
+position = Vector2(1950, 0)
+shape = SubResource("RectangleShape2D_qmgg6")
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+rotation = 1.5708
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2(1950, 0)
+shape = SubResource("RectangleShape2D_qmgg6")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(3850, 0)
+rotation = 1.5708
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(1950, 0)
+shape = SubResource("RectangleShape2D_qmgg6")
 
 [connection signal="button_up" from="Player/Camera2D/DeathControl/CenterContainer/ColorRect/VBoxContainer/NextButton" to="Player/Camera2D/DeathControl" method="_on_next_button_button_up"]
 [connection signal="text_submitted" from="Player/Camera2D/DeathControl/CenterContainer/ColorRect2/VBoxContainer/NameInputLineEdit" to="Player/Camera2D/DeathControl" method="_on_name_input_line_edit_text_submitted"]

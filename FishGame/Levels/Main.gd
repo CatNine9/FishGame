@@ -7,8 +7,9 @@ extends Node
 @onready var player_collision = $Player/AreaBody/CollisionBody
 @onready var player_area = $Player/AreaBody
 @onready var score_label = $Player/Camera2D/ScoreLabel
-@onready var pause_menu = $Player/PauseControl
-@onready var death_window = $Player/DeathControl
+@onready var pause_menu = $Player/Camera2D/PauseControl
+@onready var death_window = $Player/Camera2D/DeathControl
+@onready var gameplay_camera = $Player/Camera2D
 
 
 
@@ -32,6 +33,12 @@ func _ready():
 		score = GlobalVariables.player_score
 		score_string = score_format % [score]
 		score_label.text = score_string
+
+
+
+func _physics_process(delta):
+	pass
+
 
 
 
