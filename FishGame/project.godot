@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalVariables="*res://GlobalVariables.gd"
+Species="*res://Species/species.gd"
 
 [display]
 
@@ -73,15 +74,14 @@ Pause={
 
 [physics]
 
-common/physics_ticks_per_second=200
-common/max_physics_steps_per_frame=16
+common/physics_ticks_per_second=50
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.188235, 0.313726, 0.407843, 1)
 anti_aliasing/quality/msaa_2d=2
 anti_aliasing/quality/msaa_3d=2
 anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/use_taa=true
 textures/canvas_textures/default_texture_filter=2

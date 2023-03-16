@@ -10,7 +10,7 @@ extends CharacterBody2D
 
 
 
-@export var SPEED = 200
+@export var SPEED = 300
 
 
 
@@ -41,6 +41,13 @@ func _physics_process(delta):
 	else:
 		velocity.x = 0
 	move_and_slide()
+#	if spawn_side == 0:
+#		position = position.lerp(position + Vector2(1, 0), SPEED * delta)
+#	elif spawn_side == 1:
+#		position = position.lerp(position + Vector2(-1, 0), SPEED * delta)
+#	else:
+#		velocity.x = 0
+#	#move_and_slide()
 		
 	if position.x < -200 or position.x > 4000:
 		queue_free()

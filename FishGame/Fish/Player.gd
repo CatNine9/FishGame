@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var area_shape = $AreaBody
 @onready var sprite = $AreaBody/CollisionBody/PlayerSprite
 
-@export var SPEED = 200
+@export var SPEED = 300
 
 
 

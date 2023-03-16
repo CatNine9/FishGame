@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://btixan7xoohos"]
+
+[ext_resource type="Script" path="res://Species/species.gd" id="1_u4khi"]
+[ext_resource type="Script" path="res://Species/Species1.gd" id="2_4o15h"]
+[ext_resource type="Script" path="res://Species/Species2.gd" id="3_naxif"]
+
+[node name="Species" type="Node"]
+script = ExtResource("1_u4khi")
+
+[node name="Species1" type="Node" parent="."]
+script = ExtResource("2_4o15h")
+
+[node name="Species2" type="Node" parent="."]
+script = ExtResource("3_naxif")
