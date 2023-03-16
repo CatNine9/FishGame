@@ -1,12 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfg7ame4n0wbj"]
+[gd_scene load_steps=6 format=3 uid="uid://bfg7ame4n0wbj"]
 
 [ext_resource type="PackedScene" uid="uid://rffmu5nc3g5s" path="res://Fish/Player.tscn" id="1_cvetj"]
 [ext_resource type="Script" path="res://Levels/Main.gd" id="1_x3kem"]
+[ext_resource type="Texture2D" uid="uid://b85fp28aymgps" path="res://Levels/Backgrounds/Glittery Nebula.png" id="2_iaj81"]
 [ext_resource type="Script" path="res://Levels/DeathControl.gd" id="3_oq8rl"]
 [ext_resource type="Script" path="res://Levels/PauseLabel.gd" id="3_ymtrg"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_x3kem")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1524.0
+offset_top = -1616.0
+offset_right = 1524.0
+offset_bottom = 1616.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_iaj81")
 
 [node name="Player" parent="." instance=ExtResource("1_cvetj")]
 position = Vector2(399, 300)

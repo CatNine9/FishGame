@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 @onready var size_label = $SizeLabel
 @onready var collision_shape = $AreaBody/CollisionBody
+@onready var area_shape = $AreaBody
 @onready var sprite = $AreaBody/CollisionBody/PlayerSprite
 
 @export var SPEED = 300.0

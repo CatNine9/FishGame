@@ -21,9 +21,14 @@ GlobalVariables="*res://GlobalVariables.gd"
 
 [display]
 
-window/size/viewport_width=800
-window/size/viewport_height=600
-window/size/resizable=false
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/vsync/vsync_mode=0
+window/stretch/mode="viewport"
+window/quality/msaa_3d=2
+window/quality/msaa_2d=2
+window/quality/use_taa=false
+window/quality/screen_space_aa=1
 
 [input]
 
@@ -71,3 +76,6 @@ Pause={
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.188235, 0.313726, 0.407843, 1)
+anti_aliasing/quality/msaa_2d=2
+anti_aliasing/quality/msaa_3d=2
+anti_aliasing/quality/screen_space_aa=1

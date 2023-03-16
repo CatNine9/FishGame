@@ -5,6 +5,7 @@ extends Node
 @onready var enemy_spawn_delay = $EnemySpawnDelay
 @onready var player = $Player
 @onready var player_collision = $Player/AreaBody/CollisionBody
+@onready var player_area = $Player/AreaBody
 @onready var score_label = $ScoreLabel
 @onready var pause_menu = $PauseControl
 @onready var death_window = $DeathControl

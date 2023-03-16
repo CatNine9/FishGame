@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 @onready var sprite = $AreaBody/CollisionBody/EnemySprite
 @onready var collision_shape = $AreaBody/CollisionBody
+@onready var area_shape = $AreaBody
 @onready var size_label = $SizeLabel
 @onready var size_display_delay = $SizeDisplayDelay
 
@@ -23,7 +24,7 @@ func _ready():
 		position.x = 0
 	elif spawn_side == 1:
 		position.x = 800
-		sprite.flip_h = true
+		sprite.flip_v = true
 
 	if GlobalVariables.size_visibility == false:
 		size_label.visible = false
