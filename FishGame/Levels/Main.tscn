@@ -9,28 +9,29 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_x3kem")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="SpaceRect" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -2542.0
+offset_top = -1698.0
+offset_right = 5371.0
+offset_bottom = 4741.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="TextureRect" type="TextureRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1524.0
-offset_top = -1616.0
-offset_right = 1524.0
-offset_bottom = 1616.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="NebulaRect" type="TextureRect" parent="."]
+offset_right = 3848.0
+offset_bottom = 3832.0
 texture = ExtResource("2_iaj81")
 
 [node name="Player" parent="." instance=ExtResource("1_cvetj")]
 position = Vector2(399, 300)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+editor_draw_limits = true
+editor_draw_drag_margin = true
 
 [node name="EnemySpawnDelay" type="Timer" parent="."]
 wait_time = 1.5

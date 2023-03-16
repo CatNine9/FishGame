@@ -21,10 +21,11 @@ GlobalVariables="*res://GlobalVariables.gd"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=800
+window/size/viewport_height=600
 window/vsync/vsync_mode=0
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 window/quality/msaa_3d=2
 window/quality/msaa_2d=2
 window/quality/use_taa=false
