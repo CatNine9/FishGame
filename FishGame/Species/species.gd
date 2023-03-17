@@ -33,9 +33,11 @@ func load_species_1():
 	loaded_species_sprite = species_1.sprite
 	loaded_species_description = species_1.description
 	loaded_species_theme_colour = species_1.theme_colour
+	print("Species 1 loaded")
 
 func load_species_2():
 	loaded_species_name = species_2.species_name
 	loaded_species_sprite = species_2.sprite
 	loaded_species_description = species_2.description
 	loaded_species_theme_colour = species_2.theme_colour
+	print("Species 2 loaded")
