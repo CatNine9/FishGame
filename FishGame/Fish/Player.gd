@@ -81,4 +81,7 @@ func _on_area_body_area_entered(area):
 
 func refresh_species():
 	sprite.texture = Species.loaded_species_sprite
-	collision_shape.points = Species.loaded_collision_shape
+	
+	var new_points = PackedVector2Array()
+	for each in Species.loaded_collision_shape:
+		new_points.append(each)
