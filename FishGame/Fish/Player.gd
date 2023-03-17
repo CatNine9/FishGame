@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var collision_shape = $AreaBody/CollisionBody
 @onready var area_shape = $AreaBody
 @onready var sprite = $AreaBody/CollisionBody/PlayerSprite
+@onready var animation = $AreaBody/CollisionBody/PlayerSprite/AnimationPlayer
 
 @export var SPEED = 300
 
@@ -33,14 +34,9 @@ func _ready():
 	else:
 		size_label.visible = true
 	refresh_species()
+	animation.play("idle_up")
 
 
-
-func _input(event):
-	if event.is_action_pressed("ui_left"):
-		sprite.flip_h = true
-	elif event.is_action_pressed("ui_right"):
-		sprite.flip_h = false
 
 
 
@@ -59,7 +55,28 @@ func _physics_process(delta):
 			velocity.y = move_toward(velocity.y, 0, SPEED)
 		move_and_slide()
 	
+		if Input.is_action_pressed("ui_up"):
+			if Input.is_action_pressed("ui_right"):
+				animation.play("idle_up_right")
+			elif Input.is_action_pressed("ui_left"):
+				animation.play("idle_up_left")		
+			else:
+				animation.play("idle_up")
+		elif Input.is_action_pressed("ui_down"):
+			if Input.is_action_pressed("ui_right"):
+				animation.play("idle_down_right")
+			elif Input.is_action_pressed("ui_left"):
+				animation.play("idle_down_left")
+			else:
+				animation.play("idle_down")
+		elif Input.is_action_pressed("ui_right"):
+			animation.play("idle_right")
+		elif Input.is_action_pressed("ui_left"):
+			animation.play("idle_left")
+		
 	GlobalVariables.player_position = position
+
+
 
 
 
