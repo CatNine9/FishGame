@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfg7ame4n0wbj"]
+[gd_scene load_steps=9 format=3 uid="uid://bfg7ame4n0wbj"]
 
 [ext_resource type="PackedScene" uid="uid://rffmu5nc3g5s" path="res://Fish/Player.tscn" id="1_cvetj"]
 [ext_resource type="Script" path="res://Levels/Main.gd" id="1_x3kem"]
 [ext_resource type="Texture2D" uid="uid://b85fp28aymgps" path="res://Levels/Backgrounds/Glittery Nebula.png" id="2_iaj81"]
 [ext_resource type="Script" path="res://Levels/DeathControl.gd" id="3_oq8rl"]
 [ext_resource type="Script" path="res://Levels/PauseLabel.gd" id="3_ymtrg"]
+[ext_resource type="PackedScene" uid="uid://cnnqhnu3rtnuc" path="res://Species/species_1.tscn" id="6_y7h4w"]
+[ext_resource type="PackedScene" uid="uid://dxmtgt7dljdxp" path="res://Species/species_2.tscn" id="7_k28jr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qmgg6"]
 size = Vector2(4100, 100)
@@ -264,6 +266,12 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
 position = Vector2(1950, 0)
 shape = SubResource("RectangleShape2D_qmgg6")
+
+[node name="SpeciesList" type="Node" parent="."]
+
+[node name="Species1" parent="SpeciesList" instance=ExtResource("6_y7h4w")]
+
+[node name="Species2" parent="SpeciesList" instance=ExtResource("7_k28jr")]
 
 [connection signal="button_up" from="Player/Camera2D/DeathControl/CenterContainer/ColorRect/VBoxContainer/NextButton" to="Player/Camera2D/DeathControl" method="_on_next_button_button_up"]
 [connection signal="text_submitted" from="Player/Camera2D/DeathControl/CenterContainer/ColorRect2/VBoxContainer/NameInputLineEdit" to="Player/Camera2D/DeathControl" method="_on_name_input_line_edit_text_submitted"]
