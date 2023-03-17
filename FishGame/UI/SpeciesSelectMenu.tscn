@@ -94,6 +94,7 @@ size_flags_vertical = 0
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
 size_flags_vertical = 2
+mouse_filter = 1
 color = Color(0.192157, 0.423529, 0.490196, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="Control2/HBoxContainer/TextureButton/Species1Vbox/ColorRect"]
@@ -130,7 +131,6 @@ autowrap_mode = 2
 [node name="TextureButton2" type="Button" parent="Control2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-toggle_mode = true
 
 [node name="Species2Vbox" type="VBoxContainer" parent="Control2/HBoxContainer/TextureButton2"]
 layout_mode = 1
@@ -152,6 +152,7 @@ size_flags_vertical = 0
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
 size_flags_vertical = 2
+mouse_filter = 1
 color = Color(0.109804, 0.188235, 0.137255, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="Control2/HBoxContainer/TextureButton2/Species2Vbox/ColorRect"]
@@ -213,5 +214,5 @@ size_flags_horizontal = 4
 size_flags_vertical = 10
 text = "BACK"
 
-[connection signal="toggled" from="Control2/HBoxContainer/TextureButton" to="." method="_on_texture_button_toggled"]
-[connection signal="toggled" from="Control2/HBoxContainer/TextureButton2" to="." method="_on_texture_button_2_toggled"]
+[connection signal="button_up" from="Control2/HBoxContainer/TextureButton" to="." method="_on_texture_button_button_up"]
+[connection signal="button_up" from="Control2/HBoxContainer/TextureButton2" to="." method="_on_texture_button_2_button_up"]

@@ -29,9 +29,14 @@ func _ready():
 
 
 
-func _on_texture_button_toggled(button_pressed):
-	pass
+func _on_texture_button_button_up():
+	GlobalVariables.player_species = Species.load_species_1()
+	var game_start = load("res://Levels/Main.tscn")
+	get_tree().change_scene_to_packed(game_start)
 
 
-func _on_texture_button_2_toggled(button_pressed):
-	pass
+
+func _on_texture_button_2_button_up():
+	GlobalVariables.player_species = Species.load_species_2()
+	var game_start = load("res://Levels/Main.tscn")
+	get_tree().change_scene_to_packed(game_start)

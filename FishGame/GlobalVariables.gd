@@ -17,6 +17,7 @@ var player_position = Vector2(400, 300)
 var player_score = 0
 var player_alive = true
 var player_name = null
+var player_species = ""
 
 # Leaderboard:
 var entries = [["Cat9", "13/3/2023", 11],["", "", null], ["", "", null], ["", "", null], ["", "", null], ["", "", null], ["", "", null], ["", "", null], ["", "", null], ["", "", null]]

@@ -32,6 +32,7 @@ func _ready():
 		size_label.visible = false
 	else:
 		size_label.visible = true
+	refresh_species()
 
 
 
@@ -75,3 +76,9 @@ func _on_area_body_area_entered(area):
 		collision_shape.scale.y += 0.1
 		size_label.text = str(snapped(collision_shape.scale.x, 0.01))
 		get_parent().increment_score()
+
+
+
+func refresh_species():
+	sprite.texture = Species.loaded_species_sprite
+	collision_shape.points = Species.loaded_collision_shape
