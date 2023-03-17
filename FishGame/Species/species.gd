@@ -9,13 +9,17 @@ extends Node
 
 var loaded_species_name = ""
 var loaded_species_sprite = null
+var loaded_species_description = ""
 
-
+func _ready():
+	print(get_children())
 
 func load_species_1():
 	loaded_species_name = species_1.species_name
 	loaded_species_sprite = species_1.sprite
+	loaded_species_description = species_1.description
 
 func load_species_2():
 	loaded_species_name = species_2.species_name
 	loaded_species_sprite = species_2.sprite
+	loaded_species_description = species_2.description

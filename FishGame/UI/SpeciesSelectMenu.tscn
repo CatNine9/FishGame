@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuyqgn5ekn2il"]
+[gd_scene load_steps=6 format=3 uid="uid://cuyqgn5ekn2il"]
 
 [ext_resource type="Texture2D" uid="uid://cidgxhry7xgi" path="res://Fish/CreatureSprites/SpaceCreature1.png" id="1_jtl64"]
+[ext_resource type="Script" path="res://UI/SpeciesSelectMenu.gd" id="1_sxnjg"]
 [ext_resource type="Texture2D" uid="uid://bgjn3sk100a7p" path="res://Fish/CreatureSprites/SpaceCreature2.png" id="2_8aue5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_02778"]
+line_spacing = 2.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_chltk"]
 line_spacing = 2.0
@@ -16,6 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_sxnjg")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(0, 0.498039, 0.611765, 1)
@@ -42,7 +47,7 @@ layout_mode = 2
 text = "CHOOSE YOUR SPECIES:"
 vertical_alignment = 2
 
-[node name="Control" type="Control" parent="."]
+[node name="Control2" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,8 +55,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
-custom_minimum_size = Vector2(700, 500)
+[node name="HBoxContainer" type="HBoxContainer" parent="Control2"]
+custom_minimum_size = Vector2(700, 475)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -59,23 +64,41 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -350.0
-offset_top = -210.0
+offset_top = -215.0
 offset_right = 350.0
-offset_bottom = 252.0
+offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Species1Vbox" type="VBoxContainer" parent="Control/HBoxContainer"]
+[node name="TextureButton" type="Button" parent="Control2/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
+toggle_mode = true
+action_mode = 0
 
-[node name="ColorRect" type="ColorRect" parent="Control/HBoxContainer/Species1Vbox"]
+[node name="Species1Vbox" type="VBoxContainer" parent="Control2/HBoxContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -198.5
+offset_right = 125.0
+offset_bottom = 198.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="Control2/HBoxContainer/TextureButton/Species1Vbox"]
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
 size_flags_vertical = 2
 color = Color(0, 0.188235, 0.25098, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="Control/HBoxContainer/Species1Vbox/ColorRect"]
+[node name="CenterContainer" type="CenterContainer" parent="Control2/HBoxContainer/TextureButton/Species1Vbox/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -85,31 +108,55 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Node2D" type="Node2D" parent="Control/HBoxContainer/Species1Vbox/ColorRect/CenterContainer"]
+[node name="Node2D" type="Node2D" parent="Control2/HBoxContainer/TextureButton/Species1Vbox/ColorRect/CenterContainer"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Control/HBoxContainer/Species1Vbox/ColorRect/CenterContainer/Node2D"]
+[node name="SpeciesSprite" type="Sprite2D" parent="Control2/HBoxContainer/TextureButton/Species1Vbox/ColorRect/CenterContainer/Node2D"]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_jtl64")
 
-[node name="Label" type="Label" parent="Control/HBoxContainer/Species1Vbox"]
+[node name="SpeciesNameLabel" type="Label" parent="Control2/HBoxContainer/TextureButton/Species1Vbox"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "Species:"
+label_settings = SubResource("LabelSettings_02778")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="SpeciesDescLabel" type="Label" parent="Control2/HBoxContainer/TextureButton/Species1Vbox"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 2
 text = "fhg fhfhfh gfghfh gfhfh gfhu yiuyu iyiuy iuyhiy iuyiy iu yiuy uiyiuyiuyi uyiuyiu yiuyiuyiu yiuy jhdhdd djk ij o j jnoi noih igy tyfy u guyg igh iugh iuh uih iuh gy gi ghu huih iuh iuh uih uih ihi uhiu hiu hiu huh h uh ihi uhh "
 label_settings = SubResource("LabelSettings_chltk")
 autowrap_mode = 2
 
-[node name="Species2Vbox" type="VBoxContainer" parent="Control/HBoxContainer"]
+[node name="TextureButton2" type="Button" parent="Control2/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 
-[node name="ColorRect" type="ColorRect" parent="Control/HBoxContainer/Species2Vbox"]
+[node name="Species2Vbox" type="VBoxContainer" parent="Control2/HBoxContainer/TextureButton2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -198.5
+offset_right = 125.0
+offset_bottom = 198.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="Control2/HBoxContainer/TextureButton2/Species2Vbox"]
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
 size_flags_vertical = 2
 color = Color(0.0705882, 0.203922, 0, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="Control/HBoxContainer/Species2Vbox/ColorRect"]
+[node name="CenterContainer" type="CenterContainer" parent="Control2/HBoxContainer/TextureButton2/Species2Vbox/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -119,16 +166,24 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Node2D" type="Node2D" parent="Control/HBoxContainer/Species2Vbox/ColorRect/CenterContainer"]
+[node name="Node2D" type="Node2D" parent="Control2/HBoxContainer/TextureButton2/Species2Vbox/ColorRect/CenterContainer"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Control/HBoxContainer/Species2Vbox/ColorRect/CenterContainer/Node2D"]
+[node name="SpeciesSprite" type="Sprite2D" parent="Control2/HBoxContainer/TextureButton2/Species2Vbox/ColorRect/CenterContainer/Node2D"]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_8aue5")
 
-[node name="Label" type="Label" parent="Control/HBoxContainer/Species2Vbox"]
+[node name="SpeciesNameLabel" type="Label" parent="Control2/HBoxContainer/TextureButton2/Species2Vbox"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "Species:"
+label_settings = SubResource("LabelSettings_02778")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="SpeciesDescLabel" type="Label" parent="Control2/HBoxContainer/TextureButton2/Species2Vbox"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 2
 text = "fhg fhfhfh gfghfh gfhfh gfhu yiuyu iyiuy iuyhiy iuyiy iu yiuy uiyiuyiuyi uyiuyiu yiuyiuyiu yiuy jhdhdd djk ij o j jnoi noih igy tyfy u guyg igh iugh iuh uih iuh gy gi ghu huih iuh iuh uih uih ihi uhiu hiu hiu huh h uh ihi uhh "
 label_settings = SubResource("LabelSettings_chltk")
 autowrap_mode = 2
@@ -160,3 +215,6 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
 text = "BACK"
+
+[connection signal="toggled" from="Control2/HBoxContainer/TextureButton" to="." method="_on_texture_button_toggled"]
+[connection signal="toggled" from="Control2/HBoxContainer/TextureButton2" to="." method="_on_texture_button_2_toggled"]
