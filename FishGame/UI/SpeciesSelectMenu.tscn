@@ -1,8 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cuyqgn5ekn2il"]
+[gd_scene load_steps=4 format=3 uid="uid://cuyqgn5ekn2il"]
 
-[ext_resource type="Texture2D" uid="uid://cidgxhry7xgi" path="res://Fish/CreatureSprites/SpaceCreature1.png" id="1_jtl64"]
 [ext_resource type="Script" path="res://UI/SpeciesSelectMenu.gd" id="1_sxnjg"]
-[ext_resource type="Texture2D" uid="uid://bgjn3sk100a7p" path="res://Fish/CreatureSprites/SpaceCreature2.png" id="2_8aue5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_02778"]
 line_spacing = 2.0
@@ -96,7 +94,7 @@ size_flags_vertical = 0
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
 size_flags_vertical = 2
-color = Color(0, 0.188235, 0.25098, 1)
+color = Color(0.192157, 0.423529, 0.490196, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="Control2/HBoxContainer/TextureButton/Species1Vbox/ColorRect"]
 layout_mode = 1
@@ -112,7 +110,6 @@ grow_vertical = 2
 
 [node name="SpeciesSprite" type="Sprite2D" parent="Control2/HBoxContainer/TextureButton/Species1Vbox/ColorRect/CenterContainer/Node2D"]
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_jtl64")
 
 [node name="SpeciesNameLabel" type="Label" parent="Control2/HBoxContainer/TextureButton/Species1Vbox"]
 layout_mode = 2
@@ -154,7 +151,7 @@ size_flags_vertical = 0
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
 size_flags_vertical = 2
-color = Color(0.0705882, 0.203922, 0, 1)
+color = Color(0.109804, 0.188235, 0.137255, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="Control2/HBoxContainer/TextureButton2/Species2Vbox/ColorRect"]
 layout_mode = 1
@@ -170,7 +167,6 @@ grow_vertical = 2
 
 [node name="SpeciesSprite" type="Sprite2D" parent="Control2/HBoxContainer/TextureButton2/Species2Vbox/ColorRect/CenterContainer/Node2D"]
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_8aue5")
 
 [node name="SpeciesNameLabel" type="Label" parent="Control2/HBoxContainer/TextureButton2/Species2Vbox"]
 layout_mode = 2
