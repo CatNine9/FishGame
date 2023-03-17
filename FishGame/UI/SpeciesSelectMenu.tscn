@@ -1,0 +1,162 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuyqgn5ekn2il"]
+
+[ext_resource type="Texture2D" uid="uid://cidgxhry7xgi" path="res://Fish/CreatureSprites/SpaceCreature1.png" id="1_jtl64"]
+[ext_resource type="Texture2D" uid="uid://bgjn3sk100a7p" path="res://Fish/CreatureSprites/SpaceCreature2.png" id="2_8aue5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_chltk"]
+line_spacing = 2.0
+font_size = 12
+
+[node name="SpeciesSelectMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0, 0.498039, 0.611765, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleVbox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -59.5
+offset_right = 59.5
+offset_bottom = 26.0
+grow_horizontal = 2
+
+[node name="TitleLabel" type="Label" parent="TitleVbox"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+text = "CHOOSE YOUR SPECIES:"
+vertical_alignment = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -210.0
+offset_right = 350.0
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Species1Vbox" type="VBoxContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="ColorRect" type="ColorRect" parent="Control/HBoxContainer/Species1Vbox"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+size_flags_vertical = 2
+color = Color(0, 0.188235, 0.25098, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/HBoxContainer/Species1Vbox/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Node2D" type="Node2D" parent="Control/HBoxContainer/Species1Vbox/ColorRect/CenterContainer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/HBoxContainer/Species1Vbox/ColorRect/CenterContainer/Node2D"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_jtl64")
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/Species1Vbox"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 6
+text = "fhg fhfhfh gfghfh gfhfh gfhu yiuyu iyiuy iuyhiy iuyiy iu yiuy uiyiuyiuyi uyiuyiu yiuyiuyiu yiuy jhdhdd djk ij o j jnoi noih igy tyfy u guyg igh iugh iuh uih iuh gy gi ghu huih iuh iuh uih uih ihi uhiu hiu hiu huh h uh ihi uhh "
+label_settings = SubResource("LabelSettings_chltk")
+autowrap_mode = 2
+
+[node name="Species2Vbox" type="VBoxContainer" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="ColorRect" type="ColorRect" parent="Control/HBoxContainer/Species2Vbox"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+size_flags_vertical = 2
+color = Color(0.0705882, 0.203922, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/HBoxContainer/Species2Vbox/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Node2D" type="Node2D" parent="Control/HBoxContainer/Species2Vbox/ColorRect/CenterContainer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/HBoxContainer/Species2Vbox/ColorRect/CenterContainer/Node2D"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_8aue5")
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/Species2Vbox"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 6
+text = "fhg fhfhfh gfghfh gfhfh gfhu yiuyu iyiuy iuyhiy iuyiy iu yiuy uiyiuyiuyi uyiuyiu yiuyiuyiu yiuy jhdhdd djk ij o j jnoi noih igy tyfy u guyg igh iugh iuh uih iuh gy gi ghu huih iuh iuh uih uih ihi uhiu hiu hiu huh h uh ihi uhh "
+label_settings = SubResource("LabelSettings_chltk")
+autowrap_mode = 2
+
+[node name="Container" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BackButton" type="Button" parent="Container"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.0
+offset_right = 25.0
+offset_bottom = 31.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+text = "BACK"
