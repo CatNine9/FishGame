@@ -15,11 +15,8 @@ extends CharacterBody2D
 @export var ACCELERATION = 1000
 
 @export var movement_mode = "Experimental 2"
+@export var facing_mode = "H Forward Only"
 
-
-
-
-var facing_mode = "H Forward Only"
 var axis = Vector2.ZERO
 
 
@@ -170,3 +167,7 @@ func refresh_species():
 		new_points.append(each)
 	collision_shape.polygon = new_points
 	physical_body.polygon = new_points
+	movement_mode = Species.loaded_movement_mode
+	facing_mode = Species.loaded_facing_mode
+	SPEED = Species.loaded_speed
+	

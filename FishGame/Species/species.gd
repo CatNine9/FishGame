@@ -8,6 +8,10 @@ var loaded_collision_shape = null
 var loaded_species_theme_colour = Vector3(0, 0, 0)
 var loaded_species_description = ""
 
+var loaded_movement_mode = ""
+var loaded_facing_mode = ""
+var loaded_speed = 0
+
 
 
 var species_1 = null
@@ -43,6 +47,9 @@ func load_species_1():
 	loaded_collision_shape = species_1.collision_vectors
 	loaded_species_description = species_1.description
 	loaded_species_theme_colour = species_1.theme_colour
+	loaded_movement_mode = species_1.movement_mode
+	loaded_facing_mode = species_1.facing_mode
+	loaded_speed = species_1.speed
 	print("Species 1 loaded")
 
 func load_species_2():
@@ -51,4 +58,7 @@ func load_species_2():
 	loaded_collision_shape = species_2.collision_vectors
 	loaded_species_description = species_2.description
 	loaded_species_theme_colour = species_2.theme_colour
+	loaded_movement_mode = species_2.movement_mode
+	loaded_facing_mode = species_2.facing_mode
+	loaded_speed = species_2.speed
 	print("Species 2 loaded")
