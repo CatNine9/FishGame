@@ -29,6 +29,14 @@ func _ready():
 
 
 
+func find_species(species):
+	if species == "Round":
+		load_species_1()
+	elif species == "Long":
+		load_species_2()
+
+
+
 func load_species_1():
 	loaded_species_name = species_1.species_name
 	loaded_species_sprite = species_1.sprite

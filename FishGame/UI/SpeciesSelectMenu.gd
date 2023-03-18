@@ -30,13 +30,15 @@ func _ready():
 
 
 func _on_texture_button_button_up():
-	GlobalVariables.player_species = Species.load_species_1()
+	Species.load_species_1()
+	GlobalVariables.player_species = Species.loaded_species_name
 	var game_start = load("res://Levels/Main.tscn")
 	get_tree().change_scene_to_packed(game_start)
 
 
 
 func _on_texture_button_2_button_up():
-	GlobalVariables.player_species = Species.load_species_2()
+	Species.load_species_2()
+	GlobalVariables.player_species = Species.loaded_species_name
 	var game_start = load("res://Levels/Main.tscn")
 	get_tree().change_scene_to_packed(game_start)

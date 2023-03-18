@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Fish/Player.gd" id="1_ix3g4"]
 [ext_resource type="Texture2D" uid="uid://cidgxhry7xgi" path="res://Fish/CreatureSprites/SpaceCreature1.png" id="2_mb3ac"]
 
-[sub_resource type="Animation" id="Animation_f1kr6"]
-resource_name = "idle_up"
+[sub_resource type="Animation" id="Animation_ph8r8"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -15,7 +15,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [3.14159]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -27,7 +27,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [3.14159]
 }
 
 [sub_resource type="Animation" id="Animation_gwt44"]
@@ -55,6 +55,60 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [3.14159]
+}
+
+[sub_resource type="Animation" id="Animation_7caic"]
+resource_name = "idle_down_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../PhysicalBody:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.92699]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.92699]
+}
+
+[sub_resource type="Animation" id="Animation_4e447"]
+resource_name = "idle_down_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../PhysicalBody:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.35619]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.35619]
 }
 
 [sub_resource type="Animation" id="Animation_gqfmk"]
@@ -112,8 +166,8 @@ tracks/1/keys = {
 "values": [1.5708]
 }
 
-[sub_resource type="Animation" id="Animation_ph8r8"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_f1kr6"]
+resource_name = "idle_up"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -124,7 +178,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [3.14159]
+"values": [0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -136,34 +190,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [3.14159]
-}
-
-[sub_resource type="Animation" id="Animation_a6j7q"]
-resource_name = "idle_up_right"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../../PhysicalBody:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.785398]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.785398]
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_v13vt"]
@@ -193,8 +220,8 @@ tracks/1/keys = {
 "values": [5.49779]
 }
 
-[sub_resource type="Animation" id="Animation_4e447"]
-resource_name = "idle_down_right"
+[sub_resource type="Animation" id="Animation_a6j7q"]
+resource_name = "idle_up_right"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -205,7 +232,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [2.35619]
+"values": [0.785398]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -217,34 +244,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [2.35619]
-}
-
-[sub_resource type="Animation" id="Animation_7caic"]
-resource_name = "idle_down_left"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../../PhysicalBody:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [3.92699]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [3.92699]
+"values": [0.785398]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_socaw"]
@@ -266,14 +266,13 @@ motion_mode = 1
 script = ExtResource("1_ix3g4")
 
 [node name="PhysicalBody" type="CollisionPolygon2D" parent="."]
-rotation = 3.14159
+visible = false
 polygon = PackedVector2Array(9, -19, 16, -8, 17, 3, 16, 18, 0, 21, -18, 18, -19, 2, -18, -8, -10, -19)
 
 [node name="AreaBody" type="Area2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionBody" type="CollisionPolygon2D" parent="AreaBody"]
-rotation = 3.14159
 polygon = PackedVector2Array(9, -19, 16, -8, 17, 3, 16, 18, 0, 21, -18, 18, -19, 2, -18, -8, -10, -19)
 
 [node name="PlayerSprite" type="Sprite2D" parent="AreaBody/CollisionBody"]

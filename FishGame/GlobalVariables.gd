@@ -11,6 +11,7 @@ var fps_toggle_setting = false
 # Game:
 var is_paused = false
 var camera_position = Vector2(0, 0)
+var enemy_starter_species = ""
 
 # Player:
 var player_position = Vector2(400, 300)

@@ -102,3 +102,4 @@ func refresh_species():
 	var new_points = PackedVector2Array()
 	for each in Species.loaded_collision_shape:
 		new_points.append(each)
+	collision_shape.polygon = new_points

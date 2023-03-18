@@ -23,7 +23,6 @@ var score_string = score_format % [score]
 
 func _ready():
 	print(GlobalVariables.player_alive)
-	spawn_enemy()
 	enemy_spawn_delay.start()
 
 	if GlobalVariables.fps_visibility == false:
@@ -73,7 +72,13 @@ func spawn_enemy():
 	add_child(enemy_spawn)
 	enemies.append(enemy_spawn)
 	
+	if GlobalVariables.player_species == "Round":
+		Species.load_species_2()
+	elif GlobalVariables.player_species == "Long":
+		Species.load_species_1()
 	enemy_spawn.collision_shape.scale *= random_size_value
+	enemy_spawn.collision_shape.polygon = Species.loaded_collision_shape
+	enemy_spawn.sprite.texture = Species.loaded_species_sprite
 
 
 
@@ -85,3 +90,5 @@ func increment_score():
 
 
 
+func player_finished_loading():
+	pass

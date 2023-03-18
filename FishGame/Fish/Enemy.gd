@@ -16,6 +16,7 @@ extends CharacterBody2D
 
 var spawn_side = null
 var sprite_flipped = false
+var species = ""
 
 
 
@@ -41,13 +42,6 @@ func _physics_process(delta):
 	else:
 		velocity.x = 0
 	move_and_slide()
-#	if spawn_side == 0:
-#		position = position.lerp(position + Vector2(1, 0), SPEED * delta)
-#	elif spawn_side == 1:
-#		position = position.lerp(position + Vector2(-1, 0), SPEED * delta)
-#	else:
-#		velocity.x = 0
-#	#move_and_slide()
 		
 	if position.x < -200 or position.x > 4000:
 		queue_free()
