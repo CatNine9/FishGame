@@ -75,6 +75,7 @@ Pause={
 [physics]
 
 common/physics_ticks_per_second=50
+common/max_physics_steps_per_frame=80
 
 [rendering]
 

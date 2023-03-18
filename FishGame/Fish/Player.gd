@@ -4,11 +4,23 @@ extends CharacterBody2D
 
 @onready var size_label = $SizeLabel
 @onready var collision_shape = $AreaBody/CollisionBody
+@onready var physical_body = $PhysicalBody
 @onready var area_shape = $AreaBody
 @onready var sprite = $AreaBody/CollisionBody/PlayerSprite
 @onready var animation = $AreaBody/CollisionBody/PlayerSprite/AnimationPlayer
 
 @export var SPEED = 300
+@export var MAX_SPEED = 300
+@export var FRICTION = 1000
+@export var ACCELERATION = 1000
+
+@export var movement_mode = "Experimental 2"
+
+
+
+
+var facing_mode = "H Forward Only"
+var axis = Vector2.ZERO
 
 
 
@@ -41,43 +53,97 @@ func _ready():
 
 
 func _physics_process(delta):
+	#velocity = Vector2.ZERO
 	if GlobalVariables.player_alive == true:
-		var x_direction = Input.get_axis("ui_left", "ui_right")
-		var y_direction = Input.get_axis("ui_up", "ui_down")
-		if x_direction:
-			velocity.x = x_direction * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+		# Movement:
+		if movement_mode == "Default":
+			default_move(MAX_SPEED)
+		# Simple movement mode gives 8 movement directions and slow drifting at a consistent
+		# speed, no stopping.
+		elif movement_mode == "Simple":
+			simple_move(MAX_SPEED)
+		# Faster horizontal is just like simple except it halves movement on the y axis.
+		elif movement_mode == "Faster Horizontal":
+			faster_horizontal(MAX_SPEED)
+		elif movement_mode == "Experimental":
+			experimental_move(MAX_SPEED)
 
-		if y_direction:
-			velocity.y = y_direction * SPEED
-		else:
-			velocity.y = move_toward(velocity.y, 0, SPEED)
-		move_and_slide()
-	
-		if Input.is_action_pressed("ui_up"):
+
+		# Facing:
+		if facing_mode == "Default":
+			default_facing()
+
+		if facing_mode == "H Forward Only":
 			if Input.is_action_pressed("ui_right"):
-				animation.play("idle_up_right")
+				if Input.is_action_pressed("ui_up"):
+					animation.play("idle_up_right")
+				elif Input.is_action_pressed("ui_down"):
+					animation.play("idle_down_right")
+				else:
+					animation.play("idle_right")
 			elif Input.is_action_pressed("ui_left"):
-				animation.play("idle_up_left")		
-			else:
-				animation.play("idle_up")
-		elif Input.is_action_pressed("ui_down"):
-			if Input.is_action_pressed("ui_right"):
-				animation.play("idle_down_right")
-			elif Input.is_action_pressed("ui_left"):
-				animation.play("idle_down_left")
-			else:
-				animation.play("idle_down")
-		elif Input.is_action_pressed("ui_right"):
-			animation.play("idle_right")
-		elif Input.is_action_pressed("ui_left"):
-			animation.play("idle_left")
-		
+				if Input.is_action_pressed("ui_up"):
+					animation.play("idle_up_left")
+				elif Input.is_action_pressed("ui_down"):
+					animation.play("idle_down_left")
+				else:
+					animation.play("idle_left")
+
 	GlobalVariables.player_position = position
 
 
 
+func default_move(speed):
+	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	if direction == Vector2.ZERO:
+		velocity = Vector2.ZERO
+	else:
+		velocity = direction * speed
+	move_and_slide()
+
+
+
+func simple_move(speed):
+	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	if direction != Vector2.ZERO:
+		velocity = direction * speed
+	move_and_slide()
+
+
+
+func faster_horizontal(speed):
+	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	if direction != Vector2.ZERO:
+		velocity.y = direction.y * speed * 0.5
+		velocity.x = direction.x * speed
+	move_and_slide()
+
+
+
+func experimental_move(speed):
+	pass
+
+
+
+func default_facing():
+	if Input.is_action_pressed("ui_up"):
+		if Input.is_action_pressed("ui_right"):
+			animation.play("idle_up_right")
+		elif Input.is_action_pressed("ui_left"):
+			animation.play("idle_up_left")		
+		else:
+			animation.play("idle_up")
+	elif Input.is_action_pressed("ui_down"):
+		if Input.is_action_pressed("ui_right"):
+			animation.play("idle_down_right")
+		elif Input.is_action_pressed("ui_left"):
+			animation.play("idle_down_left")
+		else:
+			animation.play("idle_down")
+	elif Input.is_action_pressed("ui_right"):
+		animation.play("idle_right")
+	elif Input.is_action_pressed("ui_left"):
+		animation.play("idle_left")
 
 
 func _on_area_body_area_entered(area):
@@ -103,3 +169,4 @@ func refresh_species():
 	for each in Species.loaded_collision_shape:
 		new_points.append(each)
 	collision_shape.polygon = new_points
+	physical_body.polygon = new_points

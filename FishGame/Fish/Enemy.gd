@@ -4,9 +4,11 @@ extends CharacterBody2D
 
 @onready var sprite = $AreaBody/CollisionBody/EnemySprite
 @onready var collision_shape = $AreaBody/CollisionBody
+@onready var physical_body = $PhysicalBody
 @onready var area_shape = $AreaBody
 @onready var size_label = $SizeLabel
 @onready var size_display_delay = $SizeDisplayDelay
+@onready var animations = $AreaBody/CollisionBody/EnemySprite/AnimationPlayer
 
 
 
@@ -23,9 +25,10 @@ var species = ""
 func _ready():
 	if spawn_side == 0:
 		position.x = 0
+		animations.play("idle_right")
 	elif spawn_side == 1:
 		position.x = 3848
-		sprite.flip_v = true
+		animations.play("idle_left")
 
 	if GlobalVariables.size_visibility == false:
 		size_label.visible = false
