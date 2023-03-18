@@ -80,6 +80,7 @@ func spawn_enemy():
 	enemy_spawn.collision_shape.polygon = Species.loaded_collision_shape
 	enemy_spawn.physical_body.polygon = Species.loaded_collision_shape
 	enemy_spawn.sprite.texture = Species.loaded_species_sprite
+	enemy_spawn.SPEED = Species.loaded_speed
 
 
 
