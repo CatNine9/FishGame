@@ -50,7 +50,6 @@ func load_species_1():
 	loaded_movement_mode = species_1.movement_mode
 	loaded_facing_mode = species_1.facing_mode
 	loaded_speed = species_1.speed
-	print("Species 1 loaded")
 
 func load_species_2():
 	loaded_species_name = species_2.species_name
@@ -61,4 +60,3 @@ func load_species_2():
 	loaded_movement_mode = species_2.movement_mode
 	loaded_facing_mode = species_2.facing_mode
 	loaded_speed = species_2.speed
-	print("Species 2 loaded")

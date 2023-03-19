@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var size_label = $SizeLabel
 @onready var size_display_delay = $SizeDisplayDelay
 @onready var animations = $AreaBody/CollisionBody/EnemySprite/AnimationPlayer
+@onready var feeding_timer = $EnemyFeedTime
 
 
 
@@ -29,6 +30,8 @@ var spawn_side = null
 var sprite_flipped = false
 var species = ""
 
+var is_stopped = false
+
 
 
 func _ready():
@@ -38,8 +41,6 @@ func _ready():
 		spawn_side %= 2
 		facing_faster_h()
 
-	print("Movement mode: ", movement_mode)
-
 	if GlobalVariables.size_visibility == false:
 		size_label.visible = false
 	else:
@@ -48,14 +49,14 @@ func _ready():
 
 
 func _physics_process(delta):
-	if movement_mode == "Default" or movement_mode == "Simple":
-		facing_mode = "Default"
-		movement_default()
-	elif movement_mode == "Faster Horizontal":
-		facing_mode = "Horizontal Only"
-		spawn_side %= 2
-		movement_faster_h()
-	print("Facing: ", facing_mode, ", Spawn side: ", spawn_side)
+	if is_stopped == false:
+		if movement_mode == "Default" or movement_mode == "Simple":
+			facing_mode = "Default"
+			movement_default()
+		elif movement_mode == "Faster Horizontal":
+			facing_mode = "Horizontal Only"
+			spawn_side %= 2
+			movement_faster_h()
 
 	if position.x < (left_boundary - 200) or position.x > (right_boundary + 200) or position.y < (up_boundary - 200) or position.y > (down_boundary + 200):
 		queue_free()
@@ -112,6 +113,11 @@ func movement_faster_h():
 
 
 
+func stop_moving_timer_start():
+	feeding_timer.start()
+
+
+
 func _on_area_body_area_entered(area):
 	var player = area.get_child(0, true)
 	if collision_shape.scale.x < player.scale.x:
@@ -121,3 +127,8 @@ func _on_area_body_area_entered(area):
 
 func _on_size_display_delay_timeout():
 	size_label.text = str(snapped(collision_shape.scale.x, 0.01))
+
+
+
+func _on_enemy_feed_time_timeout():
+	is_stopped = false

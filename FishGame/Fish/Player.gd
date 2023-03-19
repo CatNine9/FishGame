@@ -150,6 +150,8 @@ func _on_area_body_area_entered(area):
 		collision_shape.set_deferred("disabled", true)
 		GlobalVariables.player_alive = false
 		get_parent().death_window.visible = true
+		var enemy_root_node = area.get_parent()
+		get_parent().enemy_player_killed_by(enemy_root_node)
 	elif collision_shape.scale.x > enemy.scale.x:
 		collision_shape.scale.x += 0.1
 		collision_shape.scale.y += 0.1

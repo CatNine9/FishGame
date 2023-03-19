@@ -23,7 +23,6 @@ var score_string = score_format % [score]
 
 
 func _ready():
-	print(GlobalVariables.player_alive)
 	enemy_spawn_delay.start()
 
 	if GlobalVariables.fps_visibility == false:
@@ -105,3 +104,11 @@ func increment_score():
 
 func player_finished_loading():
 	pass
+
+
+
+func enemy_player_killed_by(enemy_predator):
+	print("Enemy that killed the player: ", enemy_predator)
+	enemy_predator.is_stopped = true
+	enemy_predator.stop_moving_timer_start()
+	print("Enemy collision body: ", enemy_predator.get_child(1, true).get_child(0, true))
