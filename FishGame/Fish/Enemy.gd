@@ -18,6 +18,8 @@ extends CharacterBody2D
 @export var movement_mode = "Default"
 @export var facing_mode = "Default"
 
+var known_player_position = Vector2(0, 0)
+
 var left_boundary = 0
 var right_boundary = 0
 var up_boundary = 0
@@ -77,6 +79,16 @@ func facing_default():
 		position = Vector2(random_width_value, 3832)
 		animations.play("idle_down")
 
+func resume_facing_default():
+	if spawn_side == 0:
+		animations.play("idle_right")
+	elif spawn_side == 1:
+		animations.play("idle_left")
+	elif spawn_side == 2:
+		animations.play("idle_up")
+	elif spawn_side == 3:
+		animations.play("idle_down")
+
 
 
 func facing_faster_h():
@@ -87,6 +99,11 @@ func facing_faster_h():
 		position = Vector2(3848, random_height_value)
 		animations.play("idle_left")
 
+func resume_facing_faster_h():
+	if spawn_side == 0:
+		animations.play("idle_right")
+	elif spawn_side == 1:
+		animations.play("idle_left")
 
 
 func movement_default():
@@ -113,8 +130,9 @@ func movement_faster_h():
 
 
 
-func stop_moving_timer_start():
+func stop_moving_timer_start(player_position):
 	feeding_timer.start()
+	look_at(player_position)
 
 
 
@@ -132,3 +150,7 @@ func _on_size_display_delay_timeout():
 
 func _on_enemy_feed_time_timeout():
 	is_stopped = false
+	if movement_mode == "Default" or movement_mode == "Simple":
+		rotation = 0
+	elif movement_mode == "Faster Horizontal":
+		rotation = 0

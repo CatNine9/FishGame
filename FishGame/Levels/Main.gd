@@ -110,5 +110,5 @@ func player_finished_loading():
 func enemy_player_killed_by(enemy_predator):
 	print("Enemy that killed the player: ", enemy_predator)
 	enemy_predator.is_stopped = true
-	enemy_predator.stop_moving_timer_start()
+	enemy_predator.stop_moving_timer_start(player.position)
 	print("Enemy collision body: ", enemy_predator.get_child(1, true).get_child(0, true))
