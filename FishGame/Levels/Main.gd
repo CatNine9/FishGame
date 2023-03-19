@@ -84,7 +84,7 @@ func spawn_enemy():
 			enemy_spawn.position.y = random_height_value
 		enemy_spawn.species = "Round"
 	enemy_spawn.movement_mode = Species.loaded_movement_mode
-	add_child(enemy_spawn)
+	get_child(3, true).add_child(enemy_spawn)
 	enemies.append(enemy_spawn)
 	enemy_spawn.collision_shape.scale *= random_size_value
 	enemy_spawn.collision_shape.polygon = Species.loaded_collision_shape

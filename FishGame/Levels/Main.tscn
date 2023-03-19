@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfg7ame4n0wbj"]
+[gd_scene load_steps=10 format=3 uid="uid://bfg7ame4n0wbj"]
 
 [ext_resource type="PackedScene" uid="uid://rffmu5nc3g5s" path="res://Fish/Player.tscn" id="1_cvetj"]
 [ext_resource type="Script" path="res://Levels/Main.gd" id="1_x3kem"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Levels/PauseLabel.gd" id="3_ymtrg"]
 [ext_resource type="PackedScene" uid="uid://cnnqhnu3rtnuc" path="res://Species/species_1.tscn" id="6_y7h4w"]
 [ext_resource type="PackedScene" uid="uid://dxmtgt7dljdxp" path="res://Species/species_2.tscn" id="7_k28jr"]
+[ext_resource type="Texture2D" uid="uid://banf3gf3wjuhm" path="res://Levels/Backgrounds/Glittery Nebula border.png" id="8_byn3e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qmgg6"]
 size = Vector2(4100, 100)
@@ -31,6 +32,11 @@ offset_right = 3848.0
 offset_bottom = 3832.0
 texture = ExtResource("2_iaj81")
 
+[node name="EnemySpawnDelay" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="Enemies" type="Node" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("1_cvetj")]
 position = Vector2(2000, 2000)
 
@@ -41,6 +47,7 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="ScoreLabel" type="Label" parent="Player/Camera2D"]
+z_index = 1
 offset_left = -379.0
 offset_top = -280.0
 offset_right = -336.0
@@ -48,6 +55,7 @@ offset_bottom = -254.0
 text = "Score"
 
 [node name="FPSLabel" type="Label" parent="Player/Camera2D"]
+z_index = 1
 offset_left = -379.0
 offset_top = 280.0
 offset_right = -339.0
@@ -56,6 +64,7 @@ text = "FPS"
 
 [node name="DeathControl" type="Control" parent="Player/Camera2D"]
 visible = false
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -173,6 +182,7 @@ text = "OK"
 [node name="PauseControl" type="Control" parent="Player/Camera2D"]
 process_mode = 3
 visible = false
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -232,8 +242,36 @@ text = "EXIT TO MENU"
 layout_mode = 2
 text = "QUIT"
 
-[node name="EnemySpawnDelay" type="Timer" parent="."]
-wait_time = 0.2
+[node name="UpBorderRect" type="TextureRect" parent="."]
+offset_right = 3848.0
+offset_bottom = 288.0
+mouse_filter = 2
+texture = ExtResource("8_byn3e")
+
+[node name="LeftBorderRect" type="TextureRect" parent="."]
+offset_top = 3850.0
+offset_right = 3848.0
+offset_bottom = 4138.0
+rotation = 4.71239
+mouse_filter = 2
+texture = ExtResource("8_byn3e")
+
+[node name="RightBorderRect" type="TextureRect" parent="."]
+offset_left = 3850.0
+offset_right = 7698.0
+offset_bottom = 288.0
+rotation = 1.5708
+mouse_filter = 2
+texture = ExtResource("8_byn3e")
+
+[node name="DownBorderRect" type="TextureRect" parent="."]
+offset_left = 3850.0
+offset_top = 3850.0
+offset_right = 7698.0
+offset_bottom = 4138.0
+rotation = 3.14159
+mouse_filter = 2
+texture = ExtResource("8_byn3e")
 
 [node name="TopWall" type="StaticBody2D" parent="."]
 collision_layer = 4
@@ -273,6 +311,7 @@ shape = SubResource("RectangleShape2D_qmgg6")
 
 [node name="Species2" parent="SpeciesList" instance=ExtResource("7_k28jr")]
 
+[connection signal="timeout" from="EnemySpawnDelay" to="." method="_on_enemy_spawn_delay_timeout"]
 [connection signal="button_up" from="Player/Camera2D/DeathControl/CenterContainer/ColorRect/VBoxContainer/NextButton" to="Player/Camera2D/DeathControl" method="_on_next_button_button_up"]
 [connection signal="text_submitted" from="Player/Camera2D/DeathControl/CenterContainer/ColorRect2/VBoxContainer/NameInputLineEdit" to="Player/Camera2D/DeathControl" method="_on_name_input_line_edit_text_submitted"]
 [connection signal="button_up" from="Player/Camera2D/DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer/YesButton" to="Player/Camera2D/DeathControl" method="_on_yes_button_button_up"]
@@ -282,4 +321,3 @@ shape = SubResource("RectangleShape2D_qmgg6")
 [connection signal="button_up" from="Player/Camera2D/PauseControl/CenterContainer/ColorRect/PauseVbox/SettingsButton" to="Player/Camera2D/PauseControl" method="_on_settings_button_button_up"]
 [connection signal="button_up" from="Player/Camera2D/PauseControl/CenterContainer/ColorRect/PauseVbox/ExitButton" to="Player/Camera2D/PauseControl" method="_on_exit_button_button_up"]
 [connection signal="button_up" from="Player/Camera2D/PauseControl/CenterContainer/ColorRect/PauseVbox/QuitButton" to="Player/Camera2D/PauseControl" method="_on_quit_button_button_up"]
-[connection signal="timeout" from="EnemySpawnDelay" to="." method="_on_enemy_spawn_delay_timeout"]
