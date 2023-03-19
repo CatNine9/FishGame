@@ -265,6 +265,7 @@ motion_mode = 1
 script = ExtResource("1_xknvd")
 
 [node name="PhysicalBody" type="CollisionPolygon2D" parent="."]
+visible = false
 rotation = 3.14159
 disabled = true
 

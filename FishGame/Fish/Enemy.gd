@@ -32,10 +32,10 @@ var species = ""
 
 
 func _ready():
-	if species == "Round":
+	if movement_mode == "Default" or movement_mode == "Simple":
 		facing_default()
-	elif species == "Long":
-		spawn_side % 2
+	elif movement_mode == "Faster Horizontal":
+		spawn_side %= 2
 		facing_faster_h()
 
 	print("Movement mode: ", movement_mode)
@@ -48,10 +48,14 @@ func _ready():
 
 
 func _physics_process(delta):
-	if movement_mode == "Default" or movement_mode == "Simple" or movement_mode == "Faster Horizontal":
+	if movement_mode == "Default" or movement_mode == "Simple":
+		facing_mode = "Default"
 		movement_default()
 	elif movement_mode == "Faster Horizontal":
+		facing_mode = "Horizontal Only"
+		spawn_side %= 2
 		movement_faster_h()
+	print("Facing: ", facing_mode, ", Spawn side: ", spawn_side)
 
 	if position.x < (left_boundary - 200) or position.x > (right_boundary + 200) or position.y < (up_boundary - 200) or position.y > (down_boundary + 200):
 		queue_free()
