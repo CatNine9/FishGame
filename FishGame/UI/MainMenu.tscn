@@ -63,7 +63,7 @@ grow_horizontal = 2
 [node name="TitleLabel" type="Label" parent="TitleVbox"]
 custom_minimum_size = Vector2(200, 125)
 layout_mode = 2
-text = "FISH GAME"
+text = "SPACE FISH GAME"
 horizontal_alignment = 1
 vertical_alignment = 2
 

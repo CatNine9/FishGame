@@ -2,7 +2,7 @@ extends Control
 
 
 func _input(event):
-	if event.is_action_released("Pause") and GlobalVariables.game_on == true:
+	if event.is_action_released("Pause") and GlobalVariables.player_alive == true:
 		toggle_pause()
 
 
@@ -20,7 +20,6 @@ func _on_settings_button_button_up():
 
 
 func _on_exit_button_button_up():
-	GlobalVariables.game_on = false
 	get_tree().paused = false
 	GlobalVariables.is_paused = false
 	visible = false

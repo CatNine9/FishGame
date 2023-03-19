@@ -1,0 +1,46 @@
+Final Fish Game
+
+Goals:
+* Learn to understand version management via GitHub 	TICK
+* Create working game	TICK
+* Create saving		TICK
+* Create leaderboard (see if online connectivity is possible for this)		TICK (except online connectivity)
+* Give the game a more original theme than just plain old fish, maybe a short bit of flavour text as an intro also.
+* Polish off the game and make it stable
+* Distribute the game
+
+Ideas for next stage:
+
+Different levels of increasing difficulty (so when all the fish become unplayably large, you progress to the next stage)
+Enemies with more complex movement (diagonal movement, curved movement, follow movement)
+Player evolves - between stage changes, choose from preset descendants, which might have different movement controls and abilities.
+Give player some health, so one hit isn't death. Enemies might have different attack damage.
+
+Using the current player and enemy as a base that can be reskinned into different species with different sprites and with different stats and abilities is probably the way to go. 
+
+
+
+
+Stages:
+
+You start off as a space creature hatching from eggs in a nebula. The nebula plasma keeps you energized (so you don't need to worry about energy for the first few levels, allowing you to get to grips with other aspects of the game first) and has lots of food to help you grow. Other space creatures live in the nebula, but most are not really threatening, mainly larvae of other space creature species.
+
+The first couple of levels take place here and are more tutorial-like than challenging. But after here you grow big enough to take vast journeys in deep space. Some story comes into play, such as that you spend thousands of years growing, and if depleted of food and energy you could exist in stasis for thousands of years more, drifting until you encounter your next source of photons and charged ions.
+
+You don't play the vast, empty journeys. Instead, you play the moments of this creature's life that are filled with encounters. Encountering energy and food sources also means encountering other creatures of space. It's usually in those kinds of locations that gameplay levels will be centered around.
+
+
+
+
+Possible differences between the species in terms of gameplay:
+
+Note: Differences should be balanced. For every disadvantage one species has against the other, it must also get given an advantage. Since this is early game, differences shouldn't be over-complicated or introduce any completely new gameplay mechanics, that can be for later.
+
+* Collision shape. Different collision shapes will give different opportunities and drawbacks. A wide shape is going to have more difficulty evading big enemies, while also being able to more easily capture a small target. A longer shape is more maneuverable between crowds of big enemies, but the player will need to be more precise in trying to capture a small enemy. This is already evident in the game currently, but it is a very small difference and more differences are needed to make the species feel different to play. This is fairly balanced.
+
+* Speed. The advantage of speed is self-explanatory. Take note of the fact there is such a thing as too fast! Maybe try messing with different types of speed, acceleration, friction, drifting, "slippery" movement, etc. Perhaps faster might sometimes mean more difficult to control, to balance the advantages being fast gives. Ideally, what I want is movement to start awkward but managable, then become "better" or at least more specialised as the player evolves.
+
+* Movement controls. Different control types. Some species might use 8-directional movement, some might only use 4. Some might use diagonal only, some square only. Some might use rotation for turning. Some might have more difficulty moving along the x-axis than the y-axis, or vice versa. Some might have different forms of propulsion than just a forward input, such as only being able to move forward in bursts or pulses.
+
+Movement types will be defined in the physics process. Each species will have a movement type. Which movement type the physics process uses is determined by the player's movement type via if and else statements.  
+

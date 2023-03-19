@@ -6,7 +6,6 @@ var entry_slots_array = [GlobalVariables.entry_1, GlobalVariables.entry_2, Globa
 
 
 func _ready():
-	print(GlobalVariables.entries)
 	var datetime_dict = Time.get_date_dict_from_system()
 	var time_format = "%d/%d/%d"
 	var time_string = time_format % [datetime_dict["day"], datetime_dict["month"], datetime_dict["year"]]
@@ -15,10 +14,8 @@ func _ready():
 		print("player name = null")
 	else:
 		var entry_to_replace = GlobalVariables.entries.find(["", "", null])
-		print(entry_to_replace)
 		GlobalVariables.entries[entry_to_replace] = [GlobalVariables.player_name, time_string, GlobalVariables.player_score]
 		GlobalVariables.entries.sort_custom(sort_descending)
-		print(GlobalVariables.entries)
 		GlobalVariables.entry_1 = GlobalVariables.entries[0]
 		GlobalVariables.entry_2 = GlobalVariables.entries[1]
 		GlobalVariables.entry_3 = GlobalVariables.entries[2]
@@ -42,7 +39,6 @@ func sort_descending(a, b):
 
 
 func _on_back_button_button_up():
-	GlobalVariables.player_alive = true
 	GlobalVariables.player_name = null
 	GlobalVariables.player_score = 0
 	GlobalVariables.player_position = Vector2(400, 300)

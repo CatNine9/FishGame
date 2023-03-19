@@ -1,21 +1,70 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfg7ame4n0wbj"]
+[gd_scene load_steps=10 format=3 uid="uid://bfg7ame4n0wbj"]
 
 [ext_resource type="PackedScene" uid="uid://rffmu5nc3g5s" path="res://Fish/Player.tscn" id="1_cvetj"]
 [ext_resource type="Script" path="res://Levels/Main.gd" id="1_x3kem"]
+[ext_resource type="Texture2D" uid="uid://b85fp28aymgps" path="res://Levels/Backgrounds/Glittery Nebula.png" id="2_iaj81"]
 [ext_resource type="Script" path="res://Levels/DeathControl.gd" id="3_oq8rl"]
 [ext_resource type="Script" path="res://Levels/PauseLabel.gd" id="3_ymtrg"]
+[ext_resource type="PackedScene" uid="uid://cnnqhnu3rtnuc" path="res://Species/species_1.tscn" id="6_y7h4w"]
+[ext_resource type="PackedScene" uid="uid://dxmtgt7dljdxp" path="res://Species/species_2.tscn" id="7_k28jr"]
+[ext_resource type="Texture2D" uid="uid://banf3gf3wjuhm" path="res://Levels/Backgrounds/Glittery Nebula border.png" id="8_byn3e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmgg6"]
+size = Vector2(4100, 100)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_x3kem")
 
-[node name="Player" parent="." instance=ExtResource("1_cvetj")]
-position = Vector2(399, 300)
+[node name="SpaceRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2542.0
+offset_top = -1698.0
+offset_right = 5371.0
+offset_bottom = 4741.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="NebulaRect" type="TextureRect" parent="."]
+offset_right = 3848.0
+offset_bottom = 3832.0
+texture = ExtResource("2_iaj81")
 
 [node name="EnemySpawnDelay" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 0.2
 
-[node name="DeathControl" type="Control" parent="."]
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("1_cvetj")]
+position = Vector2(2000, 2000)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+process_mode = 3
+position_smoothing_speed = 10.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="ScoreLabel" type="Label" parent="Player/Camera2D"]
+z_index = 1
+offset_left = -379.0
+offset_top = -280.0
+offset_right = -336.0
+offset_bottom = -254.0
+text = "Score"
+
+[node name="FPSLabel" type="Label" parent="Player/Camera2D"]
+z_index = 1
+offset_left = -379.0
+offset_top = 280.0
+offset_right = -339.0
+offset_bottom = 306.0
+text = "FPS"
+
+[node name="DeathControl" type="Control" parent="Player/Camera2D"]
 visible = false
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +73,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_oq8rl")
 
-[node name="CenterContainer" type="CenterContainer" parent="DeathControl"]
+[node name="CenterContainer" type="CenterContainer" parent="Player/Camera2D/DeathControl"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,12 +81,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="DeathControl/CenterContainer"]
+[node name="ColorRect" type="ColorRect" parent="Player/Camera2D/DeathControl/CenterContainer"]
 custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
 color = Color(0.603922, 0, 0, 0.466667)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DeathControl/CenterContainer/ColorRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Player/Camera2D/DeathControl/CenterContainer/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,25 +94,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DeadLabel" type="Label" parent="DeathControl/CenterContainer/ColorRect/VBoxContainer"]
+[node name="DeadLabel" type="Label" parent="Player/Camera2D/DeathControl/CenterContainer/ColorRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 text = "YOU GOT EATEN!"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="NextButton" type="Button" parent="DeathControl/CenterContainer/ColorRect/VBoxContainer"]
+[node name="NextButton" type="Button" parent="Player/Camera2D/DeathControl/CenterContainer/ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = ">> Next >>"
 
-[node name="ColorRect2" type="ColorRect" parent="DeathControl/CenterContainer"]
+[node name="ColorRect2" type="ColorRect" parent="Player/Camera2D/DeathControl/CenterContainer"]
 visible = false
 custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
 color = Color(0.603922, 0, 0, 0.466667)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DeathControl/CenterContainer/ColorRect2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Player/Camera2D/DeathControl/CenterContainer/ColorRect2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -71,7 +120,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DeadLabel" type="Label" parent="DeathControl/CenterContainer/ColorRect2/VBoxContainer"]
+[node name="DeadLabel" type="Label" parent="Player/Camera2D/DeathControl/CenterContainer/ColorRect2/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 text = "Save your score?
@@ -79,32 +128,32 @@ Name:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NameInputLineEdit" type="LineEdit" parent="DeathControl/CenterContainer/ColorRect2/VBoxContainer"]
+[node name="NameInputLineEdit" type="LineEdit" parent="Player/Camera2D/DeathControl/CenterContainer/ColorRect2/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="DeathControl/CenterContainer/ColorRect2/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Player/Camera2D/DeathControl/CenterContainer/ColorRect2/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="YesButton" type="Button" parent="DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer"]
+[node name="YesButton" type="Button" parent="Player/Camera2D/DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
 text = "YES"
 
-[node name="NoButton" type="Button" parent="DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer"]
+[node name="NoButton" type="Button" parent="Player/Camera2D/DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
 text = "NO"
 
-[node name="ColorRect3" type="ColorRect" parent="DeathControl/CenterContainer"]
+[node name="ColorRect3" type="ColorRect" parent="Player/Camera2D/DeathControl/CenterContainer"]
 visible = false
 custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
 color = Color(0.603922, 0, 0, 0.466667)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DeathControl/CenterContainer/ColorRect3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Player/Camera2D/DeathControl/CenterContainer/ColorRect3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -112,7 +161,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NoNameLabel" type="Label" parent="DeathControl/CenterContainer/ColorRect3/VBoxContainer"]
+[node name="NoNameLabel" type="Label" parent="Player/Camera2D/DeathControl/CenterContainer/ColorRect3/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 text = "You didn't input a name, or you didn't press Enter after."
@@ -120,19 +169,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="DeathControl/CenterContainer/ColorRect3/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Player/Camera2D/DeathControl/CenterContainer/ColorRect3/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="OKButton" type="Button" parent="DeathControl/CenterContainer/ColorRect3/VBoxContainer/HBoxContainer"]
+[node name="OKButton" type="Button" parent="Player/Camera2D/DeathControl/CenterContainer/ColorRect3/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
 text = "OK"
 
-[node name="PauseControl" type="Control" parent="."]
+[node name="PauseControl" type="Control" parent="Player/Camera2D"]
 process_mode = 3
 visible = false
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,7 +191,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_ymtrg")
 
-[node name="CenterContainer" type="CenterContainer" parent="PauseControl"]
+[node name="CenterContainer" type="CenterContainer" parent="Player/Camera2D/PauseControl"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -149,12 +199,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="PauseControl/CenterContainer"]
+[node name="ColorRect" type="ColorRect" parent="Player/Camera2D/PauseControl/CenterContainer"]
 custom_minimum_size = Vector2(150, 210)
 layout_mode = 2
 color = Color(0, 0.756863, 1, 0.462745)
 
-[node name="PauseVbox" type="VBoxContainer" parent="PauseControl/CenterContainer/ColorRect"]
+[node name="PauseVbox" type="VBoxContainer" parent="Player/Camera2D/PauseControl/CenterContainer/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -168,7 +218,7 @@ offset_bottom = 95.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PauseLabel" type="Label" parent="PauseControl/CenterContainer/ColorRect/PauseVbox"]
+[node name="PauseLabel" type="Label" parent="Player/Camera2D/PauseControl/CenterContainer/ColorRect/PauseVbox"]
 process_mode = 3
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -176,36 +226,131 @@ text = "PAUSED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ResumeButton" type="Button" parent="PauseControl/CenterContainer/ColorRect/PauseVbox"]
+[node name="ResumeButton" type="Button" parent="Player/Camera2D/PauseControl/CenterContainer/ColorRect/PauseVbox"]
 layout_mode = 2
 text = "RESUME"
 
-[node name="SettingsButton" type="Button" parent="PauseControl/CenterContainer/ColorRect/PauseVbox"]
+[node name="SettingsButton" type="Button" parent="Player/Camera2D/PauseControl/CenterContainer/ColorRect/PauseVbox"]
 layout_mode = 2
 text = "SETTINGS"
 
-[node name="ExitButton" type="Button" parent="PauseControl/CenterContainer/ColorRect/PauseVbox"]
+[node name="ExitButton" type="Button" parent="Player/Camera2D/PauseControl/CenterContainer/ColorRect/PauseVbox"]
 layout_mode = 2
 text = "EXIT TO MENU"
 
-[node name="QuitButton" type="Button" parent="PauseControl/CenterContainer/ColorRect/PauseVbox"]
+[node name="QuitButton" type="Button" parent="Player/Camera2D/PauseControl/CenterContainer/ColorRect/PauseVbox"]
 layout_mode = 2
 text = "QUIT"
 
-[node name="ScoreLabel" type="Label" parent="."]
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 63.0
-offset_bottom = 46.0
-text = "Score"
+[node name="UpBorderRect" type="TextureRect" parent="."]
+offset_right = 3848.0
+offset_bottom = 288.0
+mouse_filter = 2
+texture = ExtResource("8_byn3e")
+
+[node name="UpSpace" type="ColorRect" parent="UpBorderRect"]
+custom_minimum_size = Vector2(4500, 1000)
+layout_mode = 0
+offset_left = -300.0
+offset_top = -1000.0
+offset_right = 4200.0
+color = Color(0, 0, 0, 1)
+
+[node name="LeftBorderRect" type="TextureRect" parent="."]
+offset_top = 3850.0
+offset_right = 3848.0
+offset_bottom = 4138.0
+rotation = 4.71239
+mouse_filter = 2
+texture = ExtResource("8_byn3e")
+
+[node name="LeftSpace" type="ColorRect" parent="LeftBorderRect"]
+custom_minimum_size = Vector2(4500, 1000)
+layout_mode = 0
+offset_left = -350.0
+offset_top = -1000.0
+offset_right = 4150.0
+color = Color(0, 0, 0, 1)
+
+[node name="RightBorderRect" type="TextureRect" parent="."]
+offset_left = 3850.0
+offset_right = 7698.0
+offset_bottom = 288.0
+rotation = 1.57079
+mouse_filter = 2
+texture = ExtResource("8_byn3e")
+
+[node name="Right" type="ColorRect" parent="RightBorderRect"]
+custom_minimum_size = Vector2(4500, 1000)
+layout_mode = 0
+offset_left = -299.998
+offset_top = -1000.0
+offset_right = 4200.0
+offset_bottom = -0.000488281
+color = Color(0, 0, 0, 1)
+
+[node name="DownBorderRect" type="TextureRect" parent="."]
+offset_left = 3850.0
+offset_top = 3850.0
+offset_right = 7698.0
+offset_bottom = 4138.0
+rotation = 3.14159
+mouse_filter = 2
+texture = ExtResource("8_byn3e")
+
+[node name="DownSpace" type="ColorRect" parent="DownBorderRect"]
+custom_minimum_size = Vector2(4500, 1000)
+layout_mode = 0
+offset_left = -350.0
+offset_top = -1000.0
+offset_right = 4150.0
+color = Color(0, 0, 0, 1)
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+position = Vector2(1950, 0)
+shape = SubResource("RectangleShape2D_qmgg6")
+
+[node name="LowerWall" type="StaticBody2D" parent="."]
+position = Vector2(0, 3850)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerWall"]
+position = Vector2(1950, 0)
+shape = SubResource("RectangleShape2D_qmgg6")
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+rotation = 1.5708
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2(1950, 0)
+shape = SubResource("RectangleShape2D_qmgg6")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(3850, 0)
+rotation = 1.5708
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(1950, 0)
+shape = SubResource("RectangleShape2D_qmgg6")
+
+[node name="SpeciesList" type="Node" parent="."]
+
+[node name="Species1" parent="SpeciesList" instance=ExtResource("6_y7h4w")]
+
+[node name="Species2" parent="SpeciesList" instance=ExtResource("7_k28jr")]
 
 [connection signal="timeout" from="EnemySpawnDelay" to="." method="_on_enemy_spawn_delay_timeout"]
-[connection signal="button_up" from="DeathControl/CenterContainer/ColorRect/VBoxContainer/NextButton" to="DeathControl" method="_on_next_button_button_up"]
-[connection signal="text_submitted" from="DeathControl/CenterContainer/ColorRect2/VBoxContainer/NameInputLineEdit" to="DeathControl" method="_on_name_input_line_edit_text_submitted"]
-[connection signal="button_up" from="DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer/YesButton" to="DeathControl" method="_on_yes_button_button_up"]
-[connection signal="button_up" from="DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer/NoButton" to="DeathControl" method="_on_no_button_button_up"]
-[connection signal="button_up" from="DeathControl/CenterContainer/ColorRect3/VBoxContainer/HBoxContainer/OKButton" to="DeathControl" method="_on_ok_button_button_up"]
-[connection signal="button_up" from="PauseControl/CenterContainer/ColorRect/PauseVbox/ResumeButton" to="PauseControl" method="_on_resume_button_button_up"]
-[connection signal="button_up" from="PauseControl/CenterContainer/ColorRect/PauseVbox/SettingsButton" to="PauseControl" method="_on_settings_button_button_up"]
-[connection signal="button_up" from="PauseControl/CenterContainer/ColorRect/PauseVbox/ExitButton" to="PauseControl" method="_on_exit_button_button_up"]
-[connection signal="button_up" from="PauseControl/CenterContainer/ColorRect/PauseVbox/QuitButton" to="PauseControl" method="_on_quit_button_button_up"]
+[connection signal="button_up" from="Player/Camera2D/DeathControl/CenterContainer/ColorRect/VBoxContainer/NextButton" to="Player/Camera2D/DeathControl" method="_on_next_button_button_up"]
+[connection signal="text_submitted" from="Player/Camera2D/DeathControl/CenterContainer/ColorRect2/VBoxContainer/NameInputLineEdit" to="Player/Camera2D/DeathControl" method="_on_name_input_line_edit_text_submitted"]
+[connection signal="button_up" from="Player/Camera2D/DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer/YesButton" to="Player/Camera2D/DeathControl" method="_on_yes_button_button_up"]
+[connection signal="button_up" from="Player/Camera2D/DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer/NoButton" to="Player/Camera2D/DeathControl" method="_on_no_button_button_up"]
+[connection signal="button_up" from="Player/Camera2D/DeathControl/CenterContainer/ColorRect3/VBoxContainer/HBoxContainer/OKButton" to="Player/Camera2D/DeathControl" method="_on_ok_button_button_up"]
+[connection signal="button_up" from="Player/Camera2D/PauseControl/CenterContainer/ColorRect/PauseVbox/ResumeButton" to="Player/Camera2D/PauseControl" method="_on_resume_button_button_up"]
+[connection signal="button_up" from="Player/Camera2D/PauseControl/CenterContainer/ColorRect/PauseVbox/SettingsButton" to="Player/Camera2D/PauseControl" method="_on_settings_button_button_up"]
+[connection signal="button_up" from="Player/Camera2D/PauseControl/CenterContainer/ColorRect/PauseVbox/ExitButton" to="Player/Camera2D/PauseControl" method="_on_exit_button_button_up"]
+[connection signal="button_up" from="Player/Camera2D/PauseControl/CenterContainer/ColorRect/PauseVbox/QuitButton" to="Player/Camera2D/PauseControl" method="_on_quit_button_button_up"]

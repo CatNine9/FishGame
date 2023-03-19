@@ -47,6 +47,18 @@ text = "Toggle size value visibility: "
 layout_mode = 2
 text = "OFF/ON"
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/MenuVbox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/MenuVbox/HBoxContainer2"]
+layout_mode = 2
+text = "Show FPS counter:"
+
+[node name="FPSToggle" type="CheckButton" parent="CenterContainer/MenuVbox/HBoxContainer2"]
+layout_mode = 2
+text = "OFF/ON"
+
 [node name="BackButton" type="Button" parent="CenterContainer/MenuVbox"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
@@ -71,4 +83,5 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [connection signal="button_down" from="CenterContainer/MenuVbox/HBoxContainer/Toggle" to="." method="_on_toggle_button_down"]
+[connection signal="button_down" from="CenterContainer/MenuVbox/HBoxContainer2/FPSToggle" to="." method="_on_fps_toggle_button_down"]
 [connection signal="button_up" from="CenterContainer/MenuVbox/BackButton" to="." method="_on_back_button_button_up"]

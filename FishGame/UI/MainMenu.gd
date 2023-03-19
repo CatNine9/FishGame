@@ -7,8 +7,9 @@ extends Control
 
 
 func _on_start_button_button_up():
-	var game_start = load("res://Levels/Main.tscn")
-	get_tree().change_scene_to_packed(game_start)
+	var species_select = load("res://UI/SpeciesSelectMenu.tscn")
+	get_tree().change_scene_to_packed(species_select)
+
 
 
 func _on_settings_button_button_up():

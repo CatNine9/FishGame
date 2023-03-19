@@ -18,12 +18,17 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalVariables="*res://GlobalVariables.gd"
+Species="*res://Species/Species.gd"
 
 [display]
 
 window/size/viewport_width=800
 window/size/viewport_height=600
-window/size/resizable=false
+window/stretch/mode="canvas_items"
+window/quality/msaa_3d=2
+window/quality/msaa_2d=2
+window/quality/use_taa=false
+window/quality/screen_space_aa=1
 
 [input]
 
@@ -65,9 +70,19 @@ Pause={
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Enemy"
+2d_physics/layer_3="Wall"
+
+[physics]
+
+common/physics_ticks_per_second=50
+common/max_physics_steps_per_frame=80
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.188235, 0.313726, 0.407843, 1)
+anti_aliasing/quality/msaa_2d=2
+anti_aliasing/quality/msaa_3d=2
+anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/use_taa=true
+textures/canvas_textures/default_texture_filter=2
