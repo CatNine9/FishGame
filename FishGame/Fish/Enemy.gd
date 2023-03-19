@@ -14,7 +14,16 @@ extends CharacterBody2D
 
 @export var SPEED = 300
 
+@export var movement_mode = "Default"
+@export var facing_mode = "Default"
 
+var left_boundary = 0
+var right_boundary = 0
+var up_boundary = 0
+var down_boundary = 0
+
+var random_height_value = 0
+var random_width_value = 0
 
 var spawn_side = null
 var sprite_flipped = false
@@ -23,12 +32,13 @@ var species = ""
 
 
 func _ready():
-	if spawn_side == 0:
-		position.x = 0
-		animations.play("idle_right")
-	elif spawn_side == 1:
-		position.x = 3848
-		animations.play("idle_left")
+	if species == "Round":
+		facing_default()
+	elif species == "Long":
+		spawn_side % 2
+		facing_faster_h()
+
+	print("Movement mode: ", movement_mode)
 
 	if GlobalVariables.size_visibility == false:
 		size_label.visible = false
@@ -38,6 +48,56 @@ func _ready():
 
 
 func _physics_process(delta):
+	if movement_mode == "Default" or movement_mode == "Simple" or movement_mode == "Faster Horizontal":
+		movement_default()
+	elif movement_mode == "Faster Horizontal":
+		movement_faster_h()
+
+	if position.x < (left_boundary - 200) or position.x > (right_boundary + 200) or position.y < (up_boundary - 200) or position.y > (down_boundary + 200):
+		queue_free()
+
+
+
+func facing_default():
+	if spawn_side == 0:
+		position = Vector2(0, random_height_value)
+		animations.play("idle_right")
+	elif spawn_side == 1:
+		position = Vector2(3848, random_height_value)
+		animations.play("idle_left")
+	elif spawn_side == 2:
+		position = Vector2(random_width_value, 0)
+		animations.play("idle_up")
+	elif spawn_side == 3:
+		position = Vector2(random_width_value, 3832)
+		animations.play("idle_down")
+
+
+
+func facing_faster_h():
+	if spawn_side == 0:
+		position = Vector2(0, random_height_value)
+		animations.play("idle_right")
+	elif spawn_side == 1:
+		position = Vector2(3848, random_height_value)
+		animations.play("idle_left")
+
+
+
+func movement_default():
+	if spawn_side == 0:
+		velocity.x = 1 * SPEED
+	elif spawn_side == 1:
+		velocity.x = -1 * SPEED
+	elif spawn_side == 2:
+		velocity.y = 1 * SPEED
+	elif spawn_side == 3:
+		velocity.y = -1 * SPEED
+	else:
+		velocity.x = 0
+	move_and_slide()
+
+func movement_faster_h():
 	if spawn_side == 0:
 		velocity.x = 1 * SPEED
 	elif spawn_side == 1:
@@ -45,9 +105,6 @@ func _physics_process(delta):
 	else:
 		velocity.x = 0
 	move_and_slide()
-		
-	if position.x < -200 or position.x > 4000:
-		queue_free()
 
 
 

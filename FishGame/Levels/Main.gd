@@ -59,27 +59,37 @@ func _on_enemy_spawn_delay_timeout():
 
 
 func spawn_enemy():
-	var random_side_value = randi() % 2
-		
+	var random_side_value = randi() % 4
 	var random_height_value = randi_range(0, 3832)
-	
+	var random_width_value = randi_range(0, 3848)
 	var random_size_value = randf_range(player_collision.scale.x * 0.75, player_collision.scale.x * 1.25)
-	
 	var enemy_preload = preload("res://Fish/Enemy.tscn")
 	var enemy_spawn = enemy_preload.instantiate()
 	enemy_spawn.spawn_side = random_side_value
-	enemy_spawn.position.y = random_height_value
-	add_child(enemy_spawn)
-	enemies.append(enemy_spawn)
-	
+	enemy_spawn.left_boundary = 0
+	enemy_spawn.right_boundary = 3848
+	enemy_spawn.up_boundary = 0
+	enemy_spawn.down_boundary = 3832
+	enemy_spawn.random_height_value = random_height_value
+	enemy_spawn.random_width_value = random_width_value
 	if GlobalVariables.player_species == "Round":
 		Species.load_species_2()
+		enemy_spawn.position.y = random_height_value
+		enemy_spawn.species = "Long"
 	elif GlobalVariables.player_species == "Long":
 		Species.load_species_1()
+		if random_side_value == 0 or random_side_value == 1:
+			enemy_spawn.position.x = random_width_value
+		elif random_side_value == 2 or random_side_value == 3:
+			enemy_spawn.position.y = random_height_value
+		enemy_spawn.species = "Round"
+	add_child(enemy_spawn)
+	enemies.append(enemy_spawn)
 	enemy_spawn.collision_shape.scale *= random_size_value
 	enemy_spawn.collision_shape.polygon = Species.loaded_collision_shape
 	enemy_spawn.physical_body.polygon = Species.loaded_collision_shape
 	enemy_spawn.sprite.texture = Species.loaded_species_sprite
+	enemy_spawn.movement_mode = Species.loaded_movement_mode
 	enemy_spawn.SPEED = Species.loaded_speed
 
 

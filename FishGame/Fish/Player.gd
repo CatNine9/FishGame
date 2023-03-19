@@ -14,8 +14,8 @@ extends CharacterBody2D
 @export var FRICTION = 1000
 @export var ACCELERATION = 1000
 
-@export var movement_mode = "Experimental 2"
-@export var facing_mode = "H Forward Only"
+@export var movement_mode = "Default"
+@export var facing_mode = "Default"
 
 var axis = Vector2.ZERO
 

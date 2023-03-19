@@ -266,9 +266,9 @@ motion_mode = 1
 script = ExtResource("1_ix3g4")
 
 [node name="PhysicalBody" type="CollisionPolygon2D" parent="."]
-visible = false
 rotation = 3.14159
 polygon = PackedVector2Array(9, -19, 16, -8, 17, 3, 16, 18, 0, 21, -18, 18, -19, 2, -18, -8, -10, -19)
+disabled = true
 
 [node name="AreaBody" type="Area2D" parent="."]
 collision_mask = 2
