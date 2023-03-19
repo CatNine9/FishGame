@@ -12,7 +12,7 @@ extends CharacterBody2D
 
 
 
-@export var SPEED = 300
+@export var MAX_SPEED = 300
 
 @export var movement_mode = "Default"
 @export var facing_mode = "Default"
@@ -90,22 +90,22 @@ func facing_faster_h():
 
 func movement_default():
 	if spawn_side == 0:
-		velocity.x = 1 * SPEED
+		velocity.x = 1 * MAX_SPEED
 	elif spawn_side == 1:
-		velocity.x = -1 * SPEED
+		velocity.x = -1 * MAX_SPEED
 	elif spawn_side == 2:
-		velocity.y = 1 * SPEED
+		velocity.y = 1 * MAX_SPEED
 	elif spawn_side == 3:
-		velocity.y = -1 * SPEED
+		velocity.y = -1 * MAX_SPEED
 	else:
 		velocity.x = 0
 	move_and_slide()
 
 func movement_faster_h():
 	if spawn_side == 0:
-		velocity.x = 1 * SPEED
+		velocity.x = 1 * MAX_SPEED
 	elif spawn_side == 1:
-		velocity.x = -1 * SPEED
+		velocity.x = -1 * MAX_SPEED
 	else:
 		velocity.x = 0
 	move_and_slide()

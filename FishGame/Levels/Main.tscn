@@ -248,6 +248,14 @@ offset_bottom = 288.0
 mouse_filter = 2
 texture = ExtResource("8_byn3e")
 
+[node name="UpSpace" type="ColorRect" parent="UpBorderRect"]
+custom_minimum_size = Vector2(4500, 1000)
+layout_mode = 0
+offset_left = -300.0
+offset_top = -1000.0
+offset_right = 4200.0
+color = Color(0, 0, 0, 1)
+
 [node name="LeftBorderRect" type="TextureRect" parent="."]
 offset_top = 3850.0
 offset_right = 3848.0
@@ -256,13 +264,30 @@ rotation = 4.71239
 mouse_filter = 2
 texture = ExtResource("8_byn3e")
 
+[node name="LeftSpace" type="ColorRect" parent="LeftBorderRect"]
+custom_minimum_size = Vector2(4500, 1000)
+layout_mode = 0
+offset_left = -350.0
+offset_top = -1000.0
+offset_right = 4150.0
+color = Color(0, 0, 0, 1)
+
 [node name="RightBorderRect" type="TextureRect" parent="."]
 offset_left = 3850.0
 offset_right = 7698.0
 offset_bottom = 288.0
-rotation = 1.5708
+rotation = 1.57079
 mouse_filter = 2
 texture = ExtResource("8_byn3e")
+
+[node name="Right" type="ColorRect" parent="RightBorderRect"]
+custom_minimum_size = Vector2(4500, 1000)
+layout_mode = 0
+offset_left = -299.998
+offset_top = -1000.0
+offset_right = 4200.0
+offset_bottom = -0.000488281
+color = Color(0, 0, 0, 1)
 
 [node name="DownBorderRect" type="TextureRect" parent="."]
 offset_left = 3850.0
@@ -272,6 +297,14 @@ offset_bottom = 4138.0
 rotation = 3.14159
 mouse_filter = 2
 texture = ExtResource("8_byn3e")
+
+[node name="DownSpace" type="ColorRect" parent="DownBorderRect"]
+custom_minimum_size = Vector2(4500, 1000)
+layout_mode = 0
+offset_left = -350.0
+offset_top = -1000.0
+offset_right = 4150.0
+color = Color(0, 0, 0, 1)
 
 [node name="TopWall" type="StaticBody2D" parent="."]
 collision_layer = 4

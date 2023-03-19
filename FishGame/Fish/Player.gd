@@ -9,7 +9,6 @@ extends CharacterBody2D
 @onready var sprite = $AreaBody/CollisionBody/PlayerSprite
 @onready var animation = $AreaBody/CollisionBody/PlayerSprite/AnimationPlayer
 
-@export var SPEED = 300
 @export var MAX_SPEED = 300
 @export var FRICTION = 1000
 @export var ACCELERATION = 1000
@@ -169,5 +168,5 @@ func refresh_species():
 	physical_body.polygon = new_points
 	movement_mode = Species.loaded_movement_mode
 	facing_mode = Species.loaded_facing_mode
-	SPEED = Species.loaded_speed
+	MAX_SPEED = Species.loaded_speed
 	

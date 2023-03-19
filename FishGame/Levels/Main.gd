@@ -11,6 +11,7 @@ extends Node
 @onready var death_window = $Player/Camera2D/DeathControl
 @onready var gameplay_camera = $Player/Camera2D
 @onready var fps_label = $Player/Camera2D/FPSLabel
+@onready var enemy_spawn_node = $Enemies
 
 
 
@@ -84,13 +85,13 @@ func spawn_enemy():
 			enemy_spawn.position.y = random_height_value
 		enemy_spawn.species = "Round"
 	enemy_spawn.movement_mode = Species.loaded_movement_mode
-	get_child(3, true).add_child(enemy_spawn)
+	enemy_spawn_node.add_child(enemy_spawn)
 	enemies.append(enemy_spawn)
 	enemy_spawn.collision_shape.scale *= random_size_value
 	enemy_spawn.collision_shape.polygon = Species.loaded_collision_shape
 	enemy_spawn.physical_body.polygon = Species.loaded_collision_shape
 	enemy_spawn.sprite.texture = Species.loaded_species_sprite
-	enemy_spawn.SPEED = Species.loaded_speed
+	enemy_spawn.MAX_SPEED = Species.loaded_speed
 
 
 
