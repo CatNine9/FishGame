@@ -12,6 +12,7 @@ extends Node
 @onready var gameplay_camera = $Player/Camera2D
 @onready var fps_label = $Player/Camera2D/FPSLabel
 @onready var enemy_spawn_node = $Enemies
+@onready var win_window = $Player/Camera2D/WinControl
 
 
 
@@ -47,7 +48,11 @@ func _process(delta):
 	var fps_format = "FPS: %d"
 	var fps_string = fps_format % [fps]
 	fps_label.text = fps_string
-
+	if score == 25:
+		win_window.visible = true
+		get_tree().paused = true
+	if Input.is_action_just_released("points_cheat"):
+		increment_score()
 
 
 func _on_enemy_spawn_delay_timeout():
