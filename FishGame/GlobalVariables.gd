@@ -13,6 +13,7 @@ var game_on = false
 var is_paused = false
 var camera_position = Vector2(0, 0)
 var enemy_starter_species = ""
+var current_level = 0
 
 # Player:
 var player_position = Vector2(400, 300)

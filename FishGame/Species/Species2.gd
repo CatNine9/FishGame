@@ -10,4 +10,9 @@ extends Node
 
 @export var movement_mode = "Faster Horizontal"
 @export var facing_mode = "H Forward Only"
+
 @export var speed = 300
+@export var health_cap = 3
+@export var food_cap = 3
+@export var energy_cap = 7
+@export var phys_attack = 5
