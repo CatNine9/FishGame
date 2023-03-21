@@ -72,6 +72,7 @@ func spawn_enemy():
 	enemy_spawn.down_boundary = 3832
 	enemy_spawn.random_height_value = random_height_value
 	enemy_spawn.random_width_value = random_width_value
+	#Change this:
 	if GlobalVariables.player_species == "Round":
 		Species.find_species("Long")
 		enemy_spawn.position.y = random_height_value

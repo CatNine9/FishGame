@@ -44,3 +44,26 @@ Note: Differences should be balanced. For every disadvantage one species has aga
 
 Movement types will be defined in the physics process. Each species will have a movement type. Which movement type the physics process uses is determined by the player's movement type via if and else statements.  
 
+
+
+
+
+
+Idea: Every species should have a help page that pops up when the player presses one of the F-keys. This will let the player see it's abilities and controls at a glance if they forget. Should pause the game.
+
+
+
+
+
+For "Big":
+	One of it's qualities is that it has a size offset, making it 0.1 bigger than normal. A large collision shape before resizing, and a starting sprite size offset could be the way to go, as I don't want enemy sizes to have this offset.
+	
+
+
+
+
+
+
+Note: The reason why species 3 spawns as the enemy in level 2 is because in level 2 the player is neither species 1 or 2, which is checked for when choosing the enemy to spawn as. Since it was neither, no new species was loaded, and it just used the last one in memory which was the player's one.
+
+

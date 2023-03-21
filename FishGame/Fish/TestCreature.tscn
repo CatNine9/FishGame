@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://d2ht1wmryl1j1"]
 
 [ext_resource type="Script" path="res://Fish/TestCreature.gd" id="1_b23wn"]
-[ext_resource type="Texture2D" uid="uid://b6jvddo758wh0" path="res://Fish/CreatureSprites/SpaceCreature3.png" id="2_2yp56"]
+[ext_resource type="Texture2D" uid="uid://c5vrsukr7yg4o" path="res://Fish/CreatureSprites/SpaceCreature4.png" id="2_fj5e2"]
 
 [sub_resource type="Animation" id="Animation_ph8r8"]
 length = 0.001
@@ -274,11 +274,11 @@ collision_layer = 2
 
 [node name="CollisionBody" type="CollisionPolygon2D" parent="AreaBody"]
 rotation = 3.14159
-polygon = PackedVector2Array(-21, 10, -21, -15, -11, -28, 2, -26, 16, -29, 25, -16, 25, 9, 16, 24, 3, 28, -9, 25)
+polygon = PackedVector2Array(-16.7955, -13.4005, -16.6187, -21.1787, -6.01213, -35.8512, -2.4766, -38.5028, 3.18026, -36.028, 11.4888, -22.4161, 12.7262, -12.5167, 7.06934, -3.50105, -1.06239, 3.0397, -10.078, -3.67782)
 
 [node name="EnemySprite" type="Sprite2D" parent="AreaBody/CollisionBody"]
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("2_2yp56")
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_fj5e2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AreaBody/CollisionBody/EnemySprite"]
 autoplay = "idle_up"

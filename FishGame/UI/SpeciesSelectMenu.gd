@@ -31,7 +31,7 @@ func _ready():
 	elif GlobalVariables.player_species == "Round":
 		Species.find_species("Big")
 		load_Selection_1()
-		Species.find_species("Big")
+		Species.find_species("X-Sail")
 		load_selection_2()
 	elif GlobalVariables.player_species == "Long":
 		pass

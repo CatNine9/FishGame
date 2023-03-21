@@ -16,18 +16,26 @@ var loaded_speed = 0
 
 var species_1 = null
 var species_2 = null
+var species_3 = null
+var species_4
 
 
 
 func _ready():
 	var species_1_preload = preload("res://Species/species_1.tscn")
 	var species_2_preload = preload("res://Species/species_2.tscn")
+	var species_3_preload = preload("res://Species/species_3.tscn")
+	var species_4_preload = preload("res://Species/Species_4.tscn")
 	
 	species_1 = species_1_preload.instantiate()
 	species_2 = species_2_preload.instantiate()
-		
+	species_3 = species_3_preload.instantiate()
+	species_4 = species_4_preload.instantiate()
+	
 	add_child(species_1)
 	add_child(species_2)
+	add_child(species_3)
+	add_child(species_4)
 
 
 
@@ -36,6 +44,10 @@ func find_species(species):
 		load_species(species_1)
 	elif species == "Long":
 		load_species(species_2)
+	elif species == "Big":
+		load_species(species_3)
+	elif species == "X-Sail":
+		load_species(species_4)
 
 
 
