@@ -89,13 +89,14 @@ func spawn_enemy():
 	elif GlobalVariables.player_species == "":
 		pass
 	enemy_spawn.movement_mode = Species.loaded_movement_mode
+	enemy_spawn.facing_mode = Species.loaded_facing_mode
 	enemy_spawn_node.add_child(enemy_spawn)
 	enemies.append(enemy_spawn)
 	enemy_spawn.collision_shape.scale *= random_size_value
 	enemy_spawn.collision_shape.polygon = Species.loaded_collision_shape
 	enemy_spawn.physical_body.polygon = Species.loaded_collision_shape
 	enemy_spawn.sprite.texture = Species.loaded_species_sprite
-	enemy_spawn.MAX_SPEED = Species.loaded_speed
+	enemy_spawn.max_speed = Species.loaded_speed
 
 
 

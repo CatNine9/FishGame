@@ -110,11 +110,6 @@ func increment_score():
 
 
 
-func player_finished_loading():
-	pass
-
-
-
 func enemy_player_killed_by(enemy_predator):
 	print("Enemy that killed the player: ", enemy_predator)
 	enemy_predator.is_stopped = true
