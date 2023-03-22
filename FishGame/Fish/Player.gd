@@ -67,11 +67,9 @@ func _physics_process(delta):
 		elif movement_mode == "Faster Horizontal":
 			faster_horizontal(MAX_SPEED)
 		elif movement_mode == "Follow":
-			follow_move(MAX_SPEED)
+			follow_move(MAX_SPEED, delta)
 		elif movement_mode == "Experimental":
 			experimental_move(MAX_SPEED)
-
-
 		# Facing:
 		if facing_mode == "Default":
 			default_facing()
@@ -111,8 +109,11 @@ func faster_horizontal(speed):
 
 
 
-func follow_move(speed):
-	pass
+func follow_move(speed, delta):
+	var mouse_position = get_local_mouse_position()
+	velocity = mouse_position * speed
+	print("Follow move! Global mouse position: ", mouse_position)
+	move_and_slide()
 
 
 

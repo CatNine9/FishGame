@@ -20,7 +20,7 @@ extends Node
 @export var movement_mode = "Follow"
 @export var facing_mode = "Follow"
 
-@export var speed = 300
+@export var speed = 1
 @export var health_cap = 10
 @export var food_cap = 10
 @export var energy_cap = 10
