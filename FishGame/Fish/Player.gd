@@ -83,8 +83,10 @@ func experimental_move(speed):
 
 func follow_facing():
 	physical_node.look_at(get_global_mouse_position())
-	var rotate_90 = deg_to_rad(90)
-	collision_shape.rotation = rotate_90
+	var rotate_correct1 = deg_to_rad(270)
+	var rotate_correct2 = deg_to_rad(90)
+	area_shape.rotation = rotate_correct1
+	physical_body.rotation = rotate_correct2
 
 
 func _on_area_body_area_entered(area):
