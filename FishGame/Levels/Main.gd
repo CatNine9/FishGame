@@ -79,23 +79,26 @@ func spawn_enemy():
 	enemy_spawn.random_width_value = random_width_value
 	if GlobalVariables.player_species == "Round":
 		Species.find_species("Long")
+		enemy_spawn.spawn_side = random_side_value % 2
 		enemy_spawn.position.y = random_height_value
 		enemy_spawn.species = "Long"
 	elif GlobalVariables.player_species == "Long":
 		Species.find_species("Round")
+		print("Player species: ", GlobalVariables.player_species)
 		if random_side_value == 0 or random_side_value == 1:
 			enemy_spawn.position.x = random_width_value
 		elif random_side_value == 2 or random_side_value == 3:
 			enemy_spawn.position.y = random_height_value
 		enemy_spawn.species = "Round"
 	enemy_spawn.movement_mode = Species.loaded_movement_mode
+	enemy_spawn.facing_mode = Species.loaded_facing_mode
 	enemy_spawn_node.add_child(enemy_spawn)
 	enemies.append(enemy_spawn)
 	enemy_spawn.collision_shape.scale *= random_size_value
 	enemy_spawn.collision_shape.polygon = Species.loaded_collision_shape
 	enemy_spawn.physical_body.polygon = Species.loaded_collision_shape
 	enemy_spawn.sprite.texture = Species.loaded_species_sprite
-	enemy_spawn.MAX_SPEED = Species.loaded_speed
+	enemy_spawn.max_speed = Species.loaded_speed
 
 
 

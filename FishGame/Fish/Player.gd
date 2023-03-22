@@ -57,55 +57,15 @@ func _physics_process(delta):
 	#velocity = Vector2.ZERO
 	if GlobalVariables.player_alive == true:
 		# Movement:
-		if movement_mode == "Default":
-			default_move(MAX_SPEED)
-		# Simple movement mode gives 8 movement directions and slow drifting at a consistent
-		# speed, no stopping.
-		elif movement_mode == "Simple":
-			simple_move(MAX_SPEED)
-		# Faster horizontal is just like simple except it halves movement on the y axis.
-		elif movement_mode == "Faster Horizontal":
-			faster_horizontal(MAX_SPEED)
-		elif movement_mode == "Follow":
+		if movement_mode == "Follow":
 			follow_move(MAX_SPEED, delta)
 		elif movement_mode == "Experimental":
 			experimental_move(MAX_SPEED)
 		# Facing:
-		if facing_mode == "Default":
-			default_facing()
-		elif facing_mode == "H Forward Only":
-			h_forward_facing()
-		elif facing_mode == "Follow":
+		if facing_mode == "Follow":
 			follow_facing()
 
 	GlobalVariables.player_position = position
-
-
-
-func default_move(speed):
-	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	if direction == Vector2.ZERO:
-		velocity = Vector2.ZERO
-	else:
-		velocity = direction * speed
-	move_and_slide()
-
-
-
-func simple_move(speed):
-	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	if direction != Vector2.ZERO:
-		velocity = direction * speed
-	move_and_slide()
-
-
-
-func faster_horizontal(speed):
-	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	if direction != Vector2.ZERO:
-		velocity.y = direction.y * speed * 0.5
-		velocity.x = direction.x * speed
-	move_and_slide()
 
 
 
@@ -118,46 +78,6 @@ func follow_move(speed, delta):
 
 func experimental_move(speed):
 	print(get_global_mouse_position())
-
-
-
-func default_facing():
-	if Input.is_action_pressed("ui_up"):
-		if Input.is_action_pressed("ui_right"):
-			animation.play("idle_up_right")
-		elif Input.is_action_pressed("ui_left"):
-			animation.play("idle_up_left")		
-		else:
-			animation.play("idle_up")
-	elif Input.is_action_pressed("ui_down"):
-		if Input.is_action_pressed("ui_right"):
-			animation.play("idle_down_right")
-		elif Input.is_action_pressed("ui_left"):
-			animation.play("idle_down_left")
-		else:
-			animation.play("idle_down")
-	elif Input.is_action_pressed("ui_right"):
-		animation.play("idle_right")
-	elif Input.is_action_pressed("ui_left"):
-		animation.play("idle_left")
-
-
-
-func h_forward_facing():
-	if Input.is_action_pressed("ui_right"):
-		if Input.is_action_pressed("ui_up"):
-			animation.play("idle_up_right")
-		elif Input.is_action_pressed("ui_down"):
-			animation.play("idle_down_right")
-		else:
-			animation.play("idle_right")
-	elif Input.is_action_pressed("ui_left"):
-		if Input.is_action_pressed("ui_up"):
-			animation.play("idle_up_left")
-		elif Input.is_action_pressed("ui_down"):
-			animation.play("idle_down_left")
-		else:
-			animation.play("idle_left")
 
 
 

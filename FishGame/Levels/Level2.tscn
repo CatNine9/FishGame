@@ -39,11 +39,6 @@ wait_time = 0.2
 
 [node name="Player" parent="." instance=ExtResource("3_m5gkc")]
 position = Vector2(2000, 2000)
-MAX_SPEED = 300
-FRICTION = 1000
-ACCELERATION = 1000
-movement_mode = "Default"
-facing_mode = "Default"
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 process_mode = 3
