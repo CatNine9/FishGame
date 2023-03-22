@@ -8,8 +8,8 @@ extends Node
 @export var description = "A spherical filter feeder. Greater maneouverability at the cost of lower attack damage."
 @export var theme_colour = Vector3(49, 108, 125)
 
-@export var movement_mode = "Simple"
-@export var facing_mode = "Default"
+@export var movement_mode = "Follow"
+@export var facing_mode = "Follow"
 
 @export var speed = 200
 @export var health_cap = 5

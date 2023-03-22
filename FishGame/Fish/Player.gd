@@ -112,7 +112,6 @@ func faster_horizontal(speed):
 func follow_move(speed, delta):
 	var mouse_position = get_local_mouse_position()
 	velocity = mouse_position * speed
-	print("Follow move! Global mouse position: ", mouse_position)
 	move_and_slide()
 
 

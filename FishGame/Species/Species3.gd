@@ -8,8 +8,8 @@ extends Node
 @export var description = "With a large body and large mouth, they have a lot of health and can sweep up many small foods and enemies. Their downside is that they are slow."
 @export var theme_colour = Vector3(20, 60, 84)
 
-@export var movement_mode = "Simple"
-@export var facing_mode = "Default"
+@export var movement_mode = "Follow"
+@export var facing_mode = "Follow"
 
 @export var speed = 300
 @export var health_cap = 10

@@ -8,8 +8,8 @@ extends Node
 @export var description = "A cuttlefish-shaped ambush predator. Not as agile, but can deal a lot of damage in one go."
 @export var theme_colour = Vector3(28, 48, 35)
 
-@export var movement_mode = "Faster Horizontal"
-@export var facing_mode = "H Forward Only"
+@export var movement_mode = "Follow"
+@export var facing_mode = "Follow"
 
 @export var speed = 300
 @export var health_cap = 3
