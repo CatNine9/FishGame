@@ -4,8 +4,8 @@ extends Node
 
 @onready var enemy_spawn_delay = $EnemySpawnDelay
 @onready var player = $Player
-@onready var player_collision = $Player/AreaBody/CollisionBody
-@onready var player_area = $Player/AreaBody
+@onready var player_collision = $Player/Node2D/AreaBody/CollisionBody
+@onready var player_area = $Player/Node2D/AreaBody
 @onready var score_label = $Player/Camera2D/ScoreLabel
 @onready var pause_menu = $Player/Camera2D/PauseControl
 @onready var death_window = $Player/Camera2D/DeathControl
@@ -73,17 +73,21 @@ func spawn_enemy():
 	enemy_spawn.random_height_value = random_height_value
 	enemy_spawn.random_width_value = random_width_value
 	#Change this:
-	if GlobalVariables.player_species == "Round":
-		Species.find_species("Long")
+	if GlobalVariables.player_species == "Big":
+		Species.find_species("")
 		enemy_spawn.position.y = random_height_value
-		enemy_spawn.species = "Long"
-	elif GlobalVariables.player_species == "Long":
-		Species.find_species("Round")
+		enemy_spawn.species = ""
+	elif GlobalVariables.player_species == "X-Sail":
+		Species.find_species("")
 		if random_side_value == 0 or random_side_value == 1:
 			enemy_spawn.position.x = random_width_value
 		elif random_side_value == 2 or random_side_value == 3:
 			enemy_spawn.position.y = random_height_value
-		enemy_spawn.species = "Round"
+		enemy_spawn.species = ""
+	elif GlobalVariables.player_species == "":
+		pass
+	elif GlobalVariables.player_species == "":
+		pass
 	enemy_spawn.movement_mode = Species.loaded_movement_mode
 	enemy_spawn_node.add_child(enemy_spawn)
 	enemies.append(enemy_spawn)

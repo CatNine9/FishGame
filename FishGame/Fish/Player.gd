@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
 
-
+@onready var physical_node = $Node2D
 @onready var size_label = $SizeLabel
-@onready var collision_shape = $AreaBody/CollisionBody
-@onready var physical_body = $PhysicalBody
-@onready var area_shape = $AreaBody
-@onready var sprite = $AreaBody/CollisionBody/PlayerSprite
-@onready var animation = $AreaBody/CollisionBody/PlayerSprite/AnimationPlayer
+@onready var collision_shape = $Node2D/AreaBody/CollisionBody
+@onready var physical_body = $Node2D/PhysicalBody
+@onready var area_shape = $Node2D/AreaBody
+@onready var sprite = $Node2D/AreaBody/CollisionBody/PlayerSprite
+@onready var animation = $Node2D/AreaBody/CollisionBody/PlayerSprite/AnimationPlayer
 
 @export var MAX_SPEED = 300
 @export var FRICTION = 1000
@@ -17,6 +17,8 @@ extends CharacterBody2D
 @export var facing_mode = "Default"
 
 var axis = Vector2.ZERO
+
+var is_rotated_90 = false
 
 
 
@@ -36,15 +38,18 @@ var directions_dict = {
 
 func _ready():
 	GlobalVariables.player_alive = true
+	
 	size_label.text = str(collision_shape.scale.x)
 	if GlobalVariables.size_visibility == false:
 		size_label.visible = false
 	else:
 		size_label.visible = true
 	refresh_species()
-	animation.play("idle_up")
 
-
+	if facing_mode == "Follow":
+		return
+	else:
+		animation.play("idle_up")
 
 
 
@@ -61,6 +66,8 @@ func _physics_process(delta):
 		# Faster horizontal is just like simple except it halves movement on the y axis.
 		elif movement_mode == "Faster Horizontal":
 			faster_horizontal(MAX_SPEED)
+		elif movement_mode == "Follow":
+			follow_move(MAX_SPEED)
 		elif movement_mode == "Experimental":
 			experimental_move(MAX_SPEED)
 
@@ -68,22 +75,10 @@ func _physics_process(delta):
 		# Facing:
 		if facing_mode == "Default":
 			default_facing()
-
-		if facing_mode == "H Forward Only":
-			if Input.is_action_pressed("ui_right"):
-				if Input.is_action_pressed("ui_up"):
-					animation.play("idle_up_right")
-				elif Input.is_action_pressed("ui_down"):
-					animation.play("idle_down_right")
-				else:
-					animation.play("idle_right")
-			elif Input.is_action_pressed("ui_left"):
-				if Input.is_action_pressed("ui_up"):
-					animation.play("idle_up_left")
-				elif Input.is_action_pressed("ui_down"):
-					animation.play("idle_down_left")
-				else:
-					animation.play("idle_left")
+		elif facing_mode == "H Forward Only":
+			h_forward_facing()
+		elif facing_mode == "Follow":
+			follow_facing()
 
 	GlobalVariables.player_position = position
 
@@ -116,8 +111,13 @@ func faster_horizontal(speed):
 
 
 
-func experimental_move(speed):
+func follow_move(speed):
 	pass
+
+
+
+func experimental_move(speed):
+	print(get_global_mouse_position())
 
 
 
@@ -140,6 +140,31 @@ func default_facing():
 		animation.play("idle_right")
 	elif Input.is_action_pressed("ui_left"):
 		animation.play("idle_left")
+
+
+
+func h_forward_facing():
+	if Input.is_action_pressed("ui_right"):
+		if Input.is_action_pressed("ui_up"):
+			animation.play("idle_up_right")
+		elif Input.is_action_pressed("ui_down"):
+			animation.play("idle_down_right")
+		else:
+			animation.play("idle_right")
+	elif Input.is_action_pressed("ui_left"):
+		if Input.is_action_pressed("ui_up"):
+			animation.play("idle_up_left")
+		elif Input.is_action_pressed("ui_down"):
+			animation.play("idle_down_left")
+		else:
+			animation.play("idle_left")
+
+
+
+func follow_facing():
+	physical_node.look_at(get_global_mouse_position())
+	var rotate_90 = deg_to_rad(90)
+	collision_shape.rotation = rotate_90
 
 
 func _on_area_body_area_entered(area):

@@ -265,22 +265,24 @@ collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_ix3g4")
 
-[node name="PhysicalBody" type="CollisionPolygon2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="PhysicalBody" type="CollisionPolygon2D" parent="Node2D"]
 rotation = 3.14159
 polygon = PackedVector2Array(9, -19, 16, -8, 17, 3, 16, 18, 0, 21, -18, 18, -19, 2, -18, -8, -10, -19)
 
-[node name="AreaBody" type="Area2D" parent="."]
+[node name="AreaBody" type="Area2D" parent="Node2D"]
 collision_mask = 2
 
-[node name="CollisionBody" type="CollisionPolygon2D" parent="AreaBody"]
+[node name="CollisionBody" type="CollisionPolygon2D" parent="Node2D/AreaBody"]
 rotation = 3.14159
 polygon = PackedVector2Array(9, -19, 16, -8, 17, 3, 16, 18, 0, 21, -18, 18, -19, 2, -18, -8, -10, -19)
 
-[node name="PlayerSprite" type="Sprite2D" parent="AreaBody/CollisionBody"]
+[node name="PlayerSprite" type="Sprite2D" parent="Node2D/AreaBody/CollisionBody"]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_mb3ac")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AreaBody/CollisionBody/PlayerSprite"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/AreaBody/CollisionBody/PlayerSprite"]
 libraries = {
 "": SubResource("AnimationLibrary_socaw")
 }
@@ -294,4 +296,4 @@ offset_bottom = -30.0
 text = "Size"
 horizontal_alignment = 1
 
-[connection signal="area_entered" from="AreaBody" to="." method="_on_area_body_area_entered"]
+[connection signal="area_entered" from="Node2D/AreaBody" to="." method="_on_area_body_area_entered"]

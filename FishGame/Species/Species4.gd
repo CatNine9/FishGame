@@ -17,8 +17,8 @@ extends Node
 										# face the direction of movement when not focused on a target.
 
 # Temprary:
-@export var movement_mode = "Simple"
-@export var facing_mode = "Default"	
+@export var movement_mode = "Follow"
+@export var facing_mode = "Follow"
 
 @export var speed = 300
 @export var health_cap = 10
