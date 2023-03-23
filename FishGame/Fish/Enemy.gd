@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var physical_body = $PhysicalBody
 @onready var physical_node = $Node2D
 @onready var area_shape = $Node2D/AreaBody
+@onready var mouth_shape = $AreaMouth
 @onready var size_label = $SizeLabel
 @onready var size_display_delay = $SizeDisplayDelay
 @onready var feeding_timer = $EnemyFeedTime
@@ -61,16 +62,20 @@ func _physics_process(_delta):
 func facing_follow():
 	if spawn_side == 0:
 		position = Vector2(0, random_height_value)
-		physical_node.rotation = deg_to_rad(270)
+		area_shape.rotation = deg_to_rad(90)
+		mouth_shape.rotation = deg_to_rad(90)
 	elif spawn_side == 1:
 		position = Vector2(3848, random_height_value)
-		physical_node.rotation = deg_to_rad(90)
+		area_shape.rotation = deg_to_rad(270)
+		mouth_shape.rotation = deg_to_rad(270)
 	elif spawn_side == 2:
 		position = Vector2(random_width_value, 0)
-		physical_node.rotation = deg_to_rad(0)
+		area_shape.rotation = deg_to_rad(180)
+		mouth_shape.rotation = deg_to_rad(180)
 	elif spawn_side == 3:
 		position = Vector2(random_width_value, 3832)
-		physical_node.rotation = deg_to_rad(180)
+		area_shape.rotation = deg_to_rad(0)
+		mouth_shape.rotation = deg_to_rad(0)
 
 
 func resume_facing_default():
