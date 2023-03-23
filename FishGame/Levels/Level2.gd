@@ -39,7 +39,8 @@ func _ready():
 		score_string = score_format % [score]
 		score_label.text = score_string
 		fps_label.visible = GlobalVariables.fps_visibility
-
+	else:
+		Input.mouse_mode = 3
 
 
 func _process(delta):

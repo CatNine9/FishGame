@@ -38,14 +38,16 @@ func toggle_pause():
 		get_parent().get_parent().get_tree().paused = true
 		visible = true
 		GlobalVariables.is_paused = true
-		print("Is it paused? ", get_parent().get_tree().paused)
-		print("What is this? ", get_parent().get_parent().get_tree())
-		Input.mouse_mode = 0
 	else:
 		get_parent().get_parent().get_tree().paused = false
 		visible = false
 		GlobalVariables.is_paused = false
-		print("Is it paused? ", get_parent().get_tree().paused)
+
+
+
+
+func _on_visibility_changed():
+	if visible == true:
+		Input.mouse_mode = 0
+	else:
 		Input.mouse_mode = 3
-
-

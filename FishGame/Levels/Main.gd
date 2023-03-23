@@ -42,8 +42,6 @@ func _ready():
 		fps_label.visible = GlobalVariables.fps_visibility
 	else:
 		Input.mouse_mode = 3
-		print("Mouse mode: ", Input.mouse_mode)
-#	print("Mouse mode: ", Input.mouse_mode)
 
 
 

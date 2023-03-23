@@ -11,7 +11,6 @@ extends Control
 
 
 
-
 func _on_next_button_button_up():
 	page_1.visible = false
 	page_2.visible = true
@@ -45,3 +44,8 @@ func _on_no_button_button_up():
 func _on_ok_button_button_up():
 	page_3.visible = false
 	page_2.visible = true
+
+
+func _on_visibility_changed():
+	if visible == true:
+		Input.mouse_mode = 0
