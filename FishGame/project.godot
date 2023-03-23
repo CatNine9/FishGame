@@ -23,7 +23,7 @@ Species="*res://Species/Species.gd"
 [display]
 
 window/size/viewport_width=800
-window/size/viewport_height=600
+window/size/viewport_height=800
 window/stretch/mode="canvas_items"
 window/quality/msaa_3d=2
 window/quality/msaa_2d=2

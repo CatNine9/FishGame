@@ -2,13 +2,14 @@ extends CharacterBody2D
 
 
 
-@onready var sprite = $AreaBody/CollisionBody/EnemySprite
-@onready var collision_shape = $AreaBody/CollisionBody
+@onready var sprite = $Node2D/AreaBody/CollisionBody/EnemySprite
+@onready var collision_shape = $Node2D/AreaBody/CollisionBody
 @onready var physical_body = $PhysicalBody
-@onready var area_shape = $AreaBody
+@onready var physical_node = $Node2D
+@onready var area_shape = $Node2D/AreaBody
 @onready var size_label = $SizeLabel
 @onready var size_display_delay = $SizeDisplayDelay
-@onready var animations = $AreaBody/CollisionBody/EnemySprite/AnimationPlayer
+@onready var animations = $Node2D/AreaBody/CollisionBody/EnemySprite/AnimationPlayer
 @onready var feeding_timer = $EnemyFeedTime
 
 
@@ -58,30 +59,46 @@ func _physics_process(delta):
 
 
 
+#func facing_follow():
+#	if spawn_side == 0:
+#		position = Vector2(0, random_height_value)
+#		animations.play("idle_right")
+#	elif spawn_side == 1:
+#		position = Vector2(3848, random_height_value)
+#		animations.play("idle_left")
+#	elif spawn_side == 2:
+#		position = Vector2(random_width_value, 0)
+#		animations.play("idle_down")
+#	elif spawn_side == 3:
+#		position = Vector2(random_width_value, 3832)
+#		animations.play("idle_up")
+
+
+
 func facing_follow():
 	if spawn_side == 0:
 		position = Vector2(0, random_height_value)
-		animations.play("idle_right")
+		physical_node.rotation = deg_to_rad(270)
 	elif spawn_side == 1:
 		position = Vector2(3848, random_height_value)
-		animations.play("idle_left")
+		physical_node.rotation = deg_to_rad(90)
 	elif spawn_side == 2:
 		position = Vector2(random_width_value, 0)
-		animations.play("idle_down")
+		physical_node.rotation = deg_to_rad(0)
 	elif spawn_side == 3:
 		position = Vector2(random_width_value, 3832)
-		animations.play("idle_up")
+		physical_node.rotation = deg_to_rad(180)
 
 
 func resume_facing_default():
 	if spawn_side == 0:
-		animations.play("idle_right")
+		physical_node.rotation = deg_to_rad(90)
 	elif spawn_side == 1:
-		animations.play("idle_left")
+		physical_node.rotation = deg_to_rad(270)
 	elif spawn_side == 2:
-		animations.play("idle_up")
+		physical_node.rotation = deg_to_rad(0)
 	elif spawn_side == 3:
-		animations.play("idle_down")
+		physical_node.rotation = deg_to_rad(180)
 
 
 

@@ -49,18 +49,18 @@ editor_draw_drag_margin = true
 
 [node name="ScoreLabel" type="Label" parent="Player/Camera2D"]
 z_index = 1
-offset_left = -379.0
-offset_top = -280.0
-offset_right = -336.0
-offset_bottom = -254.0
+offset_left = -350.0
+offset_top = -350.0
+offset_right = -307.0
+offset_bottom = -324.0
 text = "Score"
 
 [node name="FPSLabel" type="Label" parent="Player/Camera2D"]
 z_index = 1
-offset_left = -379.0
-offset_top = 280.0
-offset_right = -339.0
-offset_bottom = 306.0
+offset_left = -350.0
+offset_top = 350.0
+offset_right = -310.0
+offset_bottom = 376.0
 text = "FPS"
 
 [node name="DeathControl" type="Control" parent="Player/Camera2D"]

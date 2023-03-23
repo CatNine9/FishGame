@@ -279,7 +279,7 @@ collision_mask = 6
 
 [node name="CollisionBody" type="CollisionPolygon2D" parent="Node2D/AreaBody"]
 rotation = 3.14159
-polygon = PackedVector2Array(9, -19, 16, -8, 17, 3, 16, 18, 0, 21, -18, 18, -19, 2, -18, -8, -10, -19)
+polygon = PackedVector2Array(7.00004, -15, 16, -8, 17, 3, 16, 18, 0, 21, -18, 18, -19, 2, -18, -8, -8.99996, -15)
 
 [node name="PlayerSprite" type="Sprite2D" parent="Node2D/AreaBody/CollisionBody"]
 scale = Vector2(0.1, 0.1)
@@ -289,6 +289,11 @@ texture = ExtResource("2_mb3ac")
 libraries = {
 "": SubResource("AnimationLibrary_socaw")
 }
+
+[node name="AreaMouth" type="Area2D" parent="Node2D"]
+
+[node name="CollisionMouth" type="CollisionPolygon2D" parent="Node2D/AreaMouth"]
+polygon = PackedVector2Array(-10, 20, 11, 20, 8, 15, -7, 15)
 
 [node name="SizeLabel" type="Label" parent="."]
 visible = false

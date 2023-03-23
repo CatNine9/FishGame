@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var collision_shape = $Node2D/AreaBody/CollisionBody
 @onready var physical_body = $PhysicalBody
 @onready var area_shape = $Node2D/AreaBody
+@onready var mouth_shape = $Node2D/AreaMouth
 @onready var sprite = $Node2D/AreaBody/CollisionBody/PlayerSprite
 @onready var animation = $Node2D/AreaBody/CollisionBody/PlayerSprite/AnimationPlayer
 
@@ -86,7 +87,6 @@ func follow_facing():
 	var rotate_correct1 = deg_to_rad(270)
 	var rotate_correct2 = deg_to_rad(90)
 	area_shape.rotation = rotate_correct1
-	physical_body.rotation = rotate_correct2
 
 
 func _on_area_body_area_entered(area):

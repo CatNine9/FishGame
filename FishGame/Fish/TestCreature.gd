@@ -2,18 +2,20 @@ extends CharacterBody2D
 
 
 
-@onready var sprite = $AreaBody/CollisionBody/EnemySprite
-@onready var collision_shape = $AreaBody/CollisionBody
+@onready var sprite = $Node2D/AreaBody/CollisionBody/EnemySprite
+@onready var collision_shape = $Node2D/AreaBody/CollisionBody
 @onready var physical_body = $PhysicalBody
-@onready var area_shape = $AreaBody
+@onready var physical_node = $Node2D
+@onready var area_shape = $Node2D/AreaBody
 @onready var size_label = $SizeLabel
 @onready var size_display_delay = $SizeDisplayDelay
-@onready var animations = $AreaBody/CollisionBody/EnemySprite/AnimationPlayer
+@onready var animations = $Node2D/AreaBody/CollisionBody/EnemySprite/AnimationPlayer
 @onready var feeding_timer = $EnemyFeedTime
 
 
 
-@export var MAX_SPEED = 300
+@export var max_speed = 1
+@export var coasting_speed = 300
 
 @export var movement_mode = "Default"
 @export var facing_mode = "Default"
@@ -37,11 +39,8 @@ var is_stopped = false
 
 
 func _ready():
-	if movement_mode == "Default" or movement_mode == "Simple":
-		facing_default()
-	elif movement_mode == "Faster Horizontal":
-		spawn_side %= 2
-		facing_faster_h()
+	if facing_mode == "Follow":
+		facing_follow()
 
 	if GlobalVariables.size_visibility == false:
 		size_label.visible = false
@@ -52,78 +51,66 @@ func _ready():
 
 func _physics_process(delta):
 	if is_stopped == false:
-		if movement_mode == "Default" or movement_mode == "Simple":
-			facing_mode = "Default"
-			movement_default()
-		elif movement_mode == "Faster Horizontal":
-			facing_mode = "Horizontal Only"
-			spawn_side %= 2
-			movement_faster_h()
+		if movement_mode == "Follow":
+			movement_follow()
 
 	if position.x < (left_boundary - 200) or position.x > (right_boundary + 200) or position.y < (up_boundary - 200) or position.y > (down_boundary + 200):
 		queue_free()
 
 
 
-func facing_default():
+#func facing_follow():
+#	if spawn_side == 0:
+#		position = Vector2(0, random_height_value)
+#		animations.play("idle_right")
+#	elif spawn_side == 1:
+#		position = Vector2(3848, random_height_value)
+#		animations.play("idle_left")
+#	elif spawn_side == 2:
+#		position = Vector2(random_width_value, 0)
+#		animations.play("idle_down")
+#	elif spawn_side == 3:
+#		position = Vector2(random_width_value, 3832)
+#		animations.play("idle_up")
+
+
+
+func facing_follow():
 	if spawn_side == 0:
 		position = Vector2(0, random_height_value)
-		animations.play("idle_right")
+		physical_node.rotation = deg_to_rad(90)
 	elif spawn_side == 1:
 		position = Vector2(3848, random_height_value)
-		animations.play("idle_left")
+		physical_node.rotation = deg_to_rad(270)
 	elif spawn_side == 2:
 		position = Vector2(random_width_value, 0)
-		animations.play("idle_up")
+		physical_node.rotation = deg_to_rad(0)
 	elif spawn_side == 3:
 		position = Vector2(random_width_value, 3832)
-		animations.play("idle_down")
+		physical_node.rotation = deg_to_rad(180)
+
 
 func resume_facing_default():
 	if spawn_side == 0:
-		animations.play("idle_right")
+		physical_node.rotation = deg_to_rad(90)
 	elif spawn_side == 1:
-		animations.play("idle_left")
+		physical_node.rotation = deg_to_rad(270)
 	elif spawn_side == 2:
-		animations.play("idle_up")
+		physical_node.rotation = deg_to_rad(0)
 	elif spawn_side == 3:
-		animations.play("idle_down")
+		physical_node.rotation = deg_to_rad(180)
 
 
 
-func facing_faster_h():
+func movement_follow():
 	if spawn_side == 0:
-		position = Vector2(0, random_height_value)
-		animations.play("idle_right")
+		velocity.x = 1 * coasting_speed
 	elif spawn_side == 1:
-		position = Vector2(3848, random_height_value)
-		animations.play("idle_left")
-
-func resume_facing_faster_h():
-	if spawn_side == 0:
-		animations.play("idle_right")
-	elif spawn_side == 1:
-		animations.play("idle_left")
-
-
-func movement_default():
-	if spawn_side == 0:
-		velocity.x = 1 * MAX_SPEED
-	elif spawn_side == 1:
-		velocity.x = -1 * MAX_SPEED
+		velocity.x = -1 * coasting_speed
 	elif spawn_side == 2:
-		velocity.y = 1 * MAX_SPEED
+		velocity.y = 1 * coasting_speed
 	elif spawn_side == 3:
-		velocity.y = -1 * MAX_SPEED
-	else:
-		velocity.x = 0
-	move_and_slide()
-
-func movement_faster_h():
-	if spawn_side == 0:
-		velocity.x = 1 * MAX_SPEED
-	elif spawn_side == 1:
-		velocity.x = -1 * MAX_SPEED
+		velocity.y = -1 * coasting_speed
 	else:
 		velocity.x = 0
 	move_and_slide()
@@ -133,6 +120,7 @@ func movement_faster_h():
 func stop_moving_timer_start(player_position):
 	feeding_timer.start()
 	look_at(player_position)
+	is_stopped = true
 
 
 
@@ -150,7 +138,5 @@ func _on_size_display_delay_timeout():
 
 func _on_enemy_feed_time_timeout():
 	is_stopped = false
-	if movement_mode == "Default" or movement_mode == "Simple":
-		rotation = 0
-	elif movement_mode == "Faster Horizontal":
+	if movement_mode == "Follow":
 		rotation = 0

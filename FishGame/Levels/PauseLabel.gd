@@ -48,6 +48,6 @@ func toggle_pause():
 
 func _on_visibility_changed():
 	if visible == true:
-		Input.mouse_mode = 0
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	else:
-		Input.mouse_mode = 3
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
