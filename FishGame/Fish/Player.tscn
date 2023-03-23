@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://rffmu5nc3g5s"]
+[gd_scene load_steps=14 format=3 uid="uid://rffmu5nc3g5s"]
 
 [ext_resource type="Script" path="res://Fish/Player.gd" id="1_ix3g4"]
 [ext_resource type="Texture2D" uid="uid://cidgxhry7xgi" path="res://Fish/CreatureSprites/SpaceCreature1.png" id="2_mb3ac"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p1yuo"]
 
 [sub_resource type="Animation" id="Animation_ph8r8"]
 length = 0.001
@@ -261,10 +263,11 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 4
+collision_mask = 6
 motion_mode = 1
 script = ExtResource("1_ix3g4")
 
+<<<<<<< Updated upstream
 [node name="PhysicalBody" type="CollisionPolygon2D" parent="."]
 rotation = 3.14159
 polygon = PackedVector2Array(9, -19, 16, -8, 17, 3, 16, 18, 0, 21, -18, 18, -19, 2, -18, -8, -10, -19)
@@ -273,11 +276,17 @@ polygon = PackedVector2Array(9, -19, 16, -8, 17, 3, 16, 18, 0, 21, -18, 18, -19,
 visible = false
 rotation = 1.5708
 polygon = PackedVector2Array(9, -19, 16, -8, 17, 3, 16, 18, 0, 21, -18, 18, -19, 2, -18, -8, -10, -19)
+=======
+[node name="PhysicalBody" type="CollisionShape2D" parent="."]
+rotation = 3.14159
+scale = Vector2(1.64, 1.64)
+shape = SubResource("CircleShape2D_p1yuo")
+>>>>>>> Stashed changes
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="AreaBody" type="Area2D" parent="Node2D"]
-collision_mask = 2
+collision_mask = 6
 
 [node name="CollisionBody" type="CollisionPolygon2D" parent="Node2D/AreaBody"]
 rotation = 3.14159

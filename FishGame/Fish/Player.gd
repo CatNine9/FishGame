@@ -5,7 +5,10 @@ extends CharacterBody2D
 @onready var size_label = $SizeLabel
 @onready var collision_shape = $Node2D/AreaBody/CollisionBody
 @onready var physical_body = $PhysicalBody
+<<<<<<< Updated upstream
 @onready var physical_body_follow = $PhysicalBodyFollow
+=======
+>>>>>>> Stashed changes
 @onready var area_shape = $Node2D/AreaBody
 @onready var sprite = $Node2D/AreaBody/CollisionBody/PlayerSprite
 @onready var animation = $Node2D/AreaBody/CollisionBody/PlayerSprite/AnimationPlayer
@@ -120,7 +123,7 @@ func refresh_species():
 	for each in Species.loaded_collision_shape:
 		new_points.append(each)
 	collision_shape.polygon = new_points
-	physical_body.polygon = new_points
+	physical_body.scale = Vector2(1.64, 1.64)
 	movement_mode = Species.loaded_movement_mode
 	facing_mode = Species.loaded_facing_mode
 	MAX_SPEED = Species.loaded_speed

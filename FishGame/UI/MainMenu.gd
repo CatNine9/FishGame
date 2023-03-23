@@ -5,6 +5,18 @@ extends Control
 @onready var start_button = $CenterContainer/MenuVbox/StartButton
 
 
+func _ready():
+	GlobalVariables.game_on = false
+	GlobalVariables.is_paused = false
+	GlobalVariables.camera_position = Vector2(0, 0)
+	GlobalVariables.enemy_starter_species = ""
+	GlobalVariables.current_level = 0
+	GlobalVariables.player_position = Vector2(400, 300)
+	GlobalVariables.player_score = 0
+	GlobalVariables.player_alive = true
+	GlobalVariables.player_name = null
+	GlobalVariables.player_species = ""
+
 
 func _on_start_button_button_up():
 	var species_select = load("res://UI/SpeciesSelectMenu.tscn")
@@ -26,6 +38,7 @@ func _on_quit_button_button_up():
 	get_tree().quit()
 
 
+<<<<<<< Updated upstream
 
 func _ready():
 	GlobalVariables.game_on = false
@@ -38,3 +51,5 @@ func _ready():
 	GlobalVariables.player_alive = true
 	GlobalVariables.player_name = null
 	GlobalVariables.player_species = ""
+=======
+>>>>>>> Stashed changes

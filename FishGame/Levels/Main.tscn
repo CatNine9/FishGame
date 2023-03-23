@@ -389,6 +389,8 @@ shape = SubResource("RectangleShape2D_qmgg6")
 
 [node name="Species2" parent="SpeciesList" instance=ExtResource("7_k28jr")]
 
+[node name="SubViewport" type="SubViewport" parent="."]
+
 [connection signal="timeout" from="EnemySpawnDelay" to="." method="_on_enemy_spawn_delay_timeout"]
 [connection signal="button_up" from="Player/Camera2D/DeathControl/CenterContainer/ColorRect/VBoxContainer/NextButton" to="Player/Camera2D/DeathControl" method="_on_next_button_button_up"]
 [connection signal="text_submitted" from="Player/Camera2D/DeathControl/CenterContainer/ColorRect2/VBoxContainer/NameInputLineEdit" to="Player/Camera2D/DeathControl" method="_on_name_input_line_edit_text_submitted"]
