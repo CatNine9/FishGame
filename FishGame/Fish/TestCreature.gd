@@ -9,7 +9,6 @@ extends CharacterBody2D
 @onready var area_shape = $Node2D/AreaBody
 @onready var size_label = $SizeLabel
 @onready var size_display_delay = $SizeDisplayDelay
-@onready var animations = $Node2D/AreaBody/CollisionBody/EnemySprite/AnimationPlayer
 @onready var feeding_timer = $EnemyFeedTime
 
 
@@ -78,10 +77,10 @@ func _physics_process(delta):
 func facing_follow():
 	if spawn_side == 0:
 		position = Vector2(0, random_height_value)
-		physical_node.rotation = deg_to_rad(90)
+		physical_node.rotation = deg_to_rad(270)
 	elif spawn_side == 1:
 		position = Vector2(3848, random_height_value)
-		physical_node.rotation = deg_to_rad(270)
+		physical_node.rotation = deg_to_rad(90)
 	elif spawn_side == 2:
 		position = Vector2(random_width_value, 0)
 		physical_node.rotation = deg_to_rad(0)

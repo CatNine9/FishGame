@@ -8,7 +8,6 @@ extends CharacterBody2D
 @onready var area_shape = $Node2D/AreaBody
 @onready var mouth_shape = $Node2D/AreaMouth
 @onready var sprite = $Node2D/AreaBody/CollisionBody/PlayerSprite
-@onready var animation = $Node2D/AreaBody/CollisionBody/PlayerSprite/AnimationPlayer
 
 @export var MAX_SPEED = 300
 @export var FRICTION = 1000
@@ -46,11 +45,6 @@ func _ready():
 	else:
 		size_label.visible = true
 	refresh_species()
-
-	if facing_mode == "Follow":
-		return
-	else:
-		animation.play("idle_up")
 
 
 
@@ -97,7 +91,7 @@ func _on_area_body_area_entered(area):
 		collision_shape.set_deferred("disabled", true)
 		GlobalVariables.player_alive = false
 		get_parent().death_window.visible = true
-		var enemy_root_node = area.get_parent()
+		var enemy_root_node = area.get_parent().get_parent()
 		get_parent().enemy_player_killed_by(enemy_root_node)
 	elif collision_shape.scale.x > enemy.scale.x:
 		collision_shape.scale += Vector2(0.1, 0.1)

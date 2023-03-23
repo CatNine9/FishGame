@@ -9,7 +9,6 @@ extends CharacterBody2D
 @onready var area_shape = $Node2D/AreaBody
 @onready var size_label = $SizeLabel
 @onready var size_display_delay = $SizeDisplayDelay
-@onready var animations = $Node2D/AreaBody/CollisionBody/EnemySprite/AnimationPlayer
 @onready var feeding_timer = $EnemyFeedTime
 
 
