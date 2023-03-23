@@ -5,10 +5,6 @@ extends CharacterBody2D
 @onready var size_label = $SizeLabel
 @onready var collision_shape = $Node2D/AreaBody/CollisionBody
 @onready var physical_body = $PhysicalBody
-<<<<<<< Updated upstream
-@onready var physical_body_follow = $PhysicalBodyFollow
-=======
->>>>>>> Stashed changes
 @onready var area_shape = $Node2D/AreaBody
 @onready var sprite = $Node2D/AreaBody/CollisionBody/PlayerSprite
 @onready var animation = $Node2D/AreaBody/CollisionBody/PlayerSprite/AnimationPlayer
@@ -23,8 +19,6 @@ extends CharacterBody2D
 var axis = Vector2.ZERO
 
 var is_rotated_90 = false
-
-var wall_collider = null
 
 
 
@@ -53,9 +47,7 @@ func _ready():
 	refresh_species()
 
 	if facing_mode == "Follow":
-		physical_body.visible = false
-		physical_body_follow.visible = true
-		wall_collider = physical_body_follow
+		return
 	else:
 		animation.play("idle_up")
 
@@ -91,11 +83,10 @@ func experimental_move(speed):
 
 func follow_facing():
 	physical_node.look_at(get_global_mouse_position())
-	wall_collider.look_at(get_global_mouse_position())
 	var rotate_correct1 = deg_to_rad(270)
 	var rotate_correct2 = deg_to_rad(90)
 	area_shape.rotation = rotate_correct1
-	wall_collider.rotation = rotate_correct2
+	physical_body.rotation = rotate_correct2
 
 
 func _on_area_body_area_entered(area):

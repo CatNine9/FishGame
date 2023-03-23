@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://d2ht1wmryl1j1"]
+[gd_scene load_steps=14 format=3 uid="uid://d2ht1wmryl1j1"]
 
 [ext_resource type="Script" path="res://Fish/TestCreature.gd" id="1_b23wn"]
 [ext_resource type="Texture2D" uid="uid://c5vrsukr7yg4o" path="res://Fish/CreatureSprites/SpaceCreature4.png" id="2_fj5e2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f1sgr"]
 
 [sub_resource type="Animation" id="Animation_ph8r8"]
 length = 0.001
@@ -264,9 +266,9 @@ _data = {
 motion_mode = 1
 script = ExtResource("1_b23wn")
 
-[node name="PhysicalBody" type="CollisionPolygon2D" parent="."]
-visible = false
+[node name="PhysicalBody" type="CollisionShape2D" parent="."]
 rotation = 3.14159
+shape = SubResource("CircleShape2D_f1sgr")
 disabled = true
 
 [node name="AreaBody" type="Area2D" parent="."]

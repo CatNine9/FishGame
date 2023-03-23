@@ -267,21 +267,10 @@ collision_mask = 6
 motion_mode = 1
 script = ExtResource("1_ix3g4")
 
-<<<<<<< Updated upstream
-[node name="PhysicalBody" type="CollisionPolygon2D" parent="."]
-rotation = 3.14159
-polygon = PackedVector2Array(9, -19, 16, -8, 17, 3, 16, 18, 0, 21, -18, 18, -19, 2, -18, -8, -10, -19)
-
-[node name="PhysicalBodyFollow" type="CollisionPolygon2D" parent="."]
-visible = false
-rotation = 1.5708
-polygon = PackedVector2Array(9, -19, 16, -8, 17, 3, 16, 18, 0, 21, -18, 18, -19, 2, -18, -8, -10, -19)
-=======
 [node name="PhysicalBody" type="CollisionShape2D" parent="."]
 rotation = 3.14159
 scale = Vector2(1.64, 1.64)
 shape = SubResource("CircleShape2D_p1yuo")
->>>>>>> Stashed changes
 
 [node name="Node2D" type="Node2D" parent="."]
 

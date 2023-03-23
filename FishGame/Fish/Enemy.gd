@@ -72,10 +72,11 @@ func facing_follow():
 		print("Spawned right!")
 	elif spawn_side == 2:
 		position = Vector2(random_width_value, 0)
-		animations.play("idle_up")
+		animations.play("idle_down")
 	elif spawn_side == 3:
 		position = Vector2(random_width_value, 3832)
-		animations.play("idle_down")
+		animations.play("idle_up")
+
 
 func resume_facing_default():
 	if spawn_side == 0:

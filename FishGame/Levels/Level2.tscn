@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://hqpjicrk442v"]
+[gd_scene load_steps=11 format=3 uid="uid://hqpjicrk442v"]
 
 [ext_resource type="Script" path="res://Levels/Level2.gd" id="1_6itk8"]
 [ext_resource type="Texture2D" uid="uid://6j0gow7h5nwo" path="res://Levels/Backgrounds/Nebula Jungle.png" id="2_slk1l"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Levels/DeathControl.gd" id="4_q6myr"]
 [ext_resource type="Script" path="res://Levels/PauseLabel.gd" id="5_kakv3"]
 [ext_resource type="Texture2D" uid="uid://banf3gf3wjuhm" path="res://Levels/Backgrounds/Glittery Nebula border.png" id="6_b7xvk"]
+[ext_resource type="Script" path="res://UI/WinControl.gd" id="6_v8hr8"]
 [ext_resource type="PackedScene" uid="uid://cnnqhnu3rtnuc" path="res://Species/species_1.tscn" id="7_7gspo"]
 [ext_resource type="PackedScene" uid="uid://dxmtgt7dljdxp" path="res://Species/species_2.tscn" id="8_85crw"]
 
@@ -242,6 +243,50 @@ text = "EXIT TO MENU"
 layout_mode = 2
 text = "QUIT"
 
+[node name="WinControl" type="Control" parent="Player/Camera2D"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_v8hr8")
+
+[node name="CenterContainer" type="CenterContainer" parent="Player/Camera2D/WinControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Player/Camera2D/WinControl/CenterContainer"]
+custom_minimum_size = Vector2(175, 100)
+layout_mode = 2
+color = Color(0.27451, 0.682353, 0, 0.486275)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Player/Camera2D/WinControl/CenterContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MessageLabel" type="Label" parent="Player/Camera2D/WinControl/CenterContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "YOU'RE EVOLVING..."
+horizontal_alignment = 1
+
+[node name="ChooseButton" type="Button" parent="Player/Camera2D/WinControl/CenterContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Choose Evolution"
+
 [node name="UpBorderRect" type="TextureRect" parent="."]
 offset_right = 3848.0
 offset_bottom = 288.0
@@ -354,3 +399,4 @@ shape = SubResource("RectangleShape2D_qmgg6")
 [connection signal="button_up" from="Player/Camera2D/PauseControl/CenterContainer/ColorRect/PauseVbox/SettingsButton" to="Player/Camera2D/PauseControl" method="_on_settings_button_button_up"]
 [connection signal="button_up" from="Player/Camera2D/PauseControl/CenterContainer/ColorRect/PauseVbox/ExitButton" to="Player/Camera2D/PauseControl" method="_on_exit_button_button_up"]
 [connection signal="button_up" from="Player/Camera2D/PauseControl/CenterContainer/ColorRect/PauseVbox/QuitButton" to="Player/Camera2D/PauseControl" method="_on_quit_button_button_up"]
+[connection signal="button_up" from="Player/Camera2D/WinControl/CenterContainer/ColorRect/VBoxContainer/ChooseButton" to="Player/Camera2D/WinControl" method="_on_choose_button_button_up"]
