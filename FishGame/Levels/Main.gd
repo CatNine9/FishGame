@@ -45,7 +45,7 @@ func _ready():
 
 
 
-func _process(delta):
+func _process(_delta):
 	var fps = Engine.get_frames_per_second()
 	var fps_format = "FPS: %d"
 	var fps_string = fps_format % [fps]

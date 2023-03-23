@@ -64,14 +64,14 @@ func _physics_process(delta):
 
 
 
-func follow_move(speed, delta):
+func follow_move(speed, _delta):
 	var mouse_position = get_local_mouse_position()
 	velocity = mouse_position * speed
 	move_and_slide()
 
 
 
-func experimental_move(speed):
+func experimental_move(_speed):
 	print(get_global_mouse_position())
 
 
@@ -79,7 +79,6 @@ func experimental_move(speed):
 func follow_facing():
 	physical_node.look_at(get_global_mouse_position())
 	var rotate_correct1 = deg_to_rad(270)
-	var rotate_correct2 = deg_to_rad(90)
 	area_shape.rotation = rotate_correct1
 
 

@@ -48,29 +48,13 @@ func _ready():
 
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_stopped == false:
 		if movement_mode == "Follow":
 			movement_follow()
 
 	if position.x < (left_boundary - 200) or position.x > (right_boundary + 200) or position.y < (up_boundary - 200) or position.y > (down_boundary + 200):
 		queue_free()
-
-
-
-#func facing_follow():
-#	if spawn_side == 0:
-#		position = Vector2(0, random_height_value)
-#		animations.play("idle_right")
-#	elif spawn_side == 1:
-#		position = Vector2(3848, random_height_value)
-#		animations.play("idle_left")
-#	elif spawn_side == 2:
-#		position = Vector2(random_width_value, 0)
-#		animations.play("idle_down")
-#	elif spawn_side == 3:
-#		position = Vector2(random_width_value, 3832)
-#		animations.play("idle_up")
 
 
 
