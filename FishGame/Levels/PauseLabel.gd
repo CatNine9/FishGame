@@ -35,16 +35,17 @@ func _on_quit_button_button_up():
 
 func toggle_pause():
 	if get_parent().get_parent().get_tree().paused == false:
-		get_parent().get_tree().paused = true
+		get_parent().get_parent().get_tree().paused = true
 		visible = true
 		GlobalVariables.is_paused = true
+		print("Is it paused? ", get_parent().get_tree().paused)
+		print("What is this? ", get_parent().get_parent().get_tree())
+		Input.mouse_mode = 0
 	else:
-		get_parent().get_tree().paused = false
+		get_parent().get_parent().get_tree().paused = false
 		visible = false
 		GlobalVariables.is_paused = false
-
-
-
-
+		print("Is it paused? ", get_parent().get_tree().paused)
+		Input.mouse_mode = 3
 
 

@@ -40,6 +40,10 @@ func _ready():
 		score_string = score_format % [score]
 		score_label.text = score_string
 		fps_label.visible = GlobalVariables.fps_visibility
+	else:
+		Input.mouse_mode = 3
+		print("Mouse mode: ", Input.mouse_mode)
+#	print("Mouse mode: ", Input.mouse_mode)
 
 
 
@@ -53,6 +57,7 @@ func _process(delta):
 		get_tree().paused = true
 	if Input.is_action_just_released("points_cheat"):
 		increment_score()
+
 
 
 func _on_enemy_spawn_delay_timeout():
@@ -84,7 +89,6 @@ func spawn_enemy():
 		enemy_spawn.species = "Long"
 	elif GlobalVariables.player_species == "Long":
 		Species.find_species("Round")
-		print("Player species: ", GlobalVariables.player_species)
 		if random_side_value == 0 or random_side_value == 1:
 			enemy_spawn.position.x = random_width_value
 		elif random_side_value == 2 or random_side_value == 3:
@@ -116,7 +120,5 @@ func player_finished_loading():
 
 
 func enemy_player_killed_by(enemy_predator):
-	print("Enemy that killed the player: ", enemy_predator)
 	enemy_predator.is_stopped = true
 	enemy_predator.stop_moving_timer_start(player.position)
-	print("Enemy collision body: ", enemy_predator.get_child(1, true).get_child(0, true))

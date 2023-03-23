@@ -100,8 +100,8 @@ func _on_area_body_area_entered(area):
 		var enemy_root_node = area.get_parent()
 		get_parent().enemy_player_killed_by(enemy_root_node)
 	elif collision_shape.scale.x > enemy.scale.x:
-		collision_shape.scale.x += 0.1
-		collision_shape.scale.y += 0.1
+		collision_shape.scale += Vector2(0.1, 0.1)
+		physical_body.scale += Vector2(0.1, 0.1)
 		size_label.text = str(snapped(collision_shape.scale.x, 0.01))
 		get_parent().increment_score()
 

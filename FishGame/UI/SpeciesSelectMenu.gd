@@ -20,7 +20,6 @@ var game_start = null
 
 
 func _ready():
-	print("Player alive: ", GlobalVariables.player_alive)
 	if GlobalVariables.player_species == "":
 		Species.find_species("Round")
 		load_Selection_1()

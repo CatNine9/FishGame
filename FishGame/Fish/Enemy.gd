@@ -38,7 +38,6 @@ var is_stopped = false
 
 
 func _ready():
-	print("Facing mode: ", facing_mode)
 	if facing_mode == "Follow":
 		facing_follow()
 
@@ -46,8 +45,6 @@ func _ready():
 		size_label.visible = false
 	else:
 		size_label.visible = true
-
-	#print(spawn_side, position)
 
 
 
@@ -65,11 +62,9 @@ func facing_follow():
 	if spawn_side == 0:
 		position = Vector2(0, random_height_value)
 		animations.play("idle_right")
-		print("Spawned left!")
 	elif spawn_side == 1:
 		position = Vector2(3848, random_height_value)
 		animations.play("idle_left")
-		print("Spawned right!")
 	elif spawn_side == 2:
 		position = Vector2(random_width_value, 0)
 		animations.play("idle_down")
