@@ -9,9 +9,9 @@ extends CharacterBody2D
 @onready var mouth_shape = $Node2D/AreaMouth/CollisionMouth
 @onready var sprite = $Node2D/AreaBody/CollisionBody/PlayerSprite
 
-@export var MAX_SPEED = 300
-@export var FRICTION = 1000
-@export var ACCELERATION = 1000
+@export var speed = 1
+@export var friction = 1000
+@export var acceleration = 1000
 
 @export var movement_mode = "Default"
 @export var facing_mode = "Default"
@@ -53,9 +53,9 @@ func _physics_process(delta):
 	if GlobalVariables.player_alive == true:
 		# Movement:
 		if movement_mode == "Follow":
-			follow_move(MAX_SPEED, delta)
+			follow_move(speed, delta)
 		elif movement_mode == "Experimental":
-			experimental_move(MAX_SPEED)
+			experimental_move(speed)
 		# Facing:
 		if facing_mode == "Follow":
 			follow_facing()
@@ -103,6 +103,7 @@ func _on_area_mouth_area_entered(area):
 	if collision_shape.scale.x > enemy.scale.x:
 		collision_shape.scale += Vector2(0.1, 0.1)
 		physical_body.scale += Vector2(0.1, 0.1)
+		mouth_shape.scale += Vector2(0.1, 0.1)
 		size_label.text = str(snapped(collision_shape.scale.x, 0.01))
 		get_parent().increment_score()
 
@@ -123,7 +124,8 @@ func refresh_species():
 	physical_body.scale = Vector2(1.64, 1.64)
 	movement_mode = Species.loaded_movement_mode
 	facing_mode = Species.loaded_facing_mode
-	MAX_SPEED = Species.loaded_speed
+	speed = Species.loaded_speed
+	
 	
 
 

@@ -42,6 +42,7 @@ func _ready():
 		fps_label.visible = GlobalVariables.fps_visibility
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+		GlobalVariables.player_score = 0
 
 
 
@@ -103,6 +104,7 @@ func spawn_enemy():
 	enemy_spawn.physical_body.scale = Vector2(random_size_value, random_size_value)
 	enemy_spawn.sprite.texture = Species.loaded_species_sprite
 	enemy_spawn.max_speed = Species.loaded_speed
+	enemy_spawn.coasting_speed = Species.loaded_coasting_speed
 
 
 

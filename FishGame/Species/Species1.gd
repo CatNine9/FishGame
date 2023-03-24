@@ -12,7 +12,8 @@ extends Node
 @export var movement_mode = "Follow"
 @export var facing_mode = "Follow"
 
-@export var speed = 0.5
+@export var speed = 0.3
+@export var coasting_speed = 200
 @export var health_cap = 5
 @export var food_cap = 5
 @export var energy_cap = 5

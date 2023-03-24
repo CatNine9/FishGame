@@ -11,8 +11,9 @@ var loaded_species_description = ""
 
 var loaded_movement_mode = ""
 var loaded_facing_mode = ""
-var loaded_speed = 0
 
+var loaded_speed = 0
+var loaded_coasting_speed = 0
 
 
 var species_1 = null
@@ -62,3 +63,4 @@ func load_species(species_node):
 	loaded_movement_mode = species_node.movement_mode
 	loaded_facing_mode = species_node.facing_mode
 	loaded_speed = species_node.speed
+	loaded_coasting_speed = species_node.coasting_speed
