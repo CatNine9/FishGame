@@ -103,7 +103,7 @@ func spawn_enemy():
 	enemy_spawn.mouth_shape.polygon = Species.loaded_mouth_shape
 	enemy_spawn.physical_body.scale = Vector2(random_size_value, random_size_value)
 	enemy_spawn.sprite.texture = Species.loaded_species_sprite
-	enemy_spawn.max_speed = Species.loaded_speed
+	enemy_spawn.speed = Species.loaded_speed
 	enemy_spawn.coasting_speed = Species.loaded_coasting_speed
 
 

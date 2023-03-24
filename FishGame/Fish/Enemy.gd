@@ -15,7 +15,7 @@ extends CharacterBody2D
 
 
 
-@export var max_speed = 1
+@export var speed = 1
 @export var coasting_speed = 300
 
 @export var movement_mode = "Default"
@@ -36,13 +36,14 @@ var sprite_flipped = false
 var species = ""
 
 var is_stopped = false
-var is_following_player = false
+
+var sighted_player = null
 
 
 
 func _ready():
 	if facing_mode == "Follow":
-		facing_follow()
+		facing_follow_start()
 
 	if GlobalVariables.size_visibility == false:
 		size_label.visible = false
@@ -55,13 +56,15 @@ func _physics_process(_delta):
 	if is_stopped == false:
 		if movement_mode == "Follow":
 			movement_follow()
+		if facing_mode == "Follow":
+			facing_follow()
 
 	if position.x < (left_boundary - 200) or position.x > (right_boundary + 200) or position.y < (up_boundary - 200) or position.y > (down_boundary + 200):
 		queue_free()
 
 
 
-func facing_follow():
+func facing_follow_start():
 	if spawn_side == 0:
 		position = Vector2(0, random_height_value)
 		area_shape.rotation = deg_to_rad(90)
@@ -84,36 +87,61 @@ func facing_follow():
 		vision_shape.rotation = deg_to_rad(0)
 
 
-func resume_facing_default():
+
+func facing_follow():
+	if sighted_player != null:
+		physical_node.look_at(sighted_player.position)
+	else:
+		physical_node.rotation = 0
+
+
+
+func resume_facing_follow():
 	if spawn_side == 0:
-		physical_node.rotation = deg_to_rad(90)
+		area_shape.rotation = deg_to_rad(90)
+		mouth_shape.rotation = deg_to_rad(90)
+		vision_shape.rotation = deg_to_rad(90)
 	elif spawn_side == 1:
-		physical_node.rotation = deg_to_rad(270)
+		area_shape.rotation = deg_to_rad(270)
+		mouth_shape.rotation = deg_to_rad(270)
+		vision_shape.rotation = deg_to_rad(270)
 	elif spawn_side == 2:
-		physical_node.rotation = deg_to_rad(0)
+		area_shape.rotation = deg_to_rad(180)
+		mouth_shape.rotation = deg_to_rad(180)
+		vision_shape.rotation = deg_to_rad(180)
 	elif spawn_side == 3:
-		physical_node.rotation = deg_to_rad(180)
+		area_shape.rotation = deg_to_rad(0)
+		mouth_shape.rotation = deg_to_rad(0)
+		vision_shape.rotation = deg_to_rad(0)
 
 
 
 func movement_follow():
-	if spawn_side == 0:
-		velocity.x = 1 * coasting_speed
-	elif spawn_side == 1:
-		velocity.x = -1 * coasting_speed
-	elif spawn_side == 2:
-		velocity.y = 1 * coasting_speed
-	elif spawn_side == 3:
-		velocity.y = -1 * coasting_speed
+	if sighted_player == null:
+		if spawn_side == 0:
+			velocity.x = 1 * coasting_speed
+			velocity.y = 0
+		elif spawn_side == 1:
+			velocity.x = -1 * coasting_speed
+			velocity.y = 0
+		elif spawn_side == 2:
+			velocity.y = 1 * coasting_speed
+			velocity.x = 0
+		elif spawn_side == 3:
+			velocity.y = -1 * coasting_speed
+			velocity.x = 0
+		else:
+			velocity.x = 0
+		move_and_slide()
 	else:
-		velocity.x = 0
-	move_and_slide()
+		velocity = -sighted_player.position * speed
+
 
 
 
 func stop_moving_timer_start(player_position):
 	feeding_timer.start()
-	look_at(player_position)
+	physical_node.look_at(player_position)
 	is_stopped = true
 
 
@@ -132,15 +160,17 @@ func _on_size_display_delay_timeout():
 
 func _on_enemy_feed_time_timeout():
 	is_stopped = false
-	if movement_mode == "Follow":
-		rotation = 0
+#	if movement_mode == "Follow":
+#		rotation = 0
+	resume_facing_follow()
 
 
 
 func _on_area_vision_body_entered(body):
-	print("Player: ", body)
-	is_following_player = true
+	sighted_player = body
+	print("Player sighted")
 
 func _on_area_vision_body_exited(body):
-	is_following_player = false
-	print("Player out of sight.")
+	sighted_player = null
+	resume_facing_follow()
+	print("Lost sight of player.")
