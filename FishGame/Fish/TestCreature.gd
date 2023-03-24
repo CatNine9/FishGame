@@ -7,6 +7,8 @@ extends CharacterBody2D
 @onready var physical_body = $PhysicalBody
 @onready var physical_node = $Node2D
 @onready var area_shape = $Node2D/AreaBody
+@onready var mouth_shape = $Node2D/AreaMouth/CollisionMouth
+@onready var vision_shape = $Node2D/AreaVision/CollisionVision
 @onready var size_label = $SizeLabel
 @onready var size_display_delay = $SizeDisplayDelay
 @onready var feeding_timer = $EnemyFeedTime
@@ -139,3 +141,11 @@ func _on_enemy_feed_time_timeout():
 	is_stopped = false
 	if movement_mode == "Follow":
 		rotation = 0
+
+
+func _on_area_vision_area_entered(area):
+	pass
+
+
+func _on_area_vision_area_exited(area):
+	pass # Replace with function body.

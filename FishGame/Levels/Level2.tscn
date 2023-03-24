@@ -352,7 +352,7 @@ offset_right = 4150.0
 color = Color(0, 0, 0, 1)
 
 [node name="TopWall" type="StaticBody2D" parent="."]
-collision_layer = 4
+collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
 position = Vector2(1950, 0)
@@ -360,7 +360,7 @@ shape = SubResource("RectangleShape2D_qmgg6")
 
 [node name="LowerWall" type="StaticBody2D" parent="."]
 position = Vector2(0, 3850)
-collision_layer = 4
+collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LowerWall"]
 position = Vector2(1950, 0)
@@ -368,7 +368,7 @@ shape = SubResource("RectangleShape2D_qmgg6")
 
 [node name="LeftWall" type="StaticBody2D" parent="."]
 rotation = 1.5708
-collision_layer = 4
+collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
 position = Vector2(1950, 0)
@@ -377,7 +377,7 @@ shape = SubResource("RectangleShape2D_qmgg6")
 [node name="RightWall" type="StaticBody2D" parent="."]
 position = Vector2(3850, 0)
 rotation = 1.5708
-collision_layer = 4
+collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
 position = Vector2(1950, 0)

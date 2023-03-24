@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var physical_node = $Node2D
 @onready var area_shape = $Node2D/AreaBody
 @onready var mouth_shape = $Node2D/AreaMouth/CollisionMouth
+@onready var vision_shape = $Node2D/AreaVision/CollisionVision
 @onready var size_label = $SizeLabel
 @onready var size_display_delay = $SizeDisplayDelay
 @onready var feeding_timer = $EnemyFeedTime
@@ -64,18 +65,22 @@ func facing_follow():
 		position = Vector2(0, random_height_value)
 		area_shape.rotation = deg_to_rad(90)
 		mouth_shape.rotation = deg_to_rad(90)
+		vision_shape.rotation = deg_to_rad(90)
 	elif spawn_side == 1:
 		position = Vector2(3848, random_height_value)
 		area_shape.rotation = deg_to_rad(270)
 		mouth_shape.rotation = deg_to_rad(270)
+		vision_shape.rotation = deg_to_rad(270)
 	elif spawn_side == 2:
 		position = Vector2(random_width_value, 0)
 		area_shape.rotation = deg_to_rad(180)
 		mouth_shape.rotation = deg_to_rad(180)
+		vision_shape.rotation = deg_to_rad(180)
 	elif spawn_side == 3:
 		position = Vector2(random_width_value, 3832)
 		area_shape.rotation = deg_to_rad(0)
 		mouth_shape.rotation = deg_to_rad(0)
+		vision_shape.rotation = deg_to_rad(0)
 
 
 func resume_facing_default():
@@ -128,3 +133,15 @@ func _on_enemy_feed_time_timeout():
 	is_stopped = false
 	if movement_mode == "Follow":
 		rotation = 0
+
+
+func _on_area_vision_area_entered(area):
+	print("Area: ", area)
+	#var player = get_parent().get_parent().area
+	#print("Player seen: ", player)
+
+
+func _on_area_vision_area_exited(area):
+	pass
+	#var player = get_parent().get_parent().area
+	#print("Player out of sight.")
