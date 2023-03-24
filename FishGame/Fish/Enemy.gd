@@ -52,10 +52,10 @@ func _ready():
 
 
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if is_stopped == false:
 		if movement_mode == "Follow":
-			movement_follow()
+			movement_follow(delta)
 		if facing_mode == "Follow":
 			facing_follow()
 
@@ -90,7 +90,7 @@ func facing_follow_start():
 
 func facing_follow():
 	if sighted_player != null:
-		physical_node.look_at(sighted_player.position)
+		physical_node.look_at(sighted_player.global_position)
 	else:
 		physical_node.rotation = 0
 
@@ -116,7 +116,7 @@ func resume_facing_follow():
 
 
 
-func movement_follow():
+func movement_follow(delta):
 	if sighted_player == null:
 		if spawn_side == 0:
 			velocity.x = 1 * coasting_speed
@@ -134,8 +134,8 @@ func movement_follow():
 			velocity.x = 0
 		move_and_slide()
 	else:
-		velocity = -sighted_player.position * speed
-
+		position.x = move_toward(sighted_player.position.x, speed, delta)
+		position.y = move_toward(sighted_player.position.y, speed, delta)
 
 
 
