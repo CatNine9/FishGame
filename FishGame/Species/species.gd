@@ -5,6 +5,7 @@ extends Node
 var loaded_species_name = ""
 var loaded_species_sprite = null
 var loaded_collision_shape = null
+var loaded_mouth_shape = null
 var loaded_species_theme_colour = Vector3(0, 0, 0)
 var loaded_species_description = ""
 
@@ -17,7 +18,7 @@ var loaded_speed = 0
 var species_1 = null
 var species_2 = null
 var species_3 = null
-var species_4
+var species_4 = null
 
 
 
@@ -55,6 +56,7 @@ func load_species(species_node):
 	loaded_species_name = species_node.species_name
 	loaded_species_sprite = species_node.sprite
 	loaded_collision_shape = species_node.collision_vectors
+	loaded_mouth_shape = species_node.mouth_vectors
 	loaded_species_description = species_node.description
 	loaded_species_theme_colour = species_node.theme_colour
 	loaded_movement_mode = species_node.movement_mode

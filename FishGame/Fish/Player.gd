@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var collision_shape = $Node2D/AreaBody/CollisionBody
 @onready var physical_body = $PhysicalBody
 @onready var area_shape = $Node2D/AreaBody
-@onready var mouth_shape = $Node2D/AreaMouth
+@onready var mouth_shape = $Node2D/AreaMouth/CollisionMouth
 @onready var sprite = $Node2D/AreaBody/CollisionBody/PlayerSprite
 
 @export var MAX_SPEED = 300
@@ -78,7 +78,7 @@ func experimental_move(_speed):
 
 func follow_facing():
 	physical_node.look_at(get_global_mouse_position())
-	var rotate_correct = deg_to_rad(270)
+	var rotate_correct = deg_to_rad(90)
 	area_shape.rotation = rotate_correct
 	mouth_shape.rotation = rotate_correct
 
@@ -105,12 +105,21 @@ func _on_area_body_area_entered(area):
 func refresh_species():
 	sprite.texture = Species.loaded_species_sprite
 	
-	var new_points = PackedVector2Array()
+	var new_collision_points = PackedVector2Array()
+	var new_mouth_points = PackedVector2Array()
 	for each in Species.loaded_collision_shape:
-		new_points.append(each)
-	collision_shape.polygon = new_points
+		new_collision_points.append(each)
+	for each in Species.loaded_mouth_shape:
+		new_mouth_points.append(each)
+		
+	collision_shape.polygon = new_collision_points
+	mouth_shape.polygon = new_mouth_points
 	physical_body.scale = Vector2(1.64, 1.64)
 	movement_mode = Species.loaded_movement_mode
 	facing_mode = Species.loaded_facing_mode
 	MAX_SPEED = Species.loaded_speed
 	
+
+
+func _on_area_mouth_area_entered(area):
+	pass # Replace with function body.

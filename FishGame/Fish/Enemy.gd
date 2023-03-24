@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var physical_body = $PhysicalBody
 @onready var physical_node = $Node2D
 @onready var area_shape = $Node2D/AreaBody
-@onready var mouth_shape = $AreaMouth
+@onready var mouth_shape = $AreaMouth/CollisionMouth
 @onready var size_label = $SizeLabel
 @onready var size_display_delay = $SizeDisplayDelay
 @onready var feeding_timer = $EnemyFeedTime
