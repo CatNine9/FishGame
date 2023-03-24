@@ -94,7 +94,13 @@ func _on_area_body_area_entered(area):
 		get_parent().death_window.visible = true
 		var enemy_root_node = area.get_parent().get_parent()
 		get_parent().enemy_player_killed_by(enemy_root_node)
-	elif collision_shape.scale.x > enemy.scale.x:
+
+
+
+
+func _on_area_mouth_area_entered(area):
+	var enemy = area.get_child(0, true)
+	if collision_shape.scale.x > enemy.scale.x:
 		collision_shape.scale += Vector2(0.1, 0.1)
 		physical_body.scale += Vector2(0.1, 0.1)
 		size_label.text = str(snapped(collision_shape.scale.x, 0.01))
@@ -121,5 +127,4 @@ func refresh_species():
 	
 
 
-func _on_area_mouth_area_entered(area):
-	pass # Replace with function body.
+

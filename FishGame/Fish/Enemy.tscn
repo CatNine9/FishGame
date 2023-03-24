@@ -6,6 +6,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_b8i8f"]
 
 [node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 16
 motion_mode = 1
 script = ExtResource("1_xknvd")
 
@@ -17,7 +19,8 @@ shape = SubResource("CircleShape2D_b8i8f")
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="AreaBody" type="Area2D" parent="Node2D"]
-collision_layer = 2
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionBody" type="CollisionPolygon2D" parent="Node2D/AreaBody"]
 polygon = PackedVector2Array(-15, 24, -12, -14, -8, -21, 1, -24, 9, -21, 13, -15, 16, 24, 2, 37)
@@ -26,9 +29,10 @@ polygon = PackedVector2Array(-15, 24, -12, -14, -8, -21, 1, -24, 9, -21, 13, -15
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_ack23")
 
-[node name="AreaMouth" type="Area2D" parent="."]
+[node name="AreaMouth" type="Area2D" parent="Node2D"]
+collision_layer = 8
 
-[node name="CollisionMouth" type="CollisionPolygon2D" parent="AreaMouth"]
+[node name="CollisionMouth" type="CollisionPolygon2D" parent="Node2D/AreaMouth"]
 polygon = PackedVector2Array(-5, -34, 6, -34, 8, -21, -7, -21)
 
 [node name="SizeLabel" type="Label" parent="."]
