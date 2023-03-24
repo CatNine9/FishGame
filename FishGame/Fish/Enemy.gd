@@ -36,6 +36,7 @@ var sprite_flipped = false
 var species = ""
 
 var is_stopped = false
+var is_following_player = false
 
 
 
@@ -135,13 +136,11 @@ func _on_enemy_feed_time_timeout():
 		rotation = 0
 
 
-func _on_area_vision_area_entered(area):
-	print("Area: ", area)
-	#var player = get_parent().get_parent().area
-	#print("Player seen: ", player)
 
+func _on_area_vision_body_entered(body):
+	print("Player: ", body)
+	is_following_player = true
 
-func _on_area_vision_area_exited(area):
-	pass
-	#var player = get_parent().get_parent().area
-	#print("Player out of sight.")
+func _on_area_vision_body_exited(body):
+	is_following_player = false
+	print("Player out of sight.")

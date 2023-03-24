@@ -58,5 +58,5 @@ autostart = true
 one_shot = true
 
 [connection signal="area_entered" from="Node2D/AreaBody" to="." method="_on_area_body_area_entered"]
-[connection signal="area_entered" from="Node2D/AreaVision" to="." method="_on_area_vision_area_entered"]
-[connection signal="area_exited" from="Node2D/AreaVision" to="." method="_on_area_vision_area_exited"]
+[connection signal="body_entered" from="Node2D/AreaVision" to="." method="_on_area_vision_body_entered"]
+[connection signal="body_exited" from="Node2D/AreaVision" to="." method="_on_area_vision_body_exited"]
