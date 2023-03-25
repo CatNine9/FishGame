@@ -11,16 +11,19 @@ motion_mode = 1
 script = ExtResource("1_ix3g4")
 
 [node name="PhysicalBody" type="CollisionShape2D" parent="."]
+rotation = 1.5708
 scale = Vector2(1.64, 1.64)
 shape = SubResource("CircleShape2D_p1yuo")
 
 [node name="AreaBody" type="Area2D" parent="."]
+rotation = 1.5708
 collision_mask = 8
 
 [node name="CollisionBody" type="CollisionPolygon2D" parent="AreaBody"]
 polygon = PackedVector2Array(7.00004, -15, 16, -8, 17, 3, 16, 18, 0, 21, -18, 18, -19, 2, -18, -8, -8.99996, -15)
 
 [node name="AreaMouth" type="Area2D" parent="."]
+rotation = 1.5708
 collision_layer = 2
 collision_mask = 4
 
@@ -37,6 +40,7 @@ text = "Size"
 horizontal_alignment = 1
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
+rotation = 1.5708
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_mb3ac")
 

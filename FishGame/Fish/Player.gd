@@ -31,11 +31,11 @@ func _ready():
 	else:
 		size_label.visible = true
 	refresh_species()
+	#rotation_degrees += 90
 
 
 
 func _physics_process(delta):
-	#velocity = Vector2.ZERO
 	if GlobalVariables.player_alive == true:
 		# Movement:
 		if movement_mode == "Follow":
@@ -51,10 +51,9 @@ func _physics_process(delta):
 
 
 func follow_move(speed, _delta):
-	var mouse_position = get_local_mouse_position()
-	velocity = mouse_position * speed
+	velocity = position.direction_to(get_global_mouse_position()) * 200
+	print("Velocity = ", velocity)
 	move_and_slide()
-
 
 
 func experimental_move(_speed):
@@ -64,15 +63,12 @@ func experimental_move(_speed):
 
 func follow_facing():
 	look_at(get_global_mouse_position())
-#	var rotate_correct = deg_to_rad(90)
-#	area_shape.rotation = rotate_correct
-#	mouth_shape.rotation = rotate_correct
 
 
 
 func _on_area_body_area_entered(area):
 	var enemy = area.get_child(0, true)
-	if collision_shape.scale.x < enemy.scale.x:
+	if scale.x < enemy.scale.x:
 		GlobalVariables.camera_position = position
 		sprite.visible = false
 		collision_shape.set_deferred("disabled", true)
@@ -86,11 +82,9 @@ func _on_area_body_area_entered(area):
 
 func _on_area_mouth_area_entered(area):
 	var enemy = area.get_child(0, true)
-	if collision_shape.scale.x > enemy.scale.x:
-		collision_shape.scale += Vector2(0.1, 0.1)
-		physical_body.scale += Vector2(0.1, 0.1)
-		mouth_shape.scale += Vector2(0.1, 0.1)
-		size_label.text = str(snapped(collision_shape.scale.x, 0.01))
+	if scale.x > enemy.scale.x:
+		scale += Vector2(0.1, 0.1)
+		size_label.text = str(snapped(scale.x, 0.01))
 		get_parent().increment_score()
 
 
@@ -107,7 +101,7 @@ func refresh_species():
 		
 	collision_shape.polygon = new_collision_points
 	mouth_shape.polygon = new_mouth_points
-	physical_body.scale = Vector2(1.64, 1.64)
+	scale = Vector2(1.64, 1.64)
 	movement_mode = Species.loaded_movement_mode
 	facing_mode = Species.loaded_facing_mode
 	speed = Species.loaded_speed
