@@ -88,10 +88,8 @@ func facing_follow():
 		sprite.rotation = deg_to_rad(90)
 		if sighted_player.scale < scale:
 			look_at(sighted_player.position)
-			rotation = 0
 		else:
 			look_at(sighted_player.position)
-			rotation = 180
 	else:
 		area_shape.rotation = deg_to_rad(0)
 		mouth_shape.rotation = deg_to_rad(0)
@@ -132,19 +130,8 @@ func movement_follow(delta):
 	else:
 		if sighted_player.scale < scale:
 			velocity = position.direction_to(sighted_player.position) * 200
-#			velocity = velocity.move_toward(sighted_player.position, 200 * delta)
 		else:
-			var player_to_enemy = sighted_player.position - position
-			player_to_enemy = player_to_enemy.normalized()
-			var enemy_to_player_direction = -player_to_enemy
-			velocity = enemy_to_player_direction * 200
-#			var reverse_x = sighted_player.position.x * -1
-#			var reverse_y = sighted_player.position.y * -1
-#			velocity = position.direction_to(-sighted_player.position) * 200
-#			velocity = velocity.move_toward(-sighted_player.position, 200 * delta)
-#			velocity = (position - sighted_player.position).normalized() * 200
-#			print(velocity)
-			pass
+			velocity = sighted_player.position.direction_to(position) * 200
 	move_and_slide()
 
 
