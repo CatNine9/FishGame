@@ -64,25 +64,34 @@ func _physics_process(delta):
 
 
 func facing_follow_start_coast():
-	if spawn_side == 0:
-		position = Vector2(0, random_height_value)
-		rotation = deg_to_rad(90)
-	elif spawn_side == 1:
-		position = Vector2(3848, random_height_value)
-		rotation = deg_to_rad(270)
-	elif spawn_side == 2:
-		position = Vector2(random_width_value, 0)
-		rotation = deg_to_rad(180)
-	elif spawn_side == 3:
-		position = Vector2(random_width_value, 3832)
-		rotation = deg_to_rad(0)
+	if sighted_player == null:
+		if spawn_side == 0:
+			position = Vector2(0, random_height_value)
+			rotation = deg_to_rad(90)
+		elif spawn_side == 1:
+			position = Vector2(3848, random_height_value)
+			rotation = deg_to_rad(270)
+		elif spawn_side == 2:
+			position = Vector2(random_width_value, 0)
+			rotation = deg_to_rad(180)
+		elif spawn_side == 3:
+			position = Vector2(random_width_value, 3832)
+			rotation = deg_to_rad(0)
 
 
 
 func facing_follow():
 	if sighted_player != null:
+		area_shape.rotation = deg_to_rad(90)
+		mouth_shape.rotation = deg_to_rad(90)
+		vision_shape.rotation = deg_to_rad(90)
+		sprite.rotation = deg_to_rad(90)
 		look_at(sighted_player.global_position)
 	else:
+		area_shape.rotation = deg_to_rad(0)
+		mouth_shape.rotation = deg_to_rad(0)
+		vision_shape.rotation = deg_to_rad(0)
+		sprite.rotation = deg_to_rad(0)
 		return
 
 
