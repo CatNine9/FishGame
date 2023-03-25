@@ -16,29 +16,23 @@ scale = Vector2(1.64, 1.64)
 shape = SubResource("CircleShape2D_b8i8f")
 disabled = true
 
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="AreaBody" type="Area2D" parent="Node2D"]
+[node name="AreaBody" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionBody" type="CollisionPolygon2D" parent="Node2D/AreaBody"]
+[node name="CollisionBody" type="CollisionPolygon2D" parent="AreaBody"]
 polygon = PackedVector2Array(-15, 24, -12, -14, -8, -21, 1, -24, 9, -21, 13, -15, 16, 24, 2, 37)
 
-[node name="EnemySprite" type="Sprite2D" parent="Node2D/AreaBody/CollisionBody"]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_ack23")
-
-[node name="AreaMouth" type="Area2D" parent="Node2D"]
+[node name="AreaMouth" type="Area2D" parent="."]
 collision_layer = 8
 
-[node name="CollisionMouth" type="CollisionPolygon2D" parent="Node2D/AreaMouth"]
+[node name="CollisionMouth" type="CollisionPolygon2D" parent="AreaMouth"]
 polygon = PackedVector2Array(-5, -34, 6, -34, 8, -21, -7, -21)
 
-[node name="AreaVision" type="Area2D" parent="Node2D"]
+[node name="AreaVision" type="Area2D" parent="."]
 collision_layer = 32
 
-[node name="CollisionVision" type="CollisionPolygon2D" parent="Node2D/AreaVision"]
+[node name="CollisionVision" type="CollisionPolygon2D" parent="AreaVision"]
 polygon = PackedVector2Array(-120, -120, -80, -160, -24, -176, 24, -176, 80, -160, 120, -120, 128, -80, 8, -16, -8, -16, -128, -80)
 
 [node name="SizeLabel" type="Label" parent="."]
@@ -46,7 +40,7 @@ visible = false
 offset_left = -40.0
 offset_top = -42.0
 offset_right = 40.0
-offset_bottom = -19.0
+offset_bottom = -16.0
 text = "Size"
 horizontal_alignment = 1
 
@@ -58,8 +52,12 @@ autostart = true
 [node name="EnemyFeedTime" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="area_entered" from="Node2D/AreaBody" to="." method="_on_area_body_area_entered"]
-[connection signal="body_entered" from="Node2D/AreaVision" to="." method="_on_area_vision_body_entered"]
-[connection signal="body_exited" from="Node2D/AreaVision" to="." method="_on_area_vision_body_exited"]
+[node name="EnemySprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ack23")
+
+[connection signal="area_entered" from="AreaBody" to="." method="_on_area_body_area_entered"]
+[connection signal="body_entered" from="AreaVision" to="." method="_on_area_vision_body_entered"]
+[connection signal="body_exited" from="AreaVision" to="." method="_on_area_vision_body_exited"]
 [connection signal="timeout" from="SizeDisplayDelay" to="." method="_on_size_display_delay_timeout"]
 [connection signal="timeout" from="EnemyFeedTime" to="." method="_on_enemy_feed_time_timeout"]

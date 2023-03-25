@@ -2,13 +2,12 @@ extends CharacterBody2D
 
 
 
-@onready var sprite = $Node2D/AreaBody/CollisionBody/EnemySprite
-@onready var collision_shape = $Node2D/AreaBody/CollisionBody
+@onready var sprite = $EnemySprite
+@onready var collision_shape = $AreaBody/CollisionBody
 @onready var physical_body = $PhysicalBody
-@onready var physical_node = $Node2D
-@onready var area_shape = $Node2D/AreaBody
-@onready var mouth_shape = $Node2D/AreaMouth/CollisionMouth
-@onready var vision_shape = $Node2D/AreaVision/CollisionVision
+@onready var area_shape = $AreaBody
+@onready var mouth_shape = $AreaMouth/CollisionMouth
+@onready var vision_shape = $AreaVision/CollisionVision
 @onready var size_label = $SizeLabel
 @onready var size_display_delay = $SizeDisplayDelay
 @onready var feeding_timer = $EnemyFeedTime
@@ -67,52 +66,36 @@ func _physics_process(delta):
 func facing_follow_start_coast():
 	if spawn_side == 0:
 		position = Vector2(0, random_height_value)
-		area_shape.rotation = deg_to_rad(90)
-		mouth_shape.rotation = deg_to_rad(90)
-		vision_shape.rotation = deg_to_rad(90)
+		rotation = deg_to_rad(90)
 	elif spawn_side == 1:
 		position = Vector2(3848, random_height_value)
-		area_shape.rotation = deg_to_rad(270)
-		mouth_shape.rotation = deg_to_rad(270)
-		vision_shape.rotation = deg_to_rad(270)
+		rotation = deg_to_rad(270)
 	elif spawn_side == 2:
 		position = Vector2(random_width_value, 0)
-		area_shape.rotation = deg_to_rad(180)
-		mouth_shape.rotation = deg_to_rad(180)
-		vision_shape.rotation = deg_to_rad(180)
+		rotation = deg_to_rad(180)
 	elif spawn_side == 3:
 		position = Vector2(random_width_value, 3832)
-		area_shape.rotation = deg_to_rad(0)
-		mouth_shape.rotation = deg_to_rad(0)
-		vision_shape.rotation = deg_to_rad(0)
+		rotation = deg_to_rad(0)
 
 
 
 func facing_follow():
 	if sighted_player != null:
-		physical_node.look_at(sighted_player.global_position)
+		look_at(sighted_player.global_position)
 	else:
-		physical_node.rotation = 0
+		return
 
 
 
 func resume_facing_follow_coast():
 	if spawn_side == 0:
-		area_shape.rotation = deg_to_rad(90)
-		mouth_shape.rotation = deg_to_rad(90)
-		vision_shape.rotation = deg_to_rad(90)
+		rotation = deg_to_rad(90)
 	elif spawn_side == 1:
-		area_shape.rotation = deg_to_rad(270)
-		mouth_shape.rotation = deg_to_rad(270)
-		vision_shape.rotation = deg_to_rad(270)
+		rotation = deg_to_rad(270)
 	elif spawn_side == 2:
-		area_shape.rotation = deg_to_rad(180)
-		mouth_shape.rotation = deg_to_rad(180)
-		vision_shape.rotation = deg_to_rad(180)
+		rotation = deg_to_rad(180)
 	elif spawn_side == 3:
-		area_shape.rotation = deg_to_rad(0)
-		mouth_shape.rotation = deg_to_rad(0)
-		vision_shape.rotation = deg_to_rad(0)
+		rotation = deg_to_rad(0)
 
 
 
@@ -141,7 +124,7 @@ func movement_follow(delta):
 
 func stop_moving_timer_start(player_position):
 	feeding_timer.start()
-	physical_node.look_at(player_position)
+	look_at(player_position)
 	is_stopped = true
 
 
@@ -160,8 +143,6 @@ func _on_size_display_delay_timeout():
 
 func _on_enemy_feed_time_timeout():
 	is_stopped = false
-#	if movement_mode == "Follow":
-#		rotation = 0
 	resume_facing_follow_coast()
 
 
