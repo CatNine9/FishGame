@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
 
-@onready var physical_node = $Node2D
+
 @onready var size_label = $SizeLabel
-@onready var collision_shape = $Node2D/AreaBody/CollisionBody
+@onready var collision_shape = $AreaBody/CollisionBody
 @onready var physical_body = $PhysicalBody
-@onready var area_shape = $Node2D/AreaBody
-@onready var mouth_shape = $Node2D/AreaMouth/CollisionMouth
-@onready var sprite = $Node2D/AreaBody/CollisionBody/PlayerSprite
+@onready var area_shape = $AreaBody
+@onready var mouth_shape = $AreaMouth/CollisionMouth
+@onready var sprite = $PlayerSprite
 
 @export var speed = 1
 @export var friction = 1000
@@ -19,20 +19,6 @@ extends CharacterBody2D
 var axis = Vector2.ZERO
 
 var is_rotated_90 = false
-
-
-
-# Will be used for animating:
-var directions_dict = {
-	"Up": Vector2(0, -1),
-	"Up_Right": Vector2(1, -1),
-	"Right": Vector2(1, 0),
-	"Down_Right": Vector2(1, 1),
-	"Down": Vector2(0, 1),
-	"Down_Left": Vector2(-1, 1),
-	"Left": Vector2(-1, 0),
-	"Up_Left": Vector2(-1, -1),
-}
 
 
 
@@ -77,10 +63,10 @@ func experimental_move(_speed):
 
 
 func follow_facing():
-	physical_node.look_at(get_global_mouse_position())
-	var rotate_correct = deg_to_rad(90)
-	area_shape.rotation = rotate_correct
-	mouth_shape.rotation = rotate_correct
+	look_at(get_global_mouse_position())
+#	var rotate_correct = deg_to_rad(90)
+#	area_shape.rotation = rotate_correct
+#	mouth_shape.rotation = rotate_correct
 
 
 

@@ -47,7 +47,10 @@ position_smoothing_speed = 10.0
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="UIControl" type="Control" parent="Player"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="UIControl" type="Control" parent="CanvasLayer"]
 custom_minimum_size = Vector2(800, 800)
 layout_mode = 3
 anchors_preset = 8
@@ -64,7 +67,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="ScoreControl" type="Control" parent="Player/UIControl"]
+[node name="ScoreControl" type="Control" parent="CanvasLayer/UIControl"]
 custom_minimum_size = Vector2(800, 800)
 layout_mode = 1
 anchors_preset = 8
@@ -82,14 +85,14 @@ pivot_offset = Vector2(400, 400)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="ScoreLabel" type="Label" parent="Player/UIControl/ScoreControl"]
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/UIControl/ScoreControl"]
 z_index = 1
 layout_mode = 0
 offset_right = 43.0
 offset_bottom = 26.0
 text = "Score"
 
-[node name="FPSControl" type="Control" parent="Player/UIControl"]
+[node name="FPSControl" type="Control" parent="CanvasLayer/UIControl"]
 visible = false
 custom_minimum_size = Vector2(800, 800)
 layout_mode = 1
@@ -108,7 +111,7 @@ pivot_offset = Vector2(400, 400)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="FPSLabel" type="Label" parent="Player/UIControl/FPSControl"]
+[node name="FPSLabel" type="Label" parent="CanvasLayer/UIControl/FPSControl"]
 z_index = 1
 layout_mode = 1
 anchors_preset = 2
@@ -119,7 +122,7 @@ offset_right = 40.0
 grow_vertical = 0
 text = "FPS"
 
-[node name="DeathControl" type="Control" parent="Player/UIControl"]
+[node name="DeathControl" type="Control" parent="CanvasLayer/UIControl"]
 visible = false
 z_index = 1
 custom_minimum_size = Vector2(800, 800)
@@ -140,7 +143,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("3_oq8rl")
 
-[node name="CenterContainer" type="CenterContainer" parent="Player/UIControl/DeathControl"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/UIControl/DeathControl"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -148,12 +151,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Player/UIControl/DeathControl/CenterContainer"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UIControl/DeathControl/CenterContainer"]
 custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
 color = Color(0.603922, 0, 0, 0.466667)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Player/UIControl/DeathControl/CenterContainer/ColorRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UIControl/DeathControl/CenterContainer/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -161,25 +164,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DeadLabel" type="Label" parent="Player/UIControl/DeathControl/CenterContainer/ColorRect/VBoxContainer"]
+[node name="DeadLabel" type="Label" parent="CanvasLayer/UIControl/DeathControl/CenterContainer/ColorRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 text = "YOU GOT EATEN!"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="NextButton" type="Button" parent="Player/UIControl/DeathControl/CenterContainer/ColorRect/VBoxContainer"]
+[node name="NextButton" type="Button" parent="CanvasLayer/UIControl/DeathControl/CenterContainer/ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = ">> Next >>"
 
-[node name="ColorRect2" type="ColorRect" parent="Player/UIControl/DeathControl/CenterContainer"]
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/UIControl/DeathControl/CenterContainer"]
 visible = false
 custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
 color = Color(0.603922, 0, 0, 0.466667)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Player/UIControl/DeathControl/CenterContainer/ColorRect2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UIControl/DeathControl/CenterContainer/ColorRect2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -187,7 +190,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DeadLabel" type="Label" parent="Player/UIControl/DeathControl/CenterContainer/ColorRect2/VBoxContainer"]
+[node name="DeadLabel" type="Label" parent="CanvasLayer/UIControl/DeathControl/CenterContainer/ColorRect2/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 text = "Save your score?
@@ -195,32 +198,32 @@ Name:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NameInputLineEdit" type="LineEdit" parent="Player/UIControl/DeathControl/CenterContainer/ColorRect2/VBoxContainer"]
+[node name="NameInputLineEdit" type="LineEdit" parent="CanvasLayer/UIControl/DeathControl/CenterContainer/ColorRect2/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Player/UIControl/DeathControl/CenterContainer/ColorRect2/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UIControl/DeathControl/CenterContainer/ColorRect2/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="YesButton" type="Button" parent="Player/UIControl/DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer"]
+[node name="YesButton" type="Button" parent="CanvasLayer/UIControl/DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
 text = "YES"
 
-[node name="NoButton" type="Button" parent="Player/UIControl/DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer"]
+[node name="NoButton" type="Button" parent="CanvasLayer/UIControl/DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
 text = "NO"
 
-[node name="ColorRect3" type="ColorRect" parent="Player/UIControl/DeathControl/CenterContainer"]
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/UIControl/DeathControl/CenterContainer"]
 visible = false
 custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
 color = Color(0.603922, 0, 0, 0.466667)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Player/UIControl/DeathControl/CenterContainer/ColorRect3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UIControl/DeathControl/CenterContainer/ColorRect3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -228,7 +231,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NoNameLabel" type="Label" parent="Player/UIControl/DeathControl/CenterContainer/ColorRect3/VBoxContainer"]
+[node name="NoNameLabel" type="Label" parent="CanvasLayer/UIControl/DeathControl/CenterContainer/ColorRect3/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 text = "You didn't input a name, or you didn't press Enter after."
@@ -236,17 +239,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Player/UIControl/DeathControl/CenterContainer/ColorRect3/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UIControl/DeathControl/CenterContainer/ColorRect3/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="OKButton" type="Button" parent="Player/UIControl/DeathControl/CenterContainer/ColorRect3/VBoxContainer/HBoxContainer"]
+[node name="OKButton" type="Button" parent="CanvasLayer/UIControl/DeathControl/CenterContainer/ColorRect3/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
 text = "OK"
 
-[node name="PauseControl" type="Control" parent="Player/UIControl"]
+[node name="PauseControl" type="Control" parent="CanvasLayer/UIControl"]
 process_mode = 3
 visible = false
 z_index = 1
@@ -268,7 +271,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("3_ymtrg")
 
-[node name="CenterContainer" type="CenterContainer" parent="Player/UIControl/PauseControl"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/UIControl/PauseControl"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -276,12 +279,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Player/UIControl/PauseControl/CenterContainer"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UIControl/PauseControl/CenterContainer"]
 custom_minimum_size = Vector2(150, 210)
 layout_mode = 2
 color = Color(0, 0.756863, 1, 0.462745)
 
-[node name="PauseVbox" type="VBoxContainer" parent="Player/UIControl/PauseControl/CenterContainer/ColorRect"]
+[node name="PauseVbox" type="VBoxContainer" parent="CanvasLayer/UIControl/PauseControl/CenterContainer/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -295,7 +298,7 @@ offset_bottom = 95.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PauseLabel" type="Label" parent="Player/UIControl/PauseControl/CenterContainer/ColorRect/PauseVbox"]
+[node name="PauseLabel" type="Label" parent="CanvasLayer/UIControl/PauseControl/CenterContainer/ColorRect/PauseVbox"]
 process_mode = 3
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -303,23 +306,23 @@ text = "PAUSED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ResumeButton" type="Button" parent="Player/UIControl/PauseControl/CenterContainer/ColorRect/PauseVbox"]
+[node name="ResumeButton" type="Button" parent="CanvasLayer/UIControl/PauseControl/CenterContainer/ColorRect/PauseVbox"]
 layout_mode = 2
 text = "RESUME"
 
-[node name="SettingsButton" type="Button" parent="Player/UIControl/PauseControl/CenterContainer/ColorRect/PauseVbox"]
+[node name="SettingsButton" type="Button" parent="CanvasLayer/UIControl/PauseControl/CenterContainer/ColorRect/PauseVbox"]
 layout_mode = 2
 text = "SETTINGS"
 
-[node name="ExitButton" type="Button" parent="Player/UIControl/PauseControl/CenterContainer/ColorRect/PauseVbox"]
+[node name="ExitButton" type="Button" parent="CanvasLayer/UIControl/PauseControl/CenterContainer/ColorRect/PauseVbox"]
 layout_mode = 2
 text = "EXIT TO MENU"
 
-[node name="QuitButton" type="Button" parent="Player/UIControl/PauseControl/CenterContainer/ColorRect/PauseVbox"]
+[node name="QuitButton" type="Button" parent="CanvasLayer/UIControl/PauseControl/CenterContainer/ColorRect/PauseVbox"]
 layout_mode = 2
 text = "QUIT"
 
-[node name="WinControl" type="Control" parent="Player/UIControl"]
+[node name="WinControl" type="Control" parent="CanvasLayer/UIControl"]
 process_mode = 3
 visible = false
 custom_minimum_size = Vector2(800, 800)
@@ -340,7 +343,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("6_oavl0")
 
-[node name="CenterContainer" type="CenterContainer" parent="Player/UIControl/WinControl"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/UIControl/WinControl"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -348,12 +351,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Player/UIControl/WinControl/CenterContainer"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UIControl/WinControl/CenterContainer"]
 custom_minimum_size = Vector2(175, 100)
 layout_mode = 2
 color = Color(0.27451, 0.682353, 0, 0.486275)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Player/UIControl/WinControl/CenterContainer/ColorRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UIControl/WinControl/CenterContainer/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -361,13 +364,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MessageLabel" type="Label" parent="Player/UIControl/WinControl/CenterContainer/ColorRect/VBoxContainer"]
+[node name="MessageLabel" type="Label" parent="CanvasLayer/UIControl/WinControl/CenterContainer/ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 text = "YOU'RE EVOLVING..."
 horizontal_alignment = 1
 
-[node name="ChooseButton" type="Button" parent="Player/UIControl/WinControl/CenterContainer/ColorRect/VBoxContainer"]
+[node name="ChooseButton" type="Button" parent="CanvasLayer/UIControl/WinControl/CenterContainer/ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
@@ -478,16 +481,16 @@ shape = SubResource("RectangleShape2D_qmgg6")
 [node name="SubViewport" type="SubViewport" parent="."]
 
 [connection signal="timeout" from="EnemySpawnDelay" to="." method="_on_enemy_spawn_delay_timeout"]
-[connection signal="visibility_changed" from="Player/UIControl/DeathControl" to="Player/UIControl/DeathControl" method="_on_visibility_changed"]
-[connection signal="button_up" from="Player/UIControl/DeathControl/CenterContainer/ColorRect/VBoxContainer/NextButton" to="Player/UIControl/DeathControl" method="_on_next_button_button_up"]
-[connection signal="text_submitted" from="Player/UIControl/DeathControl/CenterContainer/ColorRect2/VBoxContainer/NameInputLineEdit" to="Player/UIControl/DeathControl" method="_on_name_input_line_edit_text_submitted"]
-[connection signal="button_up" from="Player/UIControl/DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer/YesButton" to="Player/UIControl/DeathControl" method="_on_yes_button_button_up"]
-[connection signal="button_up" from="Player/UIControl/DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer/NoButton" to="Player/UIControl/DeathControl" method="_on_no_button_button_up"]
-[connection signal="button_up" from="Player/UIControl/DeathControl/CenterContainer/ColorRect3/VBoxContainer/HBoxContainer/OKButton" to="Player/UIControl/DeathControl" method="_on_ok_button_button_up"]
-[connection signal="visibility_changed" from="Player/UIControl/PauseControl" to="Player/UIControl/PauseControl" method="_on_visibility_changed"]
-[connection signal="button_up" from="Player/UIControl/PauseControl/CenterContainer/ColorRect/PauseVbox/ResumeButton" to="Player/UIControl/PauseControl" method="_on_resume_button_button_up"]
-[connection signal="button_up" from="Player/UIControl/PauseControl/CenterContainer/ColorRect/PauseVbox/SettingsButton" to="Player/UIControl/PauseControl" method="_on_settings_button_button_up"]
-[connection signal="button_up" from="Player/UIControl/PauseControl/CenterContainer/ColorRect/PauseVbox/ExitButton" to="Player/UIControl/PauseControl" method="_on_exit_button_button_up"]
-[connection signal="button_up" from="Player/UIControl/PauseControl/CenterContainer/ColorRect/PauseVbox/QuitButton" to="Player/UIControl/PauseControl" method="_on_quit_button_button_up"]
-[connection signal="visibility_changed" from="Player/UIControl/WinControl" to="Player/UIControl/WinControl" method="_on_visibility_changed"]
-[connection signal="button_up" from="Player/UIControl/WinControl/CenterContainer/ColorRect/VBoxContainer/ChooseButton" to="Player/UIControl/WinControl" method="_on_choose_button_button_up"]
+[connection signal="visibility_changed" from="CanvasLayer/UIControl/DeathControl" to="CanvasLayer/UIControl/DeathControl" method="_on_visibility_changed"]
+[connection signal="button_up" from="CanvasLayer/UIControl/DeathControl/CenterContainer/ColorRect/VBoxContainer/NextButton" to="CanvasLayer/UIControl/DeathControl" method="_on_next_button_button_up"]
+[connection signal="text_submitted" from="CanvasLayer/UIControl/DeathControl/CenterContainer/ColorRect2/VBoxContainer/NameInputLineEdit" to="CanvasLayer/UIControl/DeathControl" method="_on_name_input_line_edit_text_submitted"]
+[connection signal="button_up" from="CanvasLayer/UIControl/DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer/YesButton" to="CanvasLayer/UIControl/DeathControl" method="_on_yes_button_button_up"]
+[connection signal="button_up" from="CanvasLayer/UIControl/DeathControl/CenterContainer/ColorRect2/VBoxContainer/HBoxContainer/NoButton" to="CanvasLayer/UIControl/DeathControl" method="_on_no_button_button_up"]
+[connection signal="button_up" from="CanvasLayer/UIControl/DeathControl/CenterContainer/ColorRect3/VBoxContainer/HBoxContainer/OKButton" to="CanvasLayer/UIControl/DeathControl" method="_on_ok_button_button_up"]
+[connection signal="visibility_changed" from="CanvasLayer/UIControl/PauseControl" to="CanvasLayer/UIControl/PauseControl" method="_on_visibility_changed"]
+[connection signal="button_up" from="CanvasLayer/UIControl/PauseControl/CenterContainer/ColorRect/PauseVbox/ResumeButton" to="CanvasLayer/UIControl/PauseControl" method="_on_resume_button_button_up"]
+[connection signal="button_up" from="CanvasLayer/UIControl/PauseControl/CenterContainer/ColorRect/PauseVbox/SettingsButton" to="CanvasLayer/UIControl/PauseControl" method="_on_settings_button_button_up"]
+[connection signal="button_up" from="CanvasLayer/UIControl/PauseControl/CenterContainer/ColorRect/PauseVbox/ExitButton" to="CanvasLayer/UIControl/PauseControl" method="_on_exit_button_button_up"]
+[connection signal="button_up" from="CanvasLayer/UIControl/PauseControl/CenterContainer/ColorRect/PauseVbox/QuitButton" to="CanvasLayer/UIControl/PauseControl" method="_on_quit_button_button_up"]
+[connection signal="visibility_changed" from="CanvasLayer/UIControl/WinControl" to="CanvasLayer/UIControl/WinControl" method="_on_visibility_changed"]
+[connection signal="button_up" from="CanvasLayer/UIControl/WinControl/CenterContainer/ColorRect/VBoxContainer/ChooseButton" to="CanvasLayer/UIControl/WinControl" method="_on_choose_button_button_up"]

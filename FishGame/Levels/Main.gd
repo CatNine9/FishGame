@@ -4,16 +4,16 @@ extends Node
 
 @onready var enemy_spawn_delay = $EnemySpawnDelay
 @onready var player = $Player
-@onready var player_collision = $Player/Node2D/AreaBody/CollisionBody
-@onready var player_area = $Player/Node2D/AreaBody
-@onready var score_label = $Player/UIControl/ScoreControl/ScoreLabel
-@onready var pause_menu = $Player/UIControl/PauseControl
-@onready var death_window = $Player/UIControl/DeathControl
+@onready var player_collision = $Player/AreaBody/CollisionBody
+@onready var player_area = $Player/AreaBody
+@onready var score_label = $CanvasLayer/UIControl/ScoreControl/ScoreLabel
+@onready var pause_menu = $CanvasLayer/UIControl/PauseControl
+@onready var death_window = $CanvasLayer/UIControl/DeathControl
 @onready var gameplay_camera = $Player/Camera2D
-@onready var fps_label = $Player/UIControl/FPSControl/FPSLabel
+@onready var fps_label = $CanvasLayer/UIControl/FPSControl/FPSLabel
 @onready var enemy_spawn_node = $Enemies
-@onready var win_window = $Player/UIControl/WinControl
-@onready var ui_container = $Player/UIControl 
+@onready var win_window = $CanvasLayer/UIControl/WinControl
+@onready var ui_container = $CanvasLayer/UIControl 
 
 
 
