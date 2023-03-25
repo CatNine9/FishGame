@@ -4,15 +4,16 @@ extends Node
 
 @onready var enemy_spawn_delay = $EnemySpawnDelay
 @onready var player = $Player
-@onready var player_collision = $Player/Node2D/AreaBody/CollisionBody
-@onready var player_area = $Player/Node2D/AreaBody
-@onready var score_label = $Player/Camera2D/ScoreLabel
-@onready var pause_menu = $Player/Camera2D/PauseControl
-@onready var death_window = $Player/Camera2D/DeathControl
+@onready var player_collision = $Player/AreaBody/CollisionBody
+@onready var player_area = $Player/AreaBody
+@onready var score_label = $CanvasLayer/UIControl/ScoreControl/ScoreLabel
+@onready var pause_menu = $CanvasLayer/UIControl/PauseControl
+@onready var death_window = $CanvasLayer/UIControl/DeathControl
 @onready var gameplay_camera = $Player/Camera2D
-@onready var fps_label = $Player/Camera2D/FPSLabel
+@onready var fps_label = $CanvasLayer/UIControl/FPSControl/FPSLabel
 @onready var enemy_spawn_node = $Enemies
-@onready var win_window = $Player/Camera2D/WinControl
+@onready var win_window = $CanvasLayer/UIControl/WinControl
+@onready var ui_container = $CanvasLayer/UIControl 
 
 
 
@@ -42,9 +43,11 @@ func _ready():
 		fps_label.visible = GlobalVariables.fps_visibility
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+		GlobalVariables.player_score = 0
 
 
-func _process(delta):
+
+func _process(_delta):
 	var fps = Engine.get_frames_per_second()
 	var fps_format = "FPS: %d"
 	var fps_string = fps_format % [fps]
@@ -54,6 +57,7 @@ func _process(delta):
 		get_tree().paused = true
 	if Input.is_action_just_released("points_cheat"):
 		increment_score()
+
 
 
 
@@ -69,7 +73,7 @@ func spawn_enemy():
 	var random_side_value = randi() % 4
 	var random_height_value = randi_range(0, 3832)
 	var random_width_value = randi_range(0, 3848)
-	var random_size_value = randf_range(player_collision.scale.x * 0.75, player_collision.scale.x * 1.25)
+	var random_size_value = randf_range(player.scale.x * 0.75, player.scale.x * 1.25)
 	var enemy_preload = preload("res://Fish/Enemy.tscn")
 	var enemy_spawn = enemy_preload.instantiate()
 	enemy_spawn.spawn_side = random_side_value
@@ -79,30 +83,29 @@ func spawn_enemy():
 	enemy_spawn.down_boundary = 3832
 	enemy_spawn.random_height_value = random_height_value
 	enemy_spawn.random_width_value = random_width_value
-	#Change this:
-	if GlobalVariables.player_species == "Big":
-		Species.find_species("")
+	if GlobalVariables.player_species == "Round":
+		Species.find_species("Long")
+		enemy_spawn.spawn_side = random_side_value % 2
 		enemy_spawn.position.y = random_height_value
-		enemy_spawn.species = ""
-	elif GlobalVariables.player_species == "X-Sail":
-		Species.find_species("")
+		enemy_spawn.species = "Long"
+	elif GlobalVariables.player_species == "Long":
+		Species.find_species("Round")
 		if random_side_value == 0 or random_side_value == 1:
 			enemy_spawn.position.x = random_width_value
 		elif random_side_value == 2 or random_side_value == 3:
 			enemy_spawn.position.y = random_height_value
-		enemy_spawn.species = ""
-	elif GlobalVariables.player_species == "":
-		pass
-	elif GlobalVariables.player_species == "":
-		pass
+		enemy_spawn.species = "Round"
 	enemy_spawn.movement_mode = Species.loaded_movement_mode
+	enemy_spawn.facing_mode = Species.loaded_facing_mode
 	enemy_spawn_node.add_child(enemy_spawn)
 	enemies.append(enemy_spawn)
-	enemy_spawn.collision_shape.scale *= random_size_value
+	enemy_spawn.scale *= random_size_value
 	enemy_spawn.collision_shape.polygon = Species.loaded_collision_shape
-	enemy_spawn.physical_body.polygon = Species.loaded_collision_shape
+	enemy_spawn.mouth_shape.polygon = Species.loaded_mouth_shape
+	enemy_spawn.physical_body.scale = Vector2(random_size_value, random_size_value)
 	enemy_spawn.sprite.texture = Species.loaded_species_sprite
-	enemy_spawn.MAX_SPEED = Species.loaded_speed
+	enemy_spawn.speed = Species.loaded_speed
+	enemy_spawn.coasting_speed = Species.loaded_coasting_speed
 
 
 

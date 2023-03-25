@@ -80,7 +80,7 @@ func _on_area_body_area_entered(area):
 
 
 func _on_area_mouth_area_entered(area):
-	var enemy = area.get_child(0, true)
+	var enemy = area.get_parent()
 	if scale.x > enemy.scale.x:
 		scale += Vector2(0.1, 0.1)
 		size_label.text = str(snapped(scale.x, 0.01))

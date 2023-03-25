@@ -27,11 +27,13 @@ offset_bottom = 4741.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="NebulaRect" type="TextureRect" parent="."]
 offset_right = 3848.0
 offset_bottom = 3832.0
 texture = ExtResource("2_yvhm4")
+metadata/_edit_use_anchors_ = true
 
 [node name="EnemySpawnDelay" type="Timer" parent="."]
 wait_time = 0.2
@@ -66,6 +68,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
 
 [node name="ScoreControl" type="Control" parent="CanvasLayer/UIControl"]
 custom_minimum_size = Vector2(800, 800)
@@ -381,6 +384,7 @@ offset_right = 3848.0
 offset_bottom = 288.0
 mouse_filter = 2
 texture = ExtResource("8_byn3e")
+metadata/_edit_use_anchors_ = true
 
 [node name="UpSpace" type="ColorRect" parent="UpBorderRect"]
 custom_minimum_size = Vector2(4500, 1000)
@@ -397,6 +401,7 @@ offset_bottom = 4138.0
 rotation = 4.71239
 mouse_filter = 2
 texture = ExtResource("8_byn3e")
+metadata/_edit_use_anchors_ = true
 
 [node name="LeftSpace" type="ColorRect" parent="LeftBorderRect"]
 custom_minimum_size = Vector2(4500, 1000)
@@ -413,6 +418,7 @@ offset_bottom = 288.0
 rotation = 1.57079
 mouse_filter = 2
 texture = ExtResource("8_byn3e")
+metadata/_edit_use_anchors_ = true
 
 [node name="Right" type="ColorRect" parent="RightBorderRect"]
 custom_minimum_size = Vector2(4500, 1000)
@@ -422,6 +428,7 @@ offset_top = -1000.0
 offset_right = 4200.0
 offset_bottom = -0.000488281
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="DownBorderRect" type="TextureRect" parent="."]
 offset_left = 3850.0
@@ -431,6 +438,7 @@ offset_bottom = 4138.0
 rotation = 3.14159
 mouse_filter = 2
 texture = ExtResource("8_byn3e")
+metadata/_edit_use_anchors_ = true
 
 [node name="DownSpace" type="ColorRect" parent="DownBorderRect"]
 custom_minimum_size = Vector2(4500, 1000)
