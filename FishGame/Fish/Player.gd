@@ -66,14 +66,14 @@ func follow_facing():
 
 
 func _on_area_body_area_entered(area):
-	var enemy = area.get_child(0, true)
+	var enemy = area.get_parent()
 	if scale.x < enemy.scale.x:
 		GlobalVariables.camera_position = position
 		sprite.visible = false
 		collision_shape.set_deferred("disabled", true)
 		GlobalVariables.player_alive = false
 		get_parent().death_window.visible = true
-		var enemy_root_node = area.get_parent().get_parent()
+		var enemy_root_node = area.get_parent()
 		get_parent().enemy_player_killed_by(enemy_root_node)
 
 
