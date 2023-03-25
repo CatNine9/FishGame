@@ -31,7 +31,6 @@ func _ready():
 	else:
 		size_label.visible = true
 	refresh_species()
-	#rotation_degrees += 90
 
 
 

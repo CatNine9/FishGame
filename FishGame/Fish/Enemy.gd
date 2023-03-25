@@ -124,11 +124,9 @@ func movement_follow(delta):
 			velocity.x = 0
 		else:
 			velocity.x = 0
-		move_and_slide()
 	else:
-		pass
-		#position.move_toward(sighted_player.position, speed)
-
+		velocity = position.direction_to(sighted_player.position) * 200
+	move_and_slide()
 
 
 func stop_moving_timer_start(player_position):
