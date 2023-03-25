@@ -6,13 +6,14 @@ extends Node
 @onready var player = $Player
 @onready var player_collision = $Player/Node2D/AreaBody/CollisionBody
 @onready var player_area = $Player/Node2D/AreaBody
-@onready var score_label = $Player/Camera2D/ScoreLabel
-@onready var pause_menu = $Player/Camera2D/PauseControl
-@onready var death_window = $Player/Camera2D/DeathControl
+@onready var score_label = $Player/UIControl/ScoreControl/ScoreLabel
+@onready var pause_menu = $Player/UIControl/PauseControl
+@onready var death_window = $Player/UIControl/DeathControl
 @onready var gameplay_camera = $Player/Camera2D
-@onready var fps_label = $Player/Camera2D/FPSLabel
+@onready var fps_label = $Player/UIControl/FPSControl/FPSLabel
 @onready var enemy_spawn_node = $Enemies
-@onready var win_window = $Player/Camera2D/WinControl
+@onready var win_window = $Player/UIControl/WinControl
+@onready var ui_container = $Player/UIControl 
 
 
 
@@ -56,6 +57,7 @@ func _process(_delta):
 		get_tree().paused = true
 	if Input.is_action_just_released("points_cheat"):
 		increment_score()
+
 
 
 

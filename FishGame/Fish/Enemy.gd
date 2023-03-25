@@ -43,7 +43,7 @@ var sighted_player = null
 
 func _ready():
 	if facing_mode == "Follow":
-		facing_follow_start()
+		facing_follow_start_coast()
 
 	if GlobalVariables.size_visibility == false:
 		size_label.visible = false
@@ -64,7 +64,7 @@ func _physics_process(delta):
 
 
 
-func facing_follow_start():
+func facing_follow_start_coast():
 	if spawn_side == 0:
 		position = Vector2(0, random_height_value)
 		area_shape.rotation = deg_to_rad(90)
@@ -96,7 +96,7 @@ func facing_follow():
 
 
 
-func resume_facing_follow():
+func resume_facing_follow_coast():
 	if spawn_side == 0:
 		area_shape.rotation = deg_to_rad(90)
 		mouth_shape.rotation = deg_to_rad(90)
@@ -134,8 +134,8 @@ func movement_follow(delta):
 			velocity.x = 0
 		move_and_slide()
 	else:
-		position.x = move_toward(sighted_player.position.x, speed, delta)
-		position.y = move_toward(sighted_player.position.y, speed, delta)
+		pass
+		#position.move_toward(sighted_player.position, speed)
 
 
 
@@ -162,7 +162,7 @@ func _on_enemy_feed_time_timeout():
 	is_stopped = false
 #	if movement_mode == "Follow":
 #		rotation = 0
-	resume_facing_follow()
+	resume_facing_follow_coast()
 
 
 
@@ -172,5 +172,5 @@ func _on_area_vision_body_entered(body):
 
 func _on_area_vision_body_exited(body):
 	sighted_player = null
-	resume_facing_follow()
+	resume_facing_follow_coast()
 	print("Lost sight of player.")
