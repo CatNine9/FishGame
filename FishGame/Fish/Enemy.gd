@@ -129,13 +129,6 @@ func stop_moving_timer_start(player_position):
 
 
 
-func _on_area_body_area_entered(area):
-	var player = area.get_child(0, true)
-	if collision_shape.scale.x < player.scale.x:
-		queue_free()
-
-
-
 func _on_size_display_delay_timeout():
 	size_label.text = str(snapped(collision_shape.scale.x, 0.01))
 
@@ -150,8 +143,16 @@ func _on_enemy_feed_time_timeout():
 func _on_area_vision_body_entered(body):
 	sighted_player = body
 	print("Player sighted")
-
+	
 func _on_area_vision_body_exited(body):
 	sighted_player = null
 	resume_facing_follow_coast()
 	print("Lost sight of player.")
+
+
+
+func _on_area_body_area_entered(area):
+	var player = area.get_parent()
+	print("Player: ", player)
+	if scale.x < player.scale.x:
+		queue_free()

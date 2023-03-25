@@ -12,6 +12,7 @@ motion_mode = 1
 script = ExtResource("1_xknvd")
 
 [node name="PhysicalBody" type="CollisionShape2D" parent="."]
+visible = false
 scale = Vector2(1.64, 1.64)
 shape = SubResource("CircleShape2D_b8i8f")
 disabled = true
