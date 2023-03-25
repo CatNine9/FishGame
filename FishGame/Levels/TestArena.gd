@@ -64,8 +64,8 @@ func _process(_delta):
 func _on_enemy_spawn_delay_timeout():
 	if player == null:
 		enemy_spawn_delay.stop()
-	else:
-		spawn_enemy()
+#	else:
+#		spawn_enemy()
 
 
 
