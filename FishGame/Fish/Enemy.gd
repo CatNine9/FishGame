@@ -9,8 +9,12 @@ extends CharacterBody2D
 @onready var mouth_shape = $AreaMouth/CollisionMouth
 @onready var vision_shape = $AreaVision/CollisionVision
 @onready var size_label = $SizeLabel
+
+# Timers:
 @onready var size_display_delay = $SizeDisplayDelay
 @onready var feeding_timer = $EnemyFeedTime
+@onready var flee_timer = $EnemyFleeTime
+@onready var check_for_player_timer = $CheckForPlayerTime
 
 
 
@@ -35,9 +39,11 @@ var sprite_flipped = false
 var species = ""
 
 var is_stopped = false
+var is_in_flee_sequence = false
 
 var sighted_player = null
 
+signal sighted_player_position
 
 
 func _ready():
@@ -112,7 +118,7 @@ func resume_facing_follow_coast():
 
 
 func movement_follow(delta):
-	if sighted_player == null:
+	if sighted_player == null and is_in_flee_sequence == false and is_stopped == false:
 		if spawn_side == 0:
 			velocity.x = 1 * coasting_speed
 			velocity.y = 0
@@ -127,12 +133,13 @@ func movement_follow(delta):
 			velocity.x = 0
 		else:
 			velocity.x = 0
-	else:
+	elif sighted_player and is_in_flee_sequence == false and is_stopped == false:
 		if sighted_player.scale < scale:
 			velocity = position.direction_to(sighted_player.position) * 200
 		else:
-			velocity = sighted_player.position.direction_to(position) * 200
+			pass
 	move_and_slide()
+
 
 
 func stop_moving_timer_start(player_position):
@@ -142,19 +149,15 @@ func stop_moving_timer_start(player_position):
 
 
 
-func _on_size_display_delay_timeout():
-	size_label.text = str(snapped(collision_shape.scale.x, 0.01))
-
-
-
-func _on_enemy_feed_time_timeout():
-	is_stopped = false
-	resume_facing_follow_coast()
-
-
-
 func _on_area_vision_body_entered(body):
 	sighted_player = body
+	if sighted_player.scale > scale:
+		is_in_flee_sequence = true
+		velocity = sighted_player.position.direction_to(position) * 200
+		#velocity = position.direction_to(sighted_player.position) * 200
+		#rotate(180)
+		flee_timer.start()
+		print("Fleeing!")
 
 
 
@@ -169,3 +172,38 @@ func _on_area_body_area_entered(area):
 	print("Player: ", player)
 	if scale.x < player.scale.x:
 		queue_free()
+
+
+
+func _on_enemy_flee_time_timeout():
+	print("Stopped and checking for the player")
+	is_stopped = true
+	velocity = Vector2(0, 0)
+	check_for_player_timer.start()
+	if sighted_player == null:
+		return
+	else:
+		is_stopped = false
+		print("Player still there! Run away!")
+		velocity = sighted_player.position.direction_to(position) * 200
+		#velocity = position.direction_to(sighted_player.position) * 200
+		#rotate(180)
+		flee_timer.start()
+
+
+func _on_check_for_player_time_timeout():
+	is_stopped = false
+	print("Player's gone, now safe.")
+	if sighted_player == null:	
+		resume_facing_follow_coast()
+		is_in_flee_sequence = false
+
+
+func _on_size_display_delay_timeout():
+	size_label.text = str(snapped(collision_shape.scale.x, 0.01))
+
+
+
+func _on_enemy_feed_time_timeout():
+	is_stopped = false
+	resume_facing_follow_coast()

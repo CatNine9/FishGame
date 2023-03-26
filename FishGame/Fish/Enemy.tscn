@@ -36,6 +36,10 @@ collision_layer = 32
 [node name="CollisionVision" type="CollisionPolygon2D" parent="AreaVision"]
 polygon = PackedVector2Array(-120, -120, -80, -160, -24, -176, 24, -176, 80, -160, 120, -120, 128, -80, 8, -16, -8, -16, -128, -80)
 
+[node name="EnemySprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ack23")
+
 [node name="SizeLabel" type="Label" parent="."]
 visible = false
 offset_left = -40.0
@@ -53,12 +57,18 @@ autostart = true
 [node name="EnemyFeedTime" type="Timer" parent="."]
 one_shot = true
 
-[node name="EnemySprite" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_ack23")
+[node name="EnemyFleeTime" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 
+[node name="CheckForPlayerTime" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="sighted_player_position" from="." to="." method="_on_sighted_player_position"]
 [connection signal="area_entered" from="AreaBody" to="." method="_on_area_body_area_entered"]
 [connection signal="body_entered" from="AreaVision" to="." method="_on_area_vision_body_entered"]
 [connection signal="body_exited" from="AreaVision" to="." method="_on_area_vision_body_exited"]
 [connection signal="timeout" from="SizeDisplayDelay" to="." method="_on_size_display_delay_timeout"]
 [connection signal="timeout" from="EnemyFeedTime" to="." method="_on_enemy_feed_time_timeout"]
+[connection signal="timeout" from="EnemyFleeTime" to="." method="_on_enemy_flee_time_timeout"]
+[connection signal="timeout" from="CheckForPlayerTime" to="." method="_on_check_for_player_time_timeout"]

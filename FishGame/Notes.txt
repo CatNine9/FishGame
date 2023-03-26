@@ -67,3 +67,28 @@ For "Big":
 Note: The reason why species 3 spawns as the enemy in level 2 is because in level 2 the player is neither species 1 or 2, which is checked for when choosing the enemy to spawn as. Since it was neither, no new species was loaded, and it just used the last one in memory which was the player's one.
 
 
+
+
+
+
+Future of the game:
+
+There will be 3 tiers of enemies instead of just two. Currently there is smaller enemy = always gets eaten, or bigger enemy = always eats the player. In the middle I want to add a third tier, enemies you have to fight with because you are of comparable size. Even that middle tier exists as a range, so some enemies you fight will be smaller or bigger by slightly, affecting their stats. So you will only really be able to one-shot very small enemies, but only very large enemies will be able to one-shot you.
+
+
+
+
+
+
+
+
+Run away:
+
+	Going to need:
+		velocity = sighted_player.position.direction_to(position) * 200 for the initial direction to run away to.
+		A flee timer will start.
+		The enemy will continue with the above velocity.
+		Timer times out, causing the enemy to stop and turn 180.
+		A check timer will start.
+		If a player appears before the timer runs out, the flee sequence is repeated.
+		If the check timer is timed out before a player shows up the enemy resumes it's coasting movement.
