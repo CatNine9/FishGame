@@ -40,6 +40,7 @@ var species = ""
 
 var is_stopped = false
 var is_in_flee_sequence = false
+var is_rotated = false
 
 var sighted_player = null
 
@@ -101,7 +102,6 @@ func facing_follow():
 		mouth_shape.rotation = deg_to_rad(0)
 		vision_shape.rotation = deg_to_rad(0)
 		sprite.rotation = deg_to_rad(0)
-		return
 
 
 
@@ -187,7 +187,7 @@ func _on_enemy_flee_time_timeout():
 		print("Player still there! Run away!")
 		velocity = sighted_player.position.direction_to(position) * 200
 		#velocity = position.direction_to(sighted_player.position) * 200
-		#rotate(180)
+		rotate(180)
 		flee_timer.start()
 
 

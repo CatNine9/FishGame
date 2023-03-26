@@ -3,7 +3,7 @@ extends Node
 
 
 @export var species_name = "Big"
-@export var sprite = load("res://Fish/CreatureSprites/SpaceCreature3.png")
+@export var sprite = load("res://Fish/CreatureSprites/Agilerighted.png")
 @export var collision_vectors = [Vector2(13, -24), Vector2(22, -13), Vector2(22, 8), Vector2(13, 19), Vector2(3, 23), Vector2(-8, 20), Vector2(-19, 8), Vector2(-18, -12), Vector2(-10, -24)]
 @export var mouth_vectors = [Vector2(-21, -39), Vector2(23, -40), Vector2(13, -23), Vector2(-10, -23)]
 @export var vision_vectors = [Vector2(-120, -120), Vector2(-80, -160), Vector2(-24, -176), Vector2(80, -160), Vector2(120, -120), Vector2(128, -80), Vector2(8, -16), Vector2(-128, -80)]

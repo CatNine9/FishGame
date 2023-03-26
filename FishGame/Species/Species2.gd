@@ -3,10 +3,10 @@ extends Node
 
 
 @export var species_name = "Long"
-@export var sprite = load("res://Fish/CreatureSprites/SpaceCreature2.png")
-@export var collision_vectors = [Vector2(-15, 24), Vector2(-12, -14), Vector2(-8, -21), Vector2(1, -24), Vector2(9, -21), Vector2(13, -15), Vector2(16, 24), Vector2(2, 37)]
-@export var mouth_vectors = [Vector2(-5, -34), Vector2(6, -34), Vector2(8, -21), Vector2(-7, -21)]
-@export var vision_vectors = [Vector2(-120, -120), Vector2(-80, -160), Vector2(-24, -176), Vector2(80, -160), Vector2(120, -120), Vector2(128, -80), Vector2(8, -16), Vector2(-128, -80)]
+@export var sprite = load("res://Fish/CreatureSprites/SpaceCreature2righted.png")
+@export var collision_vectors = [Vector2(-24, 15), Vector2(14, -12), Vector2(21, -8), Vector2(24, 1), Vector2(21, 9), Vector2(15, 13), Vector2(-24, 16), Vector2(-37, 2)]
+@export var mouth_vectors = [Vector2(21, -7), Vector2(34, -5), Vector2(34, 6), Vector2(21, 8)]
+@export var vision_vectors = [Vector2(16, -8), Vector2(80, -128), Vector2(120, -120), Vector2(160, -80), Vector2(176, -24), Vector2(176, 24), Vector2(160, 80), Vector2(120, 120), Vector2(80, 120), Vector2(16, 8)]
 @export var description = "A cuttlefish-shaped ambush predator. Not as agile, but can deal a lot of damage in one go."
 @export var theme_colour = Vector3(28, 48, 35)
 
