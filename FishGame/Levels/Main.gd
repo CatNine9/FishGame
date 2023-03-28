@@ -66,6 +66,8 @@ func _on_enemy_spawn_delay_timeout():
 		enemy_spawn_delay.stop()
 	else:
 		spawn_enemy()
+#		if enemies.size() < 30:
+#			spawn_enemy()
 
 
 
@@ -99,6 +101,7 @@ func spawn_enemy():
 	enemy_spawn.facing_mode = Species.loaded_facing_mode
 	enemy_spawn_node.add_child(enemy_spawn)
 	enemies.append(enemy_spawn)
+	enemy_spawn.self_identifier = enemy_spawn
 	enemy_spawn.scale *= random_size_value
 	enemy_spawn.collision_shape.polygon = Species.loaded_collision_shape
 	enemy_spawn.mouth_shape.polygon = Species.loaded_mouth_shape
@@ -106,6 +109,11 @@ func spawn_enemy():
 	enemy_spawn.sprite.texture = Species.loaded_species_sprite
 	enemy_spawn.speed = Species.loaded_speed
 	enemy_spawn.coasting_speed = Species.loaded_coasting_speed
+
+
+
+#func erase_enemy_from_array(enemy):
+#	enemies.erase(enemy)
 
 
 

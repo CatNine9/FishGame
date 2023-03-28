@@ -12,7 +12,6 @@ motion_mode = 1
 script = ExtResource("1_xknvd")
 
 [node name="PhysicalBody" type="CollisionShape2D" parent="."]
-visible = false
 scale = Vector2(1.64, 1.64)
 shape = SubResource("CircleShape2D_b8i8f")
 disabled = true
@@ -37,7 +36,6 @@ collision_layer = 32
 polygon = PackedVector2Array(16, -8, 80, -128, 120, -120, 160, -80, 176, -24, 176, 24, 160, 80, 120, 120, 80, 128, 16, 8)
 
 [node name="EnemySprite" type="Sprite2D" parent="."]
-visible = false
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_m2o3y")
 
@@ -65,7 +63,6 @@ one_shot = true
 [node name="CheckForPlayerTime" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="sighted_player_position" from="." to="." method="_on_sighted_player_position"]
 [connection signal="area_entered" from="AreaBody" to="." method="_on_area_body_area_entered"]
 [connection signal="body_entered" from="AreaVision" to="." method="_on_area_vision_body_entered"]
 [connection signal="body_exited" from="AreaVision" to="." method="_on_area_vision_body_exited"]
