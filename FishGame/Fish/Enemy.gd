@@ -43,7 +43,7 @@ var is_in_flee_sequence = false
 var is_rotated = false
 
 var sighted_player = null
-var sighted_player_position = Vector2(0, 0)
+var last_sighted_player_position = Vector2(0, 0)
 
 var self_identifier = null
 var is_checking = true
@@ -93,6 +93,13 @@ func facing_follow():
 	if sighted_player != null:
 		if sighted_player.scale < scale:
 			look_at(sighted_player.position)
+	if is_checking == true:
+		if check_for_player_timer.is_stopped() == false:
+				if sighted_player != null:
+					check_for_player_timer.stop()
+					is_stopped = false
+					is_checking = false
+					turn_and_run()
 
 
 
@@ -165,17 +172,15 @@ func _on_area_body_area_entered(area):
 func _on_enemy_flee_time_timeout():
 	is_stopped = true
 	velocity = Vector2(0, 0)
-	look_at(sighted_player_position)
+	look_at(last_sighted_player_position)
+	is_checking = true
 	if sighted_player == null:
 		check_for_player_timer.start()
-		is_checking = true
-	else:
-		is_stopped = false
-		turn_and_run()
 
 
 func _on_check_for_player_time_timeout():
 	is_stopped = false
+	is_checking = false
 	#print("Player's gone, now safe.")
 	if sighted_player == null:	
 		resume_facing_follow_coast()
@@ -194,7 +199,7 @@ func _on_enemy_feed_time_timeout():
 
 
 func turn_and_run():
-	velocity = sighted_player.position.direction_to(position) * 200
+	velocity = sighted_player.position.direction_to(position) * coasting_speed
 	look_at(position - (sighted_player.position - position))
-	sighted_player_position = sighted_player.position
+	last_sighted_player_position = sighted_player.position
 	flee_timer.start()
