@@ -36,7 +36,7 @@ texture = ExtResource("2_yvhm4")
 metadata/_edit_use_anchors_ = true
 
 [node name="EnemySpawnDelay" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.5
 
 [node name="Enemies" type="Node" parent="."]
 

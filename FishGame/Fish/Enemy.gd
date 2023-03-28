@@ -49,6 +49,7 @@ var self_identifier = null
 var is_checking = true
 
 
+
 func _ready():
 	if facing_mode == "Follow":
 		facing_follow_start_coast()
@@ -93,13 +94,7 @@ func facing_follow():
 	if sighted_player != null:
 		if sighted_player.scale < scale:
 			look_at(sighted_player.position)
-	if is_checking == true:
-		if check_for_player_timer.is_stopped() == false:
-				if sighted_player != null:
-					check_for_player_timer.stop()
-					is_stopped = false
-					is_checking = false
-					turn_and_run()
+
 
 
 
@@ -151,6 +146,12 @@ func _on_area_vision_body_entered(body):
 	if sighted_player.scale > scale:
 		is_in_flee_sequence = true
 		turn_and_run()
+	if is_checking == true:
+		if check_for_player_timer.is_stopped() == false:
+			turn_and_run()
+			check_for_player_timer.stop()
+			is_checking = false
+			is_stopped = false
 
 
 
