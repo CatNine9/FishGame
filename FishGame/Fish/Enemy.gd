@@ -127,9 +127,9 @@ func movement_follow(delta):
 			velocity.x = 0
 		else:
 			velocity.x = 0
-#	elif sighted_player and is_in_flee_sequence == false and is_stopped == false:
-#		if sighted_player.scale < scale:
-#			velocity = position.direction_to(sighted_player.position) * 200
+	elif sighted_player and is_in_flee_sequence == false and is_stopped == false:
+		if sighted_player.scale < scale:
+			velocity = position.direction_to(sighted_player.position) * 200
 	move_and_slide()
 
 

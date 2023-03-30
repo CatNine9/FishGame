@@ -66,8 +66,6 @@ func _on_enemy_spawn_delay_timeout():
 		enemy_spawn_delay.stop()
 	else:
 		spawn_enemy()
-#		if enemies.size() < 30:
-#			spawn_enemy()
 
 
 
@@ -75,7 +73,7 @@ func spawn_enemy():
 	var random_side_value = randi() % 4
 	var random_height_value = randi_range(0, 3832)
 	var random_width_value = randi_range(0, 3848)
-	var random_size_value = randf_range(player.scale.x * 0.75, player.scale.x * 1)
+	var random_size_value = randf_range(player.scale.x * 0.75, player.scale.x * 1.25)
 	var enemy_preload = preload("res://Fish/Enemy.tscn")
 	var enemy_spawn = enemy_preload.instantiate()
 	enemy_spawn.spawn_side = random_side_value
@@ -109,11 +107,6 @@ func spawn_enemy():
 	enemy_spawn.sprite.texture = Species.loaded_species_sprite
 	enemy_spawn.speed = Species.loaded_speed
 	enemy_spawn.coasting_speed = Species.loaded_coasting_speed
-
-
-
-#func erase_enemy_from_array(enemy):
-#	enemies.erase(enemy)
 
 
 
