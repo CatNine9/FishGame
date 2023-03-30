@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 
 
-@onready var size_label = $SizeLabel
+@onready var size_label = $Node2D/SizeLabel
+@onready var size_rotation = $Node2D
 @onready var collision_shape = $AreaBody/CollisionBody
 @onready var physical_body = $PhysicalBody
 @onready var area_shape = $AreaBody
@@ -25,7 +26,7 @@ var is_rotated_90 = false
 func _ready():
 	GlobalVariables.player_alive = true
 	
-	size_label.text = str(collision_shape.scale.x)
+	size_label.text = str(snapped(scale.x, 0.01))
 	if GlobalVariables.size_visibility == false:
 		size_label.visible = false
 	else:
@@ -46,6 +47,8 @@ func _physics_process(delta):
 			follow_facing()
 
 	GlobalVariables.player_position = position
+
+	size_rotation.global_rotation = 0
 
 
 
@@ -101,7 +104,6 @@ func refresh_species():
 		
 	collision_shape.polygon = new_collision_points
 	mouth_shape.polygon = new_mouth_points
-	scale = Vector2(1.64, 1.64)
 	movement_mode = Species.loaded_movement_mode
 	facing_mode = Species.loaded_facing_mode
 	speed = Species.loaded_speed

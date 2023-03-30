@@ -8,7 +8,8 @@ extends CharacterBody2D
 @onready var area_shape = $AreaBody
 @onready var mouth_shape = $AreaMouth/CollisionMouth
 @onready var vision_shape = $AreaVision/CollisionVision
-@onready var size_label = $SizeLabel
+@onready var size_label = $Node2D/SizeLabel
+@onready var size_rotation = $Node2D
 
 # Timers:
 @onready var size_display_delay = $SizeDisplayDelay
@@ -60,14 +61,6 @@ func _ready():
 		size_label.visible = true
 
 
-#func _process(delta):
-#	if GlobalVariables.player_alive == false:
-#		vision_shape.disabled = true
-#		collision_shape.disabled = true
-#		mouth_shape.disabled = true
-#		physical_body.disabled = true
-
-
 
 func _physics_process(delta):
 	if is_stopped == false:
@@ -78,6 +71,8 @@ func _physics_process(delta):
 
 	if position.x < (left_boundary - 200) or position.x > (right_boundary + 200) or position.y < (up_boundary - 200) or position.y > (down_boundary + 200):
 		queue_free()
+	
+	size_rotation.global_rotation = 0
 
 
 
@@ -202,7 +197,7 @@ func _on_check_for_player_time_timeout():
 
 
 func _on_size_display_delay_timeout():
-	size_label.text = str(snapped(collision_shape.scale.x, 0.01))
+	size_label.text = str(snapped(scale.x, 0.01))
 
 
 

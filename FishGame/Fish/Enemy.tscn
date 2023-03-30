@@ -39,7 +39,9 @@ polygon = PackedVector2Array(16, -8, 80, -128, 120, -120, 160, -80, 176, -24, 17
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_m2o3y")
 
-[node name="SizeLabel" type="Label" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="SizeLabel" type="Label" parent="Node2D"]
 visible = false
 offset_left = -40.0
 offset_top = -42.0
