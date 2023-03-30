@@ -70,6 +70,8 @@ func _on_area_body_area_entered(area):
 		GlobalVariables.camera_position = position
 		sprite.visible = false
 		collision_shape.set_deferred("disabled", true)
+		mouth_shape.set_deferred("disabled", true)
+		physical_body.set_deferred("disabled", true)
 		GlobalVariables.player_alive = false
 		get_parent().death_window.visible = true
 		var enemy_root_node = area.get_parent()

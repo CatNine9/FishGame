@@ -60,6 +60,14 @@ func _ready():
 		size_label.visible = true
 
 
+#func _process(delta):
+#	if GlobalVariables.player_alive == false:
+#		vision_shape.disabled = true
+#		collision_shape.disabled = true
+#		mouth_shape.disabled = true
+#		physical_body.disabled = true
+
+
 
 func _physics_process(delta):
 	if is_stopped == false:
