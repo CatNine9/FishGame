@@ -24,10 +24,10 @@ var species_4 = null
 
 
 func _ready():
-	var species_1_preload = preload("res://species/species_1.tscn")
-	var species_2_preload = preload("res://species/species_2.tscn")
-	var species_3_preload = preload("res://species/species_3.tscn")
-	var species_4_preload = preload("res://species/species_4.tscn")
+	var species_1_preload = preload("res://species/Species_1.tscn")
+	var species_2_preload = preload("res://species/Species_2.tscn")
+	var species_3_preload = preload("res://species/Species_3.tscn")
+	var species_4_preload = preload("res://species/Species_4.tscn")
 	
 	species_1 = species_1_preload.instantiate()
 	species_2 = species_2_preload.instantiate()

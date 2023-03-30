@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://wiiahfqoqlgi"]
 
-[ext_resource type="Script" path="res://Species/Species4.gd" id="1_qbk7i"]
+[ext_resource type="Script" path="res://Species/Species4.gd" id="1_p3042"]
 
 [node name="Species4" type="Node"]
-script = ExtResource("1_qbk7i")
+script = ExtResource("1_p3042")
