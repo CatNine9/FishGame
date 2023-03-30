@@ -50,7 +50,7 @@ func _physics_process(delta):
 
 
 func follow_move(speed, _delta):
-	velocity = position.direction_to(get_global_mouse_position()) * 200
+	velocity = position.direction_to(get_global_mouse_position()) * speed
 	move_and_slide()
 
 

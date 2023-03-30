@@ -129,7 +129,7 @@ func movement_follow(delta):
 			velocity.x = 0
 	elif sighted_player and is_in_flee_sequence == false and is_stopped == false:
 		if sighted_player.scale < scale:
-			velocity = position.direction_to(sighted_player.position) * 200
+			velocity = position.direction_to(sighted_player.position) * speed
 	move_and_slide()
 
 
@@ -157,7 +157,12 @@ func _on_area_vision_body_entered(body):
 
 func _on_area_vision_body_exited(body):
 	sighted_player = null
-	#resume_facing_follow_coast()
+	# This breaks small enemy flee movement. It's probably going to need an if 
+	# statement to check if the enemy is fleeing or just resuming normal movement.
+	# Probably because the feeling enemy already has it's own logic for resuming
+	# normal movement, so when this gets activated it conflicts.
+	if is_in_flee_sequence == false:
+		resume_facing_follow_coast()
 
 
 
