@@ -73,7 +73,7 @@ func spawn_enemy():
 	var random_side_value = randi() % 4
 	var random_height_value = randi_range(0, 3832)
 	var random_width_value = randi_range(0, 3848)
-	var random_size_value = randf_range(player.scale.x * 0.75, player.scale.x * 1.25)
+	var random_size_value = randf_range(player.scale.x * 0.5, player.scale.x * 1.5)
 	var enemy_preload = preload("res://Fish/Enemy.tscn")
 	var enemy_spawn = enemy_preload.instantiate()
 	enemy_spawn.spawn_side = random_side_value
