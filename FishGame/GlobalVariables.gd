@@ -17,6 +17,7 @@ var current_level = 0
 
 # Player:
 var player_position = Vector2(400, 300)
+var player_rotation = 0
 var player_score = 0
 var player_alive = true
 var player_name = null

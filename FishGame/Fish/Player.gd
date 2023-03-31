@@ -47,6 +47,7 @@ func _physics_process(delta):
 			follow_facing()
 
 	GlobalVariables.player_position = position
+	GlobalVariables.player_rotation = rotation
 
 	size_rotation.global_rotation = 0
 

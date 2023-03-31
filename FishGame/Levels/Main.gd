@@ -37,10 +37,13 @@ func _ready():
 	if GlobalVariables.is_paused == true:
 		pause_menu.visible = true
 		player.position = GlobalVariables.player_position
+		player.rotation = GlobalVariables.player_rotation
 		score = GlobalVariables.player_score
 		score_string = score_format % [score]
 		score_label.text = score_string
 		fps_label.visible = GlobalVariables.fps_visibility
+		Species.find_species(GlobalVariables.player_species)
+		player.refresh_species()
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 		GlobalVariables.player_score = 0
