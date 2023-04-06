@@ -1,9 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmprrll3jk1rb"]
+[gd_scene load_steps=6 format=3 uid="uid://dmprrll3jk1rb"]
 
 [ext_resource type="Script" path="res://Fish/Enemy.gd" id="1_xknvd"]
 [ext_resource type="Texture2D" uid="uid://2c3icydsodls" path="res://Fish/CreatureSprites/SpaceCreature2righted.png" id="2_m2o3y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b8i8f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_81ajj"]
+font_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_1gh05"]
+font_size = 10
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
@@ -36,7 +42,6 @@ collision_layer = 32
 polygon = PackedVector2Array(16, -8, 80, -128, 120, -120, 160, -80, 176, -24, 176, 24, 160, 80, 120, 120, 80, 128, 16, 8)
 
 [node name="EnemySprite" type="Sprite2D" parent="."]
-visible = false
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_m2o3y")
 
@@ -50,6 +55,36 @@ offset_right = 40.0
 offset_bottom = -16.0
 text = "Size"
 horizontal_alignment = 1
+
+[node name="DebugInfoContainer" type="Control" parent="Node2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -32.0
+offset_top = 24.0
+offset_right = 32.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Node2D/DebugInfoContainer"]
+layout_mode = 2
+offset_right = 64.0
+offset_bottom = 17.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Node2D/DebugInfoContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SizeTierLabel" type="Label" parent="Node2D/DebugInfoContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Size tier:"
+label_settings = SubResource("LabelSettings_81ajj")
+
+[node name="SizeTierValueLabel" type="Label" parent="Node2D/DebugInfoContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Tier"
+label_settings = SubResource("LabelSettings_1gh05")
 
 [node name="SizeDisplayDelay" type="Timer" parent="."]
 wait_time = 0.1

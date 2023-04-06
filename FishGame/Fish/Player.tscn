@@ -33,7 +33,6 @@ polygon = PackedVector2Array(18, -10, 19, 9, 14, 6, 14, -7)
 polygon = PackedVector2Array(11, -16, 56, -136, 120, -120, 160, -80, 176, -24, 176, 24, 160, 80, 120, 120, 56, 136, 12, 14)
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
-visible = false
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_2bxkx")
 

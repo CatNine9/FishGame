@@ -35,6 +35,7 @@ var down_boundary = 0
 var random_height_value = 0
 var random_width_value = 0
 
+var self_identifier = null
 var spawn_side = null
 var sprite_flipped = false
 var species = ""
@@ -42,12 +43,10 @@ var species = ""
 var is_stopped = false
 var is_in_flee_sequence = false
 var is_rotated = false
+var is_checking = true
 
 var sighted_player = null
 var last_sighted_player_position = Vector2(0, 0)
-
-var self_identifier = null
-var is_checking = true
 
 
 
