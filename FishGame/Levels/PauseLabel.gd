@@ -23,6 +23,7 @@ func _on_exit_button_button_up():
 	get_tree().paused = false
 	GlobalVariables.is_paused = false
 	visible = false
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	var main_menu_packed = load("res://UI/MainMenu.tscn")
 	get_tree().change_scene_to_packed(main_menu_packed)
 

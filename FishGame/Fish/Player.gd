@@ -53,8 +53,8 @@ func _physics_process(delta):
 
 
 
-func follow_move(speed, _delta):
-	velocity = position.direction_to(get_global_mouse_position()) * speed
+func follow_move(player_speed, _delta):
+	velocity = position.direction_to(get_global_mouse_position()) * player_speed
 	move_and_slide()
 
 

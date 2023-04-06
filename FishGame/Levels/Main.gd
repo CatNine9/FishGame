@@ -35,6 +35,7 @@ func _ready():
 	score_label.text = score_string
 	
 	if GlobalVariables.is_paused == true:
+		# Information that should be saved between pauses:
 		pause_menu.visible = true
 		player.position = GlobalVariables.player_position
 		player.rotation = GlobalVariables.player_rotation
@@ -100,9 +101,8 @@ func spawn_enemy():
 		enemy_spawn.species = "Round"
 	enemy_spawn.movement_mode = Species.loaded_movement_mode
 	enemy_spawn.facing_mode = Species.loaded_facing_mode
-	enemy_spawn_node.add_child(enemy_spawn)
-	enemies.append(enemy_spawn)
 	enemy_spawn.self_identifier = enemy_spawn
+	enemy_spawn_node.add_child(enemy_spawn)
 	enemy_spawn.scale *= random_size_value
 	enemy_spawn.collision_shape.polygon = Species.loaded_collision_shape
 	enemy_spawn.mouth_shape.polygon = Species.loaded_mouth_shape
@@ -110,6 +110,7 @@ func spawn_enemy():
 	enemy_spawn.sprite.texture = Species.loaded_species_sprite
 	enemy_spawn.speed = Species.loaded_speed
 	enemy_spawn.coasting_speed = Species.loaded_coasting_speed
+	enemies.append(enemy_spawn)
 
 
 

@@ -113,7 +113,7 @@ func resume_facing_follow_coast():
 
 
 
-func movement_follow(_delta):
+func movement_follow(delta):
 	if sighted_player == null and is_in_flee_sequence == false and is_stopped == false:
 		if spawn_side == 0:
 			velocity.x = 1 * coasting_speed
@@ -159,7 +159,7 @@ func _on_area_vision_body_entered(body):
 
 
 
-func _on_area_vision_body_exited(_body):
+func _on_area_vision_body_exited(body):
 	sighted_player = null
 	if is_in_flee_sequence == false:
 		resume_facing_follow_coast()
