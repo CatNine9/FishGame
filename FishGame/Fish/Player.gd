@@ -48,6 +48,7 @@ func _physics_process(delta):
 
 	GlobalVariables.player_position = position
 	GlobalVariables.player_rotation = rotation
+	GlobalVariables.player_scale = scale
 
 	size_rotation.global_rotation = 0
 
