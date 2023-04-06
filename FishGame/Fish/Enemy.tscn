@@ -63,25 +63,34 @@ offset_left = -32.0
 offset_top = 24.0
 offset_right = 32.0
 offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Panel" type="PanelContainer" parent="Node2D/DebugInfoContainer"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -8.5
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Node2D/DebugInfoContainer/Panel"]
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Node2D/DebugInfoContainer"]
-layout_mode = 2
-offset_right = 64.0
-offset_bottom = 17.0
-size_flags_horizontal = 4
-size_flags_vertical = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Node2D/DebugInfoContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Node2D/DebugInfoContainer/Panel/VBoxContainer"]
 layout_mode = 2
 
-[node name="SizeTierLabel" type="Label" parent="Node2D/DebugInfoContainer/VBoxContainer/HBoxContainer"]
+[node name="SizeTierLabel" type="Label" parent="Node2D/DebugInfoContainer/Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Size tier:"
 label_settings = SubResource("LabelSettings_81ajj")
 
-[node name="SizeTierValueLabel" type="Label" parent="Node2D/DebugInfoContainer/VBoxContainer/HBoxContainer"]
+[node name="SizeTierValueLabel" type="Label" parent="Node2D/DebugInfoContainer/Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Tier"
 label_settings = SubResource("LabelSettings_1gh05")

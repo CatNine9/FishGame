@@ -10,7 +10,7 @@ extends CharacterBody2D
 @onready var vision_shape = $AreaVision/CollisionVision
 @onready var size_label = $Node2D/SizeLabel
 @onready var debug_label = $Node2D/DebugInfoContainer
-@onready var size_tier_label = $Node2D/DebugInfoContainer/VBoxContainer/HBoxContainer/SizeTierValueLabel
+@onready var size_tier_label = $Node2D/DebugInfoContainer/Panel/VBoxContainer/HBoxContainer/SizeTierValueLabel
 @onready var label_rotation = $Node2D
 
 # Timers:
@@ -41,6 +41,7 @@ var self_identifier = null
 var spawn_side = null
 var sprite_flipped = false
 var species = ""
+var size_tier = ""
 
 var is_stopped = false
 var is_in_flee_sequence = false
@@ -74,20 +75,22 @@ func _physics_process(delta):
 			movement_follow(delta)
 		if facing_mode == "Follow":
 			facing_follow()
-	
+
 	if scale < (GlobalVariables.player_scale * 0.75):
-		size_tier_label.text = "Prey"
+		size_tier = "Prey"
 	elif scale > (GlobalVariables.player_scale * 1.25):
-		size_tier_label.text = "Predator"
+		size_tier = "Predator"
 	else:
-		size_tier_label.text = "Adversary"
+		size_tier = "Adversary"
+
+	if GlobalVariables.debug_visibility == true:
+		size_tier_label.text = size_tier
 
 	if position.x < (left_boundary - 200) or position.x > (right_boundary + 200) or position.y < (up_boundary - 200) or position.y > (down_boundary + 200):
 		get_parent().get_parent().enemies.erase(self_identifier)
 		queue_free()
-	
+
 	label_rotation.global_rotation = 0
-	
 
 
 
