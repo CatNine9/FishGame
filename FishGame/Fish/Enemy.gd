@@ -9,7 +9,8 @@ extends CharacterBody2D
 @onready var mouth_shape = $AreaMouth/CollisionMouth
 @onready var vision_shape = $AreaVision/CollisionVision
 @onready var size_label = $Node2D/SizeLabel
-@onready var size_rotation = $Node2D
+@onready var debug_label = $Node2D/DebugInfoContainer
+@onready var label_rotation = $Node2D
 
 # Timers:
 @onready var size_display_delay = $SizeDisplayDelay
@@ -59,6 +60,11 @@ func _ready():
 	else:
 		size_label.visible = true
 
+	if GlobalVariables.debug_visibility == false:
+		debug_label.visible = false
+	else:
+		debug_label.visible = true
+
 
 
 func _physics_process(delta):
@@ -72,7 +78,8 @@ func _physics_process(delta):
 		get_parent().get_parent().enemies.erase(self_identifier)
 		queue_free()
 	
-	size_rotation.global_rotation = 0
+	label_rotation.global_rotation = 0
+	
 
 
 
