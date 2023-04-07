@@ -39,7 +39,7 @@ texture = ExtResource("2_2bxkx")
 
 [node name="AttackSprite" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(40, 0)
+position = Vector2(24, 0)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_aouby")
 

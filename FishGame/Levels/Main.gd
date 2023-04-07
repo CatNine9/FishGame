@@ -106,6 +106,7 @@ func spawn_enemy():
 	enemy_spawn.scale *= random_size_value
 	enemy_spawn.collision_shape.polygon = Species.loaded_collision_shape
 	enemy_spawn.mouth_shape.polygon = Species.loaded_mouth_shape
+	enemy_spawn.attack_sprite.position.x = Species.loaded_attack_graphic_xpos
 	enemy_spawn.physical_body.scale = Vector2(random_size_value, random_size_value)
 	enemy_spawn.sprite.texture = Species.loaded_species_sprite
 	enemy_spawn.speed = Species.loaded_speed

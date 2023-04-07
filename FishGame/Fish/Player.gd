@@ -94,7 +94,7 @@ func _on_area_body_area_entered(area):
 
 func _on_area_mouth_area_entered(area):
 	var enemy = area.get_parent()
-	if scale.x > enemy.scale.x and can_attack == true:
+	if scale.x > (enemy.scale.x * 1.25) and can_attack == true:
 		can_attack = false
 		attack_sprite.visible = true
 		attack_cooldown.start()
@@ -117,6 +117,7 @@ func refresh_species():
 		
 	collision_shape.polygon = new_collision_points
 	mouth_shape.polygon = new_mouth_points
+	attack_sprite.position.x = Species.loaded_attack_graphic_xpos
 	movement_mode = Species.loaded_movement_mode
 	facing_mode = Species.loaded_facing_mode
 	speed = Species.loaded_speed

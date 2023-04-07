@@ -6,6 +6,7 @@ var loaded_species_name = ""
 var loaded_species_sprite = null
 var loaded_collision_shape = null
 var loaded_mouth_shape = null
+var loaded_attack_graphic_xpos = 0
 var loaded_species_theme_colour = Vector3(0, 0, 0)
 var loaded_species_description = ""
 
@@ -58,6 +59,7 @@ func load_species(species_node):
 	loaded_species_sprite = species_node.sprite
 	loaded_collision_shape = species_node.collision_vectors
 	loaded_mouth_shape = species_node.mouth_vectors
+	loaded_attack_graphic_xpos = species_node.attack_graphic_x_pos
 	loaded_species_description = species_node.description
 	loaded_species_theme_colour = species_node.theme_colour
 	loaded_movement_mode = species_node.movement_mode
