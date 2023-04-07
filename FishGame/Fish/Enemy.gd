@@ -46,6 +46,7 @@ var size_tier = ""
 
 var is_stopped = false
 var is_in_flee_sequence = false
+var is_in_attack_sequence = false
 var is_rotated = false
 var is_checking = true
 
@@ -156,13 +157,13 @@ func movement_follow(_delta):
 
 
 
-func stop_moving_timer_start():
+func stop_moving_timer_start(player_position):
+	look_at(player_position)
 	attack_sprite.visible = true
 	attack_cooldown.start()
 	attack_visibility_time.start()
 	feeding_timer.start()
-	look_at(last_sighted_player_position)
-	is_stopped = true
+	print(player_position)
 
 
 
@@ -182,7 +183,7 @@ func _on_area_vision_body_entered(body):
 
 func _on_area_vision_body_exited(_body):
 	sighted_player = null
-	if is_in_flee_sequence == false:
+	if is_in_flee_sequence == false and is_in_attack_sequence == false:
 		resume_facing_follow_coast()
 
 
@@ -220,6 +221,7 @@ func _on_size_display_delay_timeout():
 
 func _on_enemy_feed_time_timeout():
 	is_stopped = false
+	is_in_attack_sequence = false
 	resume_facing_follow_coast()
 
 

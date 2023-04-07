@@ -129,5 +129,6 @@ func player_finished_loading():
 
 
 func enemy_player_killed_by(enemy_predator):
+	enemy_predator.is_in_attack_sequence = true
 	enemy_predator.is_stopped = true
-	enemy_predator.stop_moving_timer_start()
+	enemy_predator.stop_moving_timer_start(player.global_position)
