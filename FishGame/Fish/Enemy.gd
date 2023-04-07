@@ -156,12 +156,12 @@ func movement_follow(_delta):
 
 
 
-func stop_moving_timer_start(player_position):
+func stop_moving_timer_start():
 	attack_sprite.visible = true
 	attack_cooldown.start()
 	attack_visibility_time.start()
 	feeding_timer.start()
-	look_at(player_position)
+	look_at(last_sighted_player_position)
 	is_stopped = true
 
 

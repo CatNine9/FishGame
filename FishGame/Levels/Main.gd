@@ -129,4 +129,4 @@ func player_finished_loading():
 
 func enemy_player_killed_by(enemy_predator):
 	enemy_predator.is_stopped = true
-	enemy_predator.stop_moving_timer_start(player.position)
+	enemy_predator.stop_moving_timer_start()
