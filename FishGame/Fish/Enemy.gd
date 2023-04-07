@@ -12,14 +12,15 @@ extends CharacterBody2D
 @onready var debug_label = $Node2D/DebugInfoContainer
 @onready var size_tier_label = $Node2D/DebugInfoContainer/Panel/VBoxContainer/HBoxContainer/SizeTierValueLabel
 @onready var label_rotation = $Node2D
+@onready var attack_sprite = $AttackSprite
 
 # Timers:
 @onready var size_display_delay = $SizeDisplayDelay
 @onready var feeding_timer = $EnemyFeedTime
 @onready var flee_timer = $EnemyFleeTime
 @onready var check_for_player_timer = $CheckForPlayerTime
-
-
+@onready var attack_cooldown = $AttackCooldownTime
+@onready var attack_visibility_time = $AttackVisibleTime
 
 @export var speed = 1
 @export var coasting_speed = 300
@@ -156,6 +157,9 @@ func movement_follow(_delta):
 
 
 func stop_moving_timer_start(player_position):
+	attack_sprite.visible = true
+	attack_cooldown.start()
+	attack_visibility_time.start()
 	feeding_timer.start()
 	look_at(player_position)
 	is_stopped = true
@@ -225,3 +229,14 @@ func turn_and_run():
 	look_at(position - (sighted_player.position - position))
 	last_sighted_player_position = sighted_player.position
 	flee_timer.start()
+
+
+
+
+func _on_attack_visible_time_timeout():
+	attack_sprite.visible = false
+
+
+
+func _on_attack_cooldown_time_timeout():
+	pass # Replace with function body.

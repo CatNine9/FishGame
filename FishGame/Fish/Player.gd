@@ -9,6 +9,11 @@ extends CharacterBody2D
 @onready var area_shape = $AreaBody
 @onready var mouth_shape = $AreaMouth/CollisionMouth
 @onready var sprite = $PlayerSprite
+@onready var attack_sprite = $AttackSprite
+
+# Timers:
+@onready var attack_cooldown = $AttackCooldownTime
+@onready var attack_visibility_time = $AttackVisibleTime
 
 @export var speed = 1
 @export var friction = 1000
@@ -20,6 +25,8 @@ extends CharacterBody2D
 var axis = Vector2.ZERO
 
 var is_rotated_90 = false
+
+var can_attack = true
 
 
 
@@ -87,8 +94,11 @@ func _on_area_body_area_entered(area):
 
 func _on_area_mouth_area_entered(area):
 	var enemy = area.get_parent()
-	if scale.x > enemy.scale.x:
-		
+	if scale.x > enemy.scale.x and can_attack == true:
+		can_attack = false
+		attack_sprite.visible = true
+		attack_cooldown.start()
+		attack_visibility_time.start()
 		scale += Vector2(0.1, 0.1)
 		size_label.text = str(snapped(scale.x, 0.01))
 		get_parent().increment_score()
@@ -110,8 +120,16 @@ func refresh_species():
 	movement_mode = Species.loaded_movement_mode
 	facing_mode = Species.loaded_facing_mode
 	speed = Species.loaded_speed
-	
-	
+
+
+
+func _on_attack_visible_time_timeout():
+	attack_sprite.visible = false
+
+
+
+func _on_attack_cooldown_time_timeout():
+	can_attack = true
 
 
 

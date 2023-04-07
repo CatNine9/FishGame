@@ -131,3 +131,5 @@ one_shot = true
 [connection signal="timeout" from="EnemyFeedTime" to="." method="_on_enemy_feed_time_timeout"]
 [connection signal="timeout" from="EnemyFleeTime" to="." method="_on_enemy_flee_time_timeout"]
 [connection signal="timeout" from="CheckForPlayerTime" to="." method="_on_check_for_player_time_timeout"]
+[connection signal="timeout" from="AttackCooldownTime" to="." method="_on_attack_cooldown_time_timeout"]
+[connection signal="timeout" from="AttackVisibleTime" to="." method="_on_attack_visible_time_timeout"]
