@@ -54,5 +54,12 @@ offset_bottom = -29.0
 text = "Size"
 horizontal_alignment = 1
 
+[node name="AttackCooldownTime" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackVisibleTime" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="area_entered" from="AreaBody" to="." method="_on_area_body_area_entered"]
 [connection signal="area_entered" from="AreaMouth" to="." method="_on_area_mouth_area_entered"]
