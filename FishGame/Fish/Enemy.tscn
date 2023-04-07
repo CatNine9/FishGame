@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmprrll3jk1rb"]
+[gd_scene load_steps=7 format=3 uid="uid://dmprrll3jk1rb"]
 
 [ext_resource type="Script" path="res://Fish/Enemy.gd" id="1_xknvd"]
 [ext_resource type="Texture2D" uid="uid://2c3icydsodls" path="res://Fish/CreatureSprites/SpaceCreature2righted.png" id="2_m2o3y"]
+[ext_resource type="Texture2D" uid="uid://c6xjt187l2v0" path="res://Fish/AttackSprites/CrudeBitePlaceholder.png" id="3_k24fo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b8i8f"]
 
@@ -44,6 +45,12 @@ polygon = PackedVector2Array(16, -8, 80, -128, 120, -120, 160, -80, 176, -24, 17
 [node name="EnemySprite" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_m2o3y")
+
+[node name="AttackSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(40, 0)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_k24fo")
 
 [node name="Node2D" type="Node2D" parent="."]
 

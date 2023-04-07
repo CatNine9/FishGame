@@ -92,3 +92,27 @@ Run away:
 		A check timer will start.
 		If a player appears before the timer runs out, the flee sequence is repeated.
 		If the check timer is timed out before a player shows up the enemy resumes it's coasting movement.
+		
+
+
+
+Bite:
+	
+	This is going to be the most basic, simple attack. It will not require any extra button presses. Later, possibly add a skill bar with more abilities such as:
+		roar - scare away
+		dash/speed boost
+	which will be activated with a button press.
+	
+	But first, bite will be activated just on mouth contact with collision shape. It will also have a cooldown, so that it isn't activated continuously for the time the mouth is in contact with the opponent.
+	
+	Enemies will not be able to bite other enemies (yet). Only enemy and player can interact with each other.
+	
+	At first it will only be activated graphically and won't have an actual effect. Add health bar later.
+	
+	Pseudocode:
+		
+		On collision, if can-bite is true, set bite shape to visible and start cooldown timer and set can-bite to false. 
+		
+		Let bite shape play out it's animation, on end of animation set bite shape visible to false. 
+		
+		On cooldown timer timeout, set can-bite to true.
