@@ -25,6 +25,10 @@ extends CharacterBody2D
 @export var speed = 1
 @export var coasting_speed = 300
 
+@export var max_health = 1
+@export var health = 1
+@export var phys_attack = 1
+
 @export var movement_mode = "Default"
 @export var facing_mode = "Default"
 

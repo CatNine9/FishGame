@@ -10,6 +10,7 @@ var loaded_attack_graphic_xpos = 0
 var loaded_species_theme_colour = Vector3(0, 0, 0)
 var loaded_species_description = ""
 var loaded_species_max_health = 1
+var loaded_species_phys_attack = 1
 
 var loaded_movement_mode = ""
 var loaded_facing_mode = ""
@@ -68,3 +69,4 @@ func load_species(species_node):
 	loaded_speed = species_node.speed
 	loaded_coasting_speed = species_node.coasting_speed
 	loaded_species_max_health = species_node.health_cap
+	loaded_species_phys_attack = species_node.phys_attack

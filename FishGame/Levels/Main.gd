@@ -136,6 +136,7 @@ func spawn_enemy():
 	enemy_spawn.sprite.texture = Species.loaded_species_sprite
 	enemy_spawn.speed = Species.loaded_speed
 	enemy_spawn.coasting_speed = Species.loaded_coasting_speed
+	enemy_spawn.phys_attack = Species.loaded_species_phys_attack
 	enemies.append(enemy_spawn)
 
 
