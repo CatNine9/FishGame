@@ -60,6 +60,8 @@ func _ready():
 		player.rotation = GlobalVariables.player_rotation
 		health_bar.value = GlobalVariables.player_health
 		health_bar.max_value = GlobalVariables.player_max_health
+		health_points_string = health_points_format % [GlobalVariables.player_health, max_health]
+		health_bar_value.text = health_points_string
 		evolution_bar.value = GlobalVariables.player_evolution_points
 		evo_points_string = evo_points_format % [GlobalVariables.player_evolution_points]
 		evolution_bar_value.text = evo_points_string
@@ -79,9 +81,12 @@ func _process(_delta):
 	if evolution_points == 25:
 		win_window.visible = true
 		get_tree().paused = true
+	# To test levelling up:
 	if Input.is_action_just_released("points_cheat"):
 		increment_score()
-
+	# To test player taking damage:
+	if Input.is_action_just_released("health_decrement"):
+		lose_health()
 
 
 
@@ -141,6 +146,15 @@ func increment_score():
 	evo_points_string = evo_points_format % [evolution_points]
 	evolution_bar_value.text = evo_points_string
 	GlobalVariables.player_evolution_points = evolution_points
+
+
+
+func lose_health():
+	health_points -= 1
+	health_bar.value = health_points
+	health_points_string = health_points_format % [health_points, max_health]
+	health_bar_value.text = health_points_string
+	GlobalVariables.player_health = health_points
 
 
 
