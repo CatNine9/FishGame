@@ -44,6 +44,7 @@ text = "SETTINGS"
 
 [node name="LeaderBoardButton" type="Button" parent="CenterContainer/MenuVbox"]
 layout_mode = 2
+disabled = true
 text = "LEADER BOARD"
 
 [node name="QuitButton" type="Button" parent="CenterContainer/MenuVbox"]

@@ -159,7 +159,6 @@ grow_vertical = 0
 text = "FPS"
 
 [node name="DeathControl" type="Control" parent="CanvasLayer/UIControl"]
-visible = false
 z_index = 1
 custom_minimum_size = Vector2(800, 800)
 layout_mode = 1
@@ -210,7 +209,7 @@ vertical_alignment = 2
 [node name="NextButton" type="Button" parent="CanvasLayer/UIControl/DeathControl/CenterContainer/ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = ">> Next >>"
+text = "Back to Main Menu"
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/UIControl/DeathControl/CenterContainer"]
 visible = false
