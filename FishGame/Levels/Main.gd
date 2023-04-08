@@ -26,10 +26,16 @@ var enemies = []
 var evolution_points = 0
 var evo_points_format = "%d / 25"
 var evo_points_string = evo_points_format % [evolution_points]
+var health_points = 1
+var max_health = 1
+var health_points_format = "%d / %d"
+var health_points_string = health_points_format % [health_points, max_health]
 
 
 func _ready():
 	enemy_spawn_delay.start()
+	Species.find_species(GlobalVariables.player_species)
+	player.refresh_species()
 
 	if GlobalVariables.fps_visibility == false:
 		fps_control.visible = false
@@ -39,16 +45,25 @@ func _ready():
 	evolution_bar.value = GlobalVariables.player_evolution_points
 	evolution_bar_value.text = evo_points_string
 
+	health_points = GlobalVariables.player_max_health
+	max_health = health_points
+	health_bar.max_value = GlobalVariables.player_max_health
+	health_points_string = health_points_format % [health_points, max_health]
+	health_bar_value.text = health_points_string
+
 	if GlobalVariables.is_paused == true:
 		# Information that should be saved between menu switches on pause:
+		Species.find_species(GlobalVariables.player_species)
+		player.refresh_species()
 		pause_menu.visible = true
 		player.position = GlobalVariables.player_position
 		player.rotation = GlobalVariables.player_rotation
 		health_bar.value = GlobalVariables.player_health
 		health_bar.max_value = GlobalVariables.player_max_health
+		evolution_bar.value = GlobalVariables.player_evolution_points
+		evo_points_string = evo_points_format % [GlobalVariables.player_evolution_points]
+		evolution_bar_value.text = evo_points_string
 		fps_control.visible = GlobalVariables.fps_visibility
-		Species.find_species(GlobalVariables.player_species)
-		player.refresh_species()
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 		GlobalVariables.player_evolution_points = 0
