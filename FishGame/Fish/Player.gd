@@ -78,7 +78,7 @@ func follow_facing():
 
 func _on_area_body_area_entered(area):
 	var enemy = area.get_parent()
-	if scale.x < enemy.scale.x:
+	if scale.x < (enemy.scale.x * 0.75):
 		GlobalVariables.camera_position = position
 		sprite.visible = false
 		collision_shape.set_deferred("disabled", true)
