@@ -16,7 +16,7 @@ extends Node
 
 @export var speed = 500
 @export var coasting_speed = (speed / 3) * 2
-@export var health_cap = 10
+@export var health_cap = 8
 @export var food_cap = 10
 @export var energy_cap = 10
 @export var phys_attack = 5

@@ -88,13 +88,6 @@ pivot_offset = Vector2(400, 400)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="ScoreLabel" type="Label" parent="CanvasLayer/UIControl/PlayerStatusControl"]
-z_index = 1
-layout_mode = 0
-offset_right = 43.0
-offset_bottom = 26.0
-text = "Score"
-
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/UIControl/PlayerStatusControl"]
 layout_mode = 0
 offset_left = 16.0
@@ -102,14 +95,16 @@ offset_top = 16.0
 offset_right = 240.0
 offset_bottom = 112.0
 
-[node name="EXPBar" type="ProgressBar" parent="CanvasLayer/UIControl/PlayerStatusControl"]
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/UIControl/PlayerStatusControl"]
 layout_mode = 2
 offset_left = 24.0
 offset_top = 32.0
 offset_right = 232.0
 offset_bottom = 59.0
+max_value = 5.0
+value = 5.0
 
-[node name="Label2" type="Label" parent="CanvasLayer/UIControl/PlayerStatusControl"]
+[node name="HealthLabel" type="Label" parent="CanvasLayer/UIControl/PlayerStatusControl"]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 16.0
@@ -117,14 +112,15 @@ offset_right = 102.0
 offset_bottom = 42.0
 text = "Health:"
 
-[node name="EXPBar2" type="ProgressBar" parent="CanvasLayer/UIControl/PlayerStatusControl"]
+[node name="EvolutionBar" type="ProgressBar" parent="CanvasLayer/UIControl/PlayerStatusControl"]
 layout_mode = 2
 offset_left = 24.0
 offset_top = 80.0
 offset_right = 232.0
 offset_bottom = 107.0
+max_value = 25.0
 
-[node name="Label" type="Label" parent="CanvasLayer/UIControl/PlayerStatusControl"]
+[node name="EvolutionLabel" type="Label" parent="CanvasLayer/UIControl/PlayerStatusControl"]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 64.0

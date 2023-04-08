@@ -12,7 +12,9 @@ func _ready():
 	GlobalVariables.enemy_starter_species = ""
 	GlobalVariables.current_level = 0
 	GlobalVariables.player_position = Vector2(400, 300)
-	GlobalVariables.player_score = 0
+#	GlobalVariables.player_score = 0
+	GlobalVariables.player_evolution_points = 0
+	GlobalVariables.player_health = 0
 	GlobalVariables.player_alive = true
 	GlobalVariables.player_name = null
 	GlobalVariables.player_species = ""

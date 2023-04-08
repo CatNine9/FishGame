@@ -6,8 +6,8 @@ extends Node
 @onready var player = $Player
 @onready var player_collision = $Player/AreaBody/CollisionBody
 @onready var player_area = $Player/AreaBody
-@onready var score_label = $CanvasLayer/UIControl/PlayerStatusControl/ScoreLabel
-@onready var exp_bar = $CanvasLayer/UIControl/PlayerStatusControl/EXPBar
+@onready var evolution_bar = $CanvasLayer/UIControl/PlayerStatusControl/EvolutionBar
+@onready var health_bar = $CanvasLayer/UIControl/PlayerStatusControl/HealthBar
 @onready var pause_menu = $CanvasLayer/UIControl/PauseControl
 @onready var death_window = $CanvasLayer/UIControl/DeathControl
 @onready var gameplay_camera = $Player/Camera2D
@@ -21,9 +21,7 @@ extends Node
 
 var number_of_child_nodes = null
 var enemies = []
-var score = 0
-var score_format = "Score: %d"
-var score_string = score_format % [score]
+var evolution_points = 0
 
 
 func _ready():
@@ -33,25 +31,24 @@ func _ready():
 		fps_control.visible = false
 	else:
 		fps_control.visible = true
-	
-	print("FPS label is on: ", fps_control.visible)
 
-	score_label.text = score_string
+	evolution_bar.value = evolution_points
 	
 	if GlobalVariables.is_paused == true:
 		# Information that should be saved between menu switches on pause:
 		pause_menu.visible = true
 		player.position = GlobalVariables.player_position
 		player.rotation = GlobalVariables.player_rotation
-		score = GlobalVariables.player_score
-		score_string = score_format % [score]
-		score_label.text = score_string
+		evolution_bar.value = GlobalVariables.player_evolution_points
+		health_bar.value = GlobalVariables.player_health
+		health_bar.max_value = GlobalVariables.player_max_health
 		fps_control.visible = GlobalVariables.fps_visibility
 		Species.find_species(GlobalVariables.player_species)
 		player.refresh_species()
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
-		GlobalVariables.player_score = 0
+		GlobalVariables.player_evolution_points = 0
+		GlobalVariables.player_health = GlobalVariables.player_max_health
 
 
 
@@ -60,7 +57,7 @@ func _process(_delta):
 	var fps_format = "FPS: %d"
 	var fps_string = fps_format % [fps]
 	fps_label.text = fps_string
-	if score == 25:
+	if evolution_points == 25:
 		win_window.visible = true
 		get_tree().paused = true
 	if Input.is_action_just_released("points_cheat"):
@@ -120,10 +117,9 @@ func spawn_enemy():
 
 
 func increment_score():
-	score += 1
-	score_string = score_format % [score]
-	score_label.text = score_string
-	GlobalVariables.player_score = score
+	evolution_points += 1
+	evolution_bar.value = evolution_points
+	GlobalVariables.player_evolution_points = evolution_points
 
 
 

@@ -21,10 +21,13 @@ var current_level = 0
 var player_position = Vector2(400, 300)
 var player_rotation = 0
 var player_scale = 1
-var player_score = 0
+#var player_score = 0
+var player_evolution_points = 0
 var player_alive = true
 var player_name = null
 var player_species = ""
+var player_max_health = 1
+var player_health = 1
 
 # Leaderboard:
 var entries = [["Cat9", "13/3/2023", 11],["", "", null], ["", "", null], ["", "", null], ["", "", null], ["", "", null], ["", "", null], ["", "", null], ["", "", null], ["", "", null]]

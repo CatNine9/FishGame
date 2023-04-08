@@ -121,6 +121,7 @@ func refresh_species():
 	movement_mode = Species.loaded_movement_mode
 	facing_mode = Species.loaded_facing_mode
 	speed = Species.loaded_speed
+	GlobalVariables.player_max_health = Species.loaded_species_max_health
 
 
 
