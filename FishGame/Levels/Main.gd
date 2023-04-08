@@ -6,7 +6,8 @@ extends Node
 @onready var player = $Player
 @onready var player_collision = $Player/AreaBody/CollisionBody
 @onready var player_area = $Player/AreaBody
-@onready var score_label = $CanvasLayer/UIControl/ScoreControl/ScoreLabel
+@onready var score_label = $CanvasLayer/UIControl/PlayerStatusControl/ScoreLabel
+@onready var exp_bar = $CanvasLayer/UIControl/PlayerStatusControl/EXPBar
 @onready var pause_menu = $CanvasLayer/UIControl/PauseControl
 @onready var death_window = $CanvasLayer/UIControl/DeathControl
 @onready var gameplay_camera = $Player/Camera2D
@@ -38,7 +39,7 @@ func _ready():
 	score_label.text = score_string
 	
 	if GlobalVariables.is_paused == true:
-		# Information that should be saved between pauses:
+		# Information that should be saved between menu switches on pause:
 		pause_menu.visible = true
 		player.position = GlobalVariables.player_position
 		player.rotation = GlobalVariables.player_rotation

@@ -70,7 +70,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="ScoreControl" type="Control" parent="CanvasLayer/UIControl"]
+[node name="PlayerStatusControl" type="Control" parent="CanvasLayer/UIControl"]
 custom_minimum_size = Vector2(800, 800)
 layout_mode = 1
 anchors_preset = 8
@@ -88,12 +88,49 @@ pivot_offset = Vector2(400, 400)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="ScoreLabel" type="Label" parent="CanvasLayer/UIControl/ScoreControl"]
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/UIControl/PlayerStatusControl"]
 z_index = 1
 layout_mode = 0
 offset_right = 43.0
 offset_bottom = 26.0
 text = "Score"
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/UIControl/PlayerStatusControl"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 240.0
+offset_bottom = 112.0
+
+[node name="EXPBar" type="ProgressBar" parent="CanvasLayer/UIControl/PlayerStatusControl"]
+layout_mode = 2
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 232.0
+offset_bottom = 59.0
+
+[node name="Label2" type="Label" parent="CanvasLayer/UIControl/PlayerStatusControl"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 102.0
+offset_bottom = 42.0
+text = "Health:"
+
+[node name="EXPBar2" type="ProgressBar" parent="CanvasLayer/UIControl/PlayerStatusControl"]
+layout_mode = 2
+offset_left = 24.0
+offset_top = 80.0
+offset_right = 232.0
+offset_bottom = 107.0
+
+[node name="Label" type="Label" parent="CanvasLayer/UIControl/PlayerStatusControl"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 64.0
+offset_right = 102.0
+offset_bottom = 90.0
+text = "Evolution:"
 
 [node name="FPSControl" type="Control" parent="CanvasLayer/UIControl"]
 visible = false
@@ -378,11 +415,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 text = "Choose Evolution"
-
-[node name="HealthControl" type="Control" parent="CanvasLayer/UIControl"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="UpBorderRect" type="TextureRect" parent="."]
 offset_right = 3848.0
