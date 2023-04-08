@@ -38,6 +38,8 @@ func _on_fps_toggle_button_down():
 	else:
 		GlobalVariables.fps_visibility = false
 		GlobalVariables.fps_toggle_setting = false
+	
+	print("FPS visibility is now ", GlobalVariables.fps_visibility)
 
 
 

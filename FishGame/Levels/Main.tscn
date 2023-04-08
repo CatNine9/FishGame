@@ -379,6 +379,11 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 text = "Choose Evolution"
 
+[node name="HealthControl" type="Control" parent="CanvasLayer/UIControl"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="UpBorderRect" type="TextureRect" parent="."]
 offset_right = 3848.0
 offset_bottom = 288.0

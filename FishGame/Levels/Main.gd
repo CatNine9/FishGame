@@ -11,6 +11,7 @@ extends Node
 @onready var death_window = $CanvasLayer/UIControl/DeathControl
 @onready var gameplay_camera = $Player/Camera2D
 @onready var fps_label = $CanvasLayer/UIControl/FPSControl/FPSLabel
+@onready var fps_control = $CanvasLayer/UIControl/FPSControl
 @onready var enemy_spawn_node = $Enemies
 @onready var win_window = $CanvasLayer/UIControl/WinControl
 @onready var ui_container = $CanvasLayer/UIControl 
@@ -28,9 +29,11 @@ func _ready():
 	enemy_spawn_delay.start()
 
 	if GlobalVariables.fps_visibility == false:
-		fps_label.visible = false
+		fps_control.visible = false
 	else:
-		fps_label.visible = true
+		fps_control.visible = true
+	
+	print("FPS label is on: ", fps_control.visible)
 
 	score_label.text = score_string
 	
@@ -42,7 +45,7 @@ func _ready():
 		score = GlobalVariables.player_score
 		score_string = score_format % [score]
 		score_label.text = score_string
-		fps_label.visible = GlobalVariables.fps_visibility
+		fps_control.visible = GlobalVariables.fps_visibility
 		Species.find_species(GlobalVariables.player_species)
 		player.refresh_species()
 	else:
