@@ -7,7 +7,9 @@ extends Node
 @onready var player_collision = $Player/AreaBody/CollisionBody
 @onready var player_area = $Player/AreaBody
 @onready var evolution_bar = $CanvasLayer/UIControl/PlayerStatusControl/EvolutionBar
+@onready var evolution_bar_value = $CanvasLayer/UIControl/PlayerStatusControl/EvolutionBar/EvolutionValueLabel
 @onready var health_bar = $CanvasLayer/UIControl/PlayerStatusControl/HealthBar
+@onready var health_bar_value = $CanvasLayer/UIControl/PlayerStatusControl/HealthBar/HealthValueLabel
 @onready var pause_menu = $CanvasLayer/UIControl/PauseControl
 @onready var death_window = $CanvasLayer/UIControl/DeathControl
 @onready var gameplay_camera = $Player/Camera2D
@@ -22,6 +24,8 @@ extends Node
 var number_of_child_nodes = null
 var enemies = []
 var evolution_points = 0
+var evo_points_format = "%d / 25"
+var evo_points_string = evo_points_format % [evolution_points]
 
 
 func _ready():
@@ -32,14 +36,14 @@ func _ready():
 	else:
 		fps_control.visible = true
 
-	evolution_bar.value = evolution_points
-	
+	evolution_bar.value = GlobalVariables.player_evolution_points
+	evolution_bar_value.text = evo_points_string
+
 	if GlobalVariables.is_paused == true:
 		# Information that should be saved between menu switches on pause:
 		pause_menu.visible = true
 		player.position = GlobalVariables.player_position
 		player.rotation = GlobalVariables.player_rotation
-		evolution_bar.value = GlobalVariables.player_evolution_points
 		health_bar.value = GlobalVariables.player_health
 		health_bar.max_value = GlobalVariables.player_max_health
 		fps_control.visible = GlobalVariables.fps_visibility
@@ -119,6 +123,8 @@ func spawn_enemy():
 func increment_score():
 	evolution_points += 1
 	evolution_bar.value = evolution_points
+	evo_points_string = evo_points_format % [evolution_points]
+	evolution_bar_value.text = evo_points_string
 	GlobalVariables.player_evolution_points = evolution_points
 
 

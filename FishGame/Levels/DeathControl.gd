@@ -13,7 +13,6 @@ extends Control
 
 func _on_next_button_button_up():
 	GlobalVariables.player_name = null
-	GlobalVariables.player_score = 0
 	GlobalVariables.player_position = Vector2(400, 300)
 	var main_menu = load("res://UI/MainMenu.tscn")
 	get_tree().change_scene_to_packed(main_menu)
