@@ -111,8 +111,21 @@ Bite:
 	
 	Pseudocode:
 		
-		On collision, if can-bite is true, set bite shape to visible and start cooldown timer and set can-bite to false. 
+		On collision, if can-bite is true, set bite shape to visible and start cooldown timer and set can-bite to false. <- Damage calculation will go here later.
 		
 		Let bite shape play out it's animation, on end of animation set bite shape visible to false. 
 		
 		On cooldown timer timeout, set can-bite to true.
+		
+
+
+Next, health bar.
+
+	Player health bar should be always visible in the top left corner of the screen.
+	Enemy health shold only become visible when it isn't 100%, and under the Node2D that's used to keep it in place to the enemy and stop it from rotating.
+	
+	
+	
+	
+Last worked on:
+	Enemy health bar, now needs some logic

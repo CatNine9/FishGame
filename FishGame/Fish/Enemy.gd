@@ -13,6 +13,9 @@ extends CharacterBody2D
 @onready var size_tier_label = $Node2D/DebugInfoContainer/Panel/VBoxContainer/HBoxContainer/SizeTierValueLabel
 @onready var label_rotation = $Node2D
 @onready var attack_sprite = $AttackSprite
+@onready var health_bar_container = $Node2D/HealthBarConatiner
+@onready var health_bar = $Node2D/HealthBarConatiner/HealthBar
+@onready var health_value_label = $Node2D/HealthBarConatiner/HealthBar/HealthValueLabel
 
 # Timers:
 @onready var size_display_delay = $SizeDisplayDelay
@@ -72,6 +75,9 @@ func _ready():
 		debug_label.visible = false
 	else:
 		debug_label.visible = true
+	
+	var scale_difference = 1 - scale.x
+	label_rotation.scale += Vector2(scale_difference, scale_difference)
 
 
 
@@ -246,3 +252,11 @@ func _on_attack_visible_time_timeout():
 
 func _on_attack_cooldown_time_timeout():
 	pass # Replace with function body.
+
+
+
+func _on_health_bar_changed():
+	if health < max_health:
+		health_bar_container.visible = true
+	else:
+		health_bar_container.visible = false
