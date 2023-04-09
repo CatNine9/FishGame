@@ -93,9 +93,10 @@ func _on_area_body_area_entered(area):
 		get_parent().death_window.visible = true
 		var enemy_root_node = area.get_parent()
 		get_parent().enemy_player_killed_by(enemy_root_node)
-	if scale.x <= (enemy.scale.x * 1.25) and scale.x <= (enemy.scale.x * 0.75):
-		# Enemy is adversary:
-		pass
+	if scale.x <= (enemy.scale.x * 1.25) and scale.x >= (enemy.scale.x * 0.75):
+		# Enemy is adversary - default bite attack:
+		get_parent().lose_health(enemy.phys_attack)
+		get_parent().adversary_mouth_overlaps_player(enemy)
 
 
 
@@ -109,6 +110,14 @@ func _on_area_mouth_area_entered(area):
 		scale += Vector2(0.1, 0.1)
 		size_label.text = str(snapped(scale.x, 0.01))
 		get_parent().increment_score()
+
+
+
+func _on_area_body_area_exited(area):
+	var enemy = area.get_parent()
+	get_parent().adversary_mouth_exited(enemy)
+	pass
+
 
 
 
@@ -141,6 +150,8 @@ func _on_attack_visible_time_timeout():
 
 func _on_attack_cooldown_time_timeout():
 	can_attack = true
+
+
 
 
 

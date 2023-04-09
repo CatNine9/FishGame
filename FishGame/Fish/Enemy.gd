@@ -251,7 +251,8 @@ func _on_attack_visible_time_timeout():
 
 
 func _on_attack_cooldown_time_timeout():
-	pass # Replace with function body.
+	#if can attack is still true, let the player know they're getting hit again
+	pass
 
 
 

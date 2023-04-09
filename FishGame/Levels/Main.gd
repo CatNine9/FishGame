@@ -46,8 +46,10 @@ func _ready():
 	evolution_bar_value.text = evo_points_string
 
 	health_points = GlobalVariables.player_max_health
+	GlobalVariables.player_health = health_points
 	max_health = health_points
 	health_bar.max_value = GlobalVariables.player_max_health
+	health_bar.value = GlobalVariables.player_health
 	health_points_string = health_points_format % [health_points, max_health]
 	health_bar_value.text = health_points_string
 
@@ -86,7 +88,7 @@ func _process(_delta):
 		increment_score()
 	# To test player taking damage:
 	if Input.is_action_just_released("health_decrement"):
-		lose_health()
+		lose_health(1)
 
 
 
@@ -152,12 +154,13 @@ func increment_score():
 
 
 
-func lose_health():
-	health_points -= 1
+func lose_health(value):
+	health_points -= value
 	health_bar.value = health_points
 	health_points_string = health_points_format % [health_points, max_health]
 	health_bar_value.text = health_points_string
 	GlobalVariables.player_health = health_points
+	print("Lost health. New value: ", health_points)
 
 
 
@@ -170,3 +173,17 @@ func enemy_player_killed_by(enemy_predator):
 	enemy_predator.is_in_attack_sequence = true
 	enemy_predator.is_stopped = true
 	enemy_predator.stop_moving_timer_start(player.global_position)
+
+
+
+func adversary_mouth_overlaps_player(adversary):
+	#adversary.start the cooldown timer
+	#adversary.set the enemy to can attack
+	pass
+
+
+
+func adversary_mouth_exited(adversary):
+	#adversary.set the enemy to cannot attack
+	#adversary.stop the cooldown timer
+	pass

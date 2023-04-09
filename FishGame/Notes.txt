@@ -129,3 +129,20 @@ Next, health bar.
 	
 Last worked on:
 	Enemy health bar, now needs some logic
+
+
+
+
+
+When the enemy strikes the player with it's mouth I want:
+	* The enemy to hit once, and then for there to be a cooldown before it can hit again. 
+	* It to be possible for the player to get swarmed by multiple enemies, so don't put the hit cooldown timer on the player, but the enemy.
+	* If the player doesn't exit the enemy mouth and the enemy can hit again, I want that to be possible. So the on entered should only change the condition that the enemy can hit, but the actual hit logic should be under an if statement in process.
+	
+	The enemy should have a way to let the player know they have been hit. This could be achieved through the parent of both the player and the enemy. The enemy can probably do this by calling a function on the main script.
+
+
+
+Damage calculation:
+	Easiest way to do it would be to make physical attack a literal amount of hp taken off. This means, health would double as defence.
+	This won't work for attacks that have their own damage modifier, but it will work for the basic bite attack.

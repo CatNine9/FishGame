@@ -101,7 +101,6 @@ offset_left = 24.0
 offset_top = 32.0
 offset_right = 232.0
 offset_bottom = 59.0
-value = 5.0
 show_percentage = false
 
 [node name="HealthValueLabel" type="Label" parent="CanvasLayer/UIControl/PlayerStatusControl/HealthBar"]
