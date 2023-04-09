@@ -53,9 +53,10 @@ var size_tier = ""
 
 var is_stopped = false
 var is_in_flee_sequence = false
-var is_in_attack_sequence = false
+var is_in_kill_sequence = false
 var is_rotated = false
 var is_checking = true
+var can_attack = false
 
 var sighted_player = null
 var last_sighted_player_position = Vector2(0, 0)
@@ -193,7 +194,7 @@ func _on_area_vision_body_entered(body):
 
 func _on_area_vision_body_exited(_body):
 	sighted_player = null
-	if is_in_flee_sequence == false and is_in_attack_sequence == false:
+	if is_in_flee_sequence == false and is_in_kill_sequence == false:
 		resume_facing_follow_coast()
 
 
@@ -231,7 +232,7 @@ func _on_size_display_delay_timeout():
 
 func _on_enemy_feed_time_timeout():
 	is_stopped = false
-	is_in_attack_sequence = false
+	is_in_kill_sequence = false
 	resume_facing_follow_coast()
 
 
@@ -251,8 +252,9 @@ func _on_attack_visible_time_timeout():
 
 
 func _on_attack_cooldown_time_timeout():
-	#if can attack is still true, let the player know they're getting hit again
-	pass
+	if can_attack == true:
+		get_parent().get_parent().lose_health(phys_attack)
+		print("Lose health being called from enemy's attack cooldown timeout.")
 
 
 

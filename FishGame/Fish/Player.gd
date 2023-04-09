@@ -66,8 +66,9 @@ func _physics_process(delta):
 
 
 func follow_move(player_speed, _delta):
-	velocity = position.direction_to(get_global_mouse_position()) * player_speed
-	move_and_slide()
+	if Input.is_action_pressed("ui_accept") == false:
+		velocity = position.direction_to(get_global_mouse_position()) * player_speed
+		move_and_slide()
 
 
 func experimental_move(_speed):
@@ -96,6 +97,7 @@ func _on_area_body_area_entered(area):
 	if scale.x <= (enemy.scale.x * 1.25) and scale.x >= (enemy.scale.x * 0.75):
 		# Enemy is adversary - default bite attack:
 		get_parent().lose_health(enemy.phys_attack)
+		print("Lose health being called from player's body entered signal.")
 		get_parent().adversary_mouth_overlaps_player(enemy)
 
 
@@ -122,6 +124,7 @@ func _on_area_body_area_exited(area):
 
 
 func refresh_species():
+	Species.find_species(GlobalVariables.player_species)
 	sprite.texture = Species.loaded_species_sprite
 	
 	var new_collision_points = PackedVector2Array()
@@ -130,9 +133,9 @@ func refresh_species():
 		new_collision_points.append(each)
 	for each in Species.loaded_mouth_shape:
 		new_mouth_points.append(each)
-		
-	collision_shape.polygon = new_collision_points
-	mouth_shape.polygon = new_mouth_points
+
+	collision_shape.set_deferred("polygon", new_collision_points)
+	mouth_shape.set_deferred("polygon", new_mouth_points)
 	attack_sprite.position.x = Species.loaded_attack_graphic_xpos
 	movement_mode = Species.loaded_movement_mode
 	facing_mode = Species.loaded_facing_mode
