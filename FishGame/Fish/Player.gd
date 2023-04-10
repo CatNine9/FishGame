@@ -15,23 +15,18 @@ extends CharacterBody2D
 @onready var attack_cooldown = $AttackCooldownTime
 @onready var attack_visibility_time = $AttackVisibleTime
 
-@export var speed = 1
-@export var friction = 1000
-@export var acceleration = 1000
+# Stats:
+var speed = 1
+var max_health = 1
+var health = 1
+var phys_attack = 1
 
-@export var max_health = 1
-@export var health = 1
-@export var phys_attack = 1
+# Modes:
+var movement_mode = "Default"
+var facing_mode = "Default"
 
-@export var movement_mode = "Default"
-@export var facing_mode = "Default"
-
-
-
-var axis = Vector2.ZERO
-
+# Bools:
 var is_rotated_90 = false
-
 var can_attack = true
 
 

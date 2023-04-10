@@ -168,7 +168,6 @@ func _on_area_vision_body_exited(body):
 
 func _on_area_body_area_entered(area):
 	var player = area.get_parent()
-	#print("Player: ", player)
 	if scale < (player.scale * 0.75):
 		get_parent().get_parent().enemies.erase(self_identifier)
 		queue_free()

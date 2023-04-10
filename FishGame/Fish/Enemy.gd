@@ -25,32 +25,33 @@ extends CharacterBody2D
 @onready var attack_cooldown = $AttackCooldownTime
 @onready var attack_visibility_time = $AttackVisibleTime
 
-@export var speed = 1
-@export var coasting_speed = 300
-
-@export var max_health = 1
-@export var health = 1
-@export var phys_attack = 1
-
-@export var movement_mode = "Default"
-@export var facing_mode = "Default"
-
-var known_player_position = Vector2(0, 0)
-
+# Setup:
 var left_boundary = 0
 var right_boundary = 0
 var up_boundary = 0
 var down_boundary = 0
-
 var random_height_value = 0
 var random_width_value = 0
-
 var self_identifier = null
 var spawn_side = null
 var sprite_flipped = false
 var species = ""
 var size_tier = ""
 
+# Stats:
+var speed = 1
+var coasting_speed = 300
+var max_health = 1
+var health = 1
+var health_points_format = "%d / %d"
+var health_points_string = health_points_format % [health, max_health]
+var phys_attack = 1
+
+# Modes:
+var movement_mode = "Default"
+var facing_mode = "Default"
+
+# Bools:
 var is_stopped = false
 var is_in_flee_sequence = false
 var is_in_kill_sequence = false
@@ -58,8 +59,11 @@ var is_rotated = false
 var is_checking = true
 var can_attack = false
 
+# Player sensing:
 var sighted_player = null
 var last_sighted_player_position = Vector2(0, 0)
+
+
 
 
 
@@ -87,7 +91,10 @@ func _ready():
 	if scale > (GlobalVariables.player_scale * 1.25):
 		size_tier = "Predator"
 	
-	#reassign_tier()
+	health_bar.max_value = max_health
+	health_bar.value = max_health
+	health_points_string = health_points_format % [health, max_health]
+	health_value_label.text = health_points_string
 
 
 
@@ -102,8 +109,7 @@ func _physics_process(delta):
 		size_tier_label.text = size_tier
 
 	if position.x < (left_boundary - 200) or position.x > (right_boundary + 200) or position.y < (up_boundary - 200) or position.y > (down_boundary + 200):
-		get_parent().get_parent().enemies.erase(self_identifier)
-		queue_free()
+		enemy_dies()
 
 	label_rotation.global_rotation = 0
 
@@ -176,7 +182,6 @@ func stop_moving_timer_start(player_position):
 	attack_cooldown.start()
 	attack_visibility_time.start()
 	feeding_timer.start()
-	print(player_position)
 
 
 
@@ -201,10 +206,20 @@ func _on_area_vision_body_exited(_body):
 
 
 
-func _on_area_body_area_entered(_area):
+func _on_area_body_area_entered(area):
+	var player = area.get_parent()
 	if size_tier == "Prey":
-		get_parent().get_parent().enemies.erase(self_identifier)
-		queue_free()
+		enemy_dies()
+	elif size_tier == "Adversary":
+		health -= player.phys_attack
+		health_bar.value = health
+		health_points_string = health_points_format % [health, max_health]
+		health_value_label.text = health_points_string
+		if health <= 0:
+			health = 0
+			health_points_string = health_points_format % [health, max_health]
+			health_value_label.text = health_points_string
+			enemy_dies()
 
 
 
@@ -215,6 +230,7 @@ func _on_enemy_flee_time_timeout():
 	is_checking = true
 	if sighted_player == null:
 		check_for_player_timer.start()
+
 
 
 func _on_check_for_player_time_timeout():
@@ -259,9 +275,11 @@ func _on_attack_cooldown_time_timeout():
 
 func _on_health_bar_changed():
 	if health < max_health:
-		health_bar_container.visible = true
+#		health_bar_container.visible = true
+		pass
 	else:
-		health_bar_container.visible = false
+#		health_bar_container.visible = false
+		pass
 
 
 
@@ -272,4 +290,9 @@ func reassign_tier():
 		size_tier = "Adversary"
 	if scale > (GlobalVariables.player_scale * 1.25):
 		size_tier = "Predator"
-	print("Enemies got resized.")
+
+
+
+func enemy_dies():
+	get_parent().get_parent().enemies.erase(self_identifier)
+	queue_free()

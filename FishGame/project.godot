@@ -91,8 +91,7 @@ health_decrement={
 
 [physics]
 
-common/physics_ticks_per_second=50
-common/max_physics_steps_per_frame=80
+common/physics_ticks_per_second=100
 
 [rendering]
 

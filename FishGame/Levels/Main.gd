@@ -130,7 +130,11 @@ func spawn_enemy():
 	enemy_spawn.facing_mode = Species.loaded_facing_mode
 	enemy_spawn.self_identifier = enemy_spawn
 	enemy_spawn.scale *= random_size_value
+	enemy_spawn.max_health = Species.loaded_species_max_health
+	enemy_spawn.health = enemy_spawn.max_health
+	# ^^ Above: Pre-ready ^^
 	enemy_spawn_node.add_child(enemy_spawn)
+	# vv Below: Post-ready vv
 	enemy_spawn.collision_shape.polygon = Species.loaded_collision_shape
 	enemy_spawn.mouth_shape.polygon = Species.loaded_mouth_shape
 	enemy_spawn.attack_sprite.position.x = Species.loaded_attack_graphic_xpos
@@ -139,8 +143,6 @@ func spawn_enemy():
 	enemy_spawn.speed = Species.loaded_speed
 	enemy_spawn.coasting_speed = Species.loaded_coasting_speed
 	enemy_spawn.phys_attack = Species.loaded_species_phys_attack
-	enemy_spawn.max_health = Species.loaded_species_max_health
-	enemy_spawn.health = enemy_spawn.max_health
 	enemies.append(enemy_spawn)
 	enemy_spawn.add_to_group("Enemies")
 
@@ -162,7 +164,6 @@ func lose_health(value):
 	health_bar_value.text = health_points_string
 	GlobalVariables.player_health = health_points
 	player.health = GlobalVariables.player_health
-	print("Lost health. New value: ", health_points)
 
 
 
