@@ -79,6 +79,15 @@ func _ready():
 	
 	var scale_difference = 1 - scale.x
 	label_rotation.scale += Vector2(scale_difference, scale_difference)
+	
+	if scale < (GlobalVariables.player_scale * 0.75):
+		size_tier = "Prey"
+	if scale <= (GlobalVariables.player_scale * 1.25) and scale >= (GlobalVariables.player_scale * 0.75):
+		size_tier = "Adversary"
+	if scale > (GlobalVariables.player_scale * 1.25):
+		size_tier = "Predator"
+	
+	#reassign_tier()
 
 
 
@@ -88,13 +97,6 @@ func _physics_process(delta):
 			movement_follow(delta)
 		if facing_mode == "Follow":
 			facing_follow()
-
-	if scale < (GlobalVariables.player_scale * 0.75):
-		size_tier = "Prey"
-	if scale <= (GlobalVariables.player_scale * 1.25) and scale >= (GlobalVariables.player_scale * 0.75):
-		size_tier = "Adversary"
-	if scale > (GlobalVariables.player_scale * 1.25):
-		size_tier = "Predator"
 
 	if GlobalVariables.debug_visibility == true:
 		size_tier_label.text = size_tier
@@ -160,9 +162,9 @@ func movement_follow(_delta):
 		else:
 			velocity.x = 0
 	elif sighted_player and is_in_flee_sequence == false and is_stopped == false:
-		if scale > (sighted_player.scale * 1.25):
+		if size_tier == "Predator":
 			velocity = position.direction_to(sighted_player.position) * speed
-		elif scale >= (sighted_player.scale * 0.75) and scale <= (sighted_player.scale * 1.25):
+		elif size_tier == "Adversary":
 			velocity = position.direction_to(sighted_player.position) * speed * 0.5
 	move_and_slide()
 
@@ -180,7 +182,7 @@ func stop_moving_timer_start(player_position):
 
 func _on_area_vision_body_entered(body):
 	sighted_player = body
-	if scale < (sighted_player.scale * 0.75):
+	if size_tier == "Prey":
 		is_in_flee_sequence = true
 		turn_and_run()
 	if is_checking == true:
@@ -199,10 +201,8 @@ func _on_area_vision_body_exited(_body):
 
 
 
-func _on_area_body_area_entered(area):
-	var player = area.get_parent()
-	#print("Player: ", player)
-	if scale < (player.scale * 0.75):
+func _on_area_body_area_entered(_area):
+	if size_tier == "Prey":
 		get_parent().get_parent().enemies.erase(self_identifier)
 		queue_free()
 
@@ -262,3 +262,14 @@ func _on_health_bar_changed():
 		health_bar_container.visible = true
 	else:
 		health_bar_container.visible = false
+
+
+
+func reassign_tier():
+	if scale < (GlobalVariables.player_scale * 0.75):
+		size_tier = "Prey"
+	if scale <= (GlobalVariables.player_scale * 1.25) and scale >= (GlobalVariables.player_scale * 0.75):
+		size_tier = "Adversary"
+	if scale > (GlobalVariables.player_scale * 1.25):
+		size_tier = "Predator"
+	print("Enemies got resized.")

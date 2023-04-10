@@ -26,6 +26,8 @@ extends CharacterBody2D
 @export var movement_mode = "Default"
 @export var facing_mode = "Default"
 
+
+
 var axis = Vector2.ZERO
 
 var is_rotated_90 = false
@@ -105,6 +107,7 @@ func _on_area_mouth_area_entered(area):
 		scale += Vector2(0.1, 0.1)
 		size_label.text = str(snapped(scale.x, 0.01))
 		get_parent().increment_score()
+		get_parent().player_changed_size()
 
 
 
@@ -138,6 +141,7 @@ func refresh_species():
 
 	collision_shape.set_deferred("polygon", new_collision_points)
 	mouth_shape.set_deferred("polygon", new_mouth_points)
+	physical_body.set_deferred("polygon", new_collision_points)
 	attack_sprite.position.x = Species.loaded_attack_graphic_xpos
 	movement_mode = Species.loaded_movement_mode
 	facing_mode = Species.loaded_facing_mode

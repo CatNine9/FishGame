@@ -142,6 +142,7 @@ func spawn_enemy():
 	enemy_spawn.max_health = Species.loaded_species_max_health
 	enemy_spawn.health = enemy_spawn.max_health
 	enemies.append(enemy_spawn)
+	enemy_spawn.add_to_group("Enemies")
 
 
 
@@ -183,3 +184,8 @@ func adversary_mouth_overlaps_player(adversary):
 func adversary_mouth_exited(adversary):
 	adversary.can_attack = false
 	adversary.attack_cooldown.stop()
+
+
+
+func player_changed_size():
+	get_tree().call_group("Enemies", "reassign_tier")
