@@ -178,11 +178,13 @@ func enemy_player_killed_by(enemy_predator):
 
 
 func adversary_mouth_overlaps_player(adversary):
-	adversary.attack_cooldown.start()
-	adversary.can_attack = true
+#	adversary.attack_cooldown.start()
+#	adversary.can_attack = true
+	pass
 
 
 
 func adversary_mouth_exited(adversary):
-	adversary.can_attack = false
-	adversary.attack_cooldown.stop()
+#	adversary.can_attack = false
+#	adversary.attack_cooldown.stop()
+	pass

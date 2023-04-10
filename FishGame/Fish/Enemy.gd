@@ -91,10 +91,10 @@ func _physics_process(delta):
 
 	if scale < (GlobalVariables.player_scale * 0.75):
 		size_tier = "Prey"
-	elif scale > (GlobalVariables.player_scale * 1.25):
-		size_tier = "Predator"
-	else:
+	if scale <= (GlobalVariables.player_scale * 1.25) and scale >= (GlobalVariables.player_scale * 0.75):
 		size_tier = "Adversary"
+	if scale > (GlobalVariables.player_scale * 1.25):
+		size_tier = "Predator"
 
 	if GlobalVariables.debug_visibility == true:
 		size_tier_label.text = size_tier
@@ -252,9 +252,10 @@ func _on_attack_visible_time_timeout():
 
 
 func _on_attack_cooldown_time_timeout():
-	if can_attack == true:
-		get_parent().get_parent().lose_health(phys_attack)
-		print("Lose health being called from enemy's attack cooldown timeout.")
+#	if can_attack == true:
+#		get_parent().get_parent().lose_health(phys_attack)
+#		print("Lose health being called from enemy's attack cooldown timeout.")
+	pass
 
 
 
