@@ -85,20 +85,13 @@ func _on_area_body_area_entered(area):
 	var enemy = area.get_parent()
 	if enemy.size_tier == "Predator":
 		# Enemy is Predator:
-		GlobalVariables.camera_position = position
-		sprite.visible = false
-		collision_shape.set_deferred("disabled", true)
-		mouth_shape.set_deferred("disabled", true)
-		physical_body.set_deferred("disabled", true)
-		GlobalVariables.player_alive = false
-		get_parent().death_window.visible = true
-		var enemy_root_node = area.get_parent()
-		get_parent().enemy_player_killed_by(enemy_root_node)
+		player_dies(area)
 	if enemy.size_tier == "Adversary":
 		# Enemy is adversary - default bite attack:
 		get_parent().lose_health(enemy.phys_attack)
-		print("Lose health being called from player's body entered signal.")
 		get_parent().adversary_mouth_overlaps_player(enemy)
+		if health <= 0:
+			player_dies(area)
 
 
 
@@ -120,6 +113,15 @@ func _on_area_body_area_exited(area):
 	get_parent().adversary_mouth_exited(enemy)
 	pass
 
+
+
+func _on_attack_visible_time_timeout():
+	attack_sprite.visible = false
+
+
+
+func _on_attack_cooldown_time_timeout():
+	can_attack = true
 
 
 
@@ -146,15 +148,14 @@ func refresh_species():
 	phys_attack = Species.loaded_species_phys_attack
 
 
-func _on_attack_visible_time_timeout():
-	attack_sprite.visible = false
 
-
-
-func _on_attack_cooldown_time_timeout():
-	can_attack = true
-
-
-
-
-
+func player_dies(enemy_area):
+	GlobalVariables.camera_position = position
+	sprite.visible = false
+	collision_shape.set_deferred("disabled", true)
+	mouth_shape.set_deferred("disabled", true)
+	physical_body.set_deferred("disabled", true)
+	GlobalVariables.player_alive = false
+	get_parent().death_window.visible = true
+	var enemy_root_node = enemy_area.get_parent()
+	get_parent().enemy_player_killed_by(enemy_root_node)

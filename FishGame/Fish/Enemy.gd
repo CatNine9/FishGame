@@ -254,8 +254,6 @@ func _on_attack_visible_time_timeout():
 func _on_attack_cooldown_time_timeout():
 	if can_attack == true:
 		get_parent().get_parent().lose_health(phys_attack)
-		print("Lose health would be getting called from enemy's attack cooldown timeout if it was here.")
-	#pass
 
 
 

@@ -165,26 +165,21 @@ func lose_health(value):
 
 
 
-func player_finished_loading():
-	pass
-
-
-
 func enemy_player_killed_by(enemy_predator):
 	enemy_predator.is_in_kill_sequence = true
 	enemy_predator.is_stopped = true
 	enemy_predator.stop_moving_timer_start(player.global_position)
+	health_points_string = health_points_format % [0, max_health]
+	health_bar_value.text = health_points_string
 
 
 
 func adversary_mouth_overlaps_player(adversary):
 	adversary.attack_cooldown.start()
 	adversary.can_attack = true
-	#pass
 
 
 
 func adversary_mouth_exited(adversary):
 	adversary.can_attack = false
 	adversary.attack_cooldown.stop()
-	#pass
