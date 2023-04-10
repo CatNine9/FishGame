@@ -154,6 +154,7 @@ wait_time = 0.5
 one_shot = true
 
 [connection signal="area_entered" from="AreaBody" to="." method="_on_area_body_area_entered"]
+[connection signal="area_exited" from="AreaBody" to="." method="_on_area_body_area_exited"]
 [connection signal="body_entered" from="AreaVision" to="." method="_on_area_vision_body_entered"]
 [connection signal="body_exited" from="AreaVision" to="." method="_on_area_vision_body_exited"]
 [connection signal="changed" from="Node2D/HealthBarConatiner/HealthBar" to="." method="_on_health_bar_changed"]

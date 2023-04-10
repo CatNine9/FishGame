@@ -216,6 +216,11 @@ func _on_area_body_area_entered(area):
 
 
 
+func _on_area_body_area_exited(_area):
+	get_parent().get_parent().player_mouth_exited()
+
+
+
 func take_damage(player_ref):
 	health -= player_ref.phys_attack
 	health_bar.value = health
@@ -301,3 +306,6 @@ func reassign_tier():
 func enemy_dies():
 	get_parent().get_parent().enemies.erase(self_identifier)
 	queue_free()
+
+
+
