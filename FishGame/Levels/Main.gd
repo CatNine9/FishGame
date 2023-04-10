@@ -160,8 +160,8 @@ func lose_health(value):
 	health_points_string = health_points_format % [health_points, max_health]
 	health_bar_value.text = health_points_string
 	GlobalVariables.player_health = health_points
+	player.health = GlobalVariables.player_health
 	print("Lost health. New value: ", health_points)
-	player.refresh_species()
 
 
 
@@ -178,13 +178,13 @@ func enemy_player_killed_by(enemy_predator):
 
 
 func adversary_mouth_overlaps_player(adversary):
-#	adversary.attack_cooldown.start()
-#	adversary.can_attack = true
-	pass
+	adversary.attack_cooldown.start()
+	adversary.can_attack = true
+	#pass
 
 
 
 func adversary_mouth_exited(adversary):
-#	adversary.can_attack = false
-#	adversary.attack_cooldown.stop()
-	pass
+	adversary.can_attack = false
+	adversary.attack_cooldown.stop()
+	#pass

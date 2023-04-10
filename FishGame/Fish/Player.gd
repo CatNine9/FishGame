@@ -98,7 +98,7 @@ func _on_area_body_area_entered(area):
 		# Enemy is adversary - default bite attack:
 		get_parent().lose_health(enemy.phys_attack)
 		print("Lose health being called from player's body entered signal.")
-		#get_parent().adversary_mouth_overlaps_player(enemy)
+		get_parent().adversary_mouth_overlaps_player(enemy)
 
 
 
