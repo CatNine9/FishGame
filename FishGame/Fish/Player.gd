@@ -29,6 +29,9 @@ var facing_mode = "Default"
 var is_rotated_90 = false
 var can_attack = true
 
+# Sensing the enmy:
+var enemy_overlapping_mouth = null
+
 
 
 func _ready():
@@ -109,7 +112,6 @@ func _on_area_mouth_area_entered(area):
 func _on_area_body_area_exited(area):
 	var enemy = area.get_parent()
 	get_parent().adversary_mouth_exited(enemy)
-	pass
 
 
 
@@ -120,6 +122,7 @@ func _on_attack_visible_time_timeout():
 
 func _on_attack_cooldown_time_timeout():
 	can_attack = true
+	get_parent().continue_damage_enemy(enemy_overlapping_mouth)
 
 
 

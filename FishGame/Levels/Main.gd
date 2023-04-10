@@ -182,9 +182,26 @@ func adversary_mouth_overlaps_player(adversary):
 
 
 
+func player_mouth_overlaps_adversary(adversary):
+	player.attack_cooldown.start()
+	player.enemy_overlapping_mouth = adversary
+
+
 func adversary_mouth_exited(adversary):
 	adversary.can_attack = false
 	adversary.attack_cooldown.stop()
+
+
+
+func player_mouth_exited():
+	player.attack_cooldown.stop()
+	player.enemy_overlapping_mouth = null
+
+
+
+func continue_damage_enemy(adversary):
+	if adversary != null:
+		adversary.take_damage(player)
 
 
 

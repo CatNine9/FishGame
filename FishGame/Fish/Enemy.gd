@@ -211,16 +211,21 @@ func _on_area_body_area_entered(area):
 	if size_tier == "Prey":
 		enemy_dies()
 	elif size_tier == "Adversary":
-		health -= player.phys_attack
-		health_bar.value = health
+		take_damage(player)
+		get_parent().get_parent().player_mouth_overlaps_adversary(self_identifier)
+
+
+
+func take_damage(player_ref):
+	health -= player_ref.phys_attack
+	health_bar.value = health
+	health_points_string = health_points_format % [health, max_health]
+	health_value_label.text = health_points_string
+	if health <= 0:
+		health = 0
 		health_points_string = health_points_format % [health, max_health]
 		health_value_label.text = health_points_string
-		if health <= 0:
-			health = 0
-			health_points_string = health_points_format % [health, max_health]
-			health_value_label.text = health_points_string
-			enemy_dies()
-
+		enemy_dies()
 
 
 func _on_enemy_flee_time_timeout():
