@@ -57,7 +57,7 @@ var is_in_flee_sequence = false
 var is_in_kill_sequence = false
 var is_rotated = false
 var is_checking = true
-var can_attack = false
+var is_biting = false
 
 # Player sensing:
 var sighted_player = null
@@ -134,7 +134,7 @@ func facing_follow_start_coast():
 
 func facing_follow():
 	if sighted_player != null:
-		if scale > (sighted_player.scale * 0.75):
+		if size_tier == "Adversary" or size_tier == "Predator":
 			look_at(sighted_player.position)
 
 
@@ -282,7 +282,7 @@ func _on_attack_visible_time_timeout():
 
 
 func _on_attack_cooldown_time_timeout():
-	if can_attack == true:
+	if is_biting == true:
 		get_parent().get_parent().lose_health(phys_attack)
 
 
