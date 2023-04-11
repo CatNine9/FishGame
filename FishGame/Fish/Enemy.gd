@@ -81,8 +81,13 @@ func _ready():
 	else:
 		debug_label.visible = true
 	
-	var scale_difference = 1 - scale.x
-	label_rotation.scale += Vector2(scale_difference, scale_difference)
+#	var scale_difference = 1 - scale.x
+#	print("Enemy scale x: ", scale.x)
+#	label_rotation.scale += Vector2(scale_difference, scale_difference)
+#	print("Enemy label rotation scale: ", label_rotation.scale)
+#	if label_rotation.scale.x < 0:
+#		label_rotation.scale.x *= -1
+#		label_rotation.scale.y *= -1
 	
 	if scale < (GlobalVariables.player_scale * 0.75):
 		size_tier = "Prey"
