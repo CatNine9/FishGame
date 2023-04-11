@@ -85,7 +85,7 @@ func _process(_delta):
 		get_tree().paused = true
 	# To test levelling up:
 	if Input.is_action_just_released("points_cheat"):
-		increment_score()
+		increment_score(1)
 	# To test player taking damage:
 	if Input.is_action_just_released("health_decrement"):
 		lose_health(1)
@@ -148,8 +148,8 @@ func spawn_enemy():
 
 
 
-func increment_score():
-	evolution_points += 1
+func increment_score(value):
+	evolution_points += value
 	evolution_bar.value = evolution_points
 	evo_points_string = evo_points_format % [evolution_points]
 	evolution_bar_value.text = evo_points_string
@@ -185,6 +185,8 @@ func adversary_mouth_overlaps_player(adversary):
 func player_mouth_overlaps_adversary(adversary):
 	player.attack_cooldown.start()
 	player.enemy_overlapping_mouth = adversary
+	player.attack_sprite.visible = true
+	player.attack_visibility_time.start()
 
 
 func adversary_mouth_exited(adversary):
@@ -202,6 +204,8 @@ func player_mouth_exited():
 func continue_damage_enemy(adversary):
 	if adversary != null:
 		adversary.take_damage(player)
+		player.attack_sprite.visible = true
+		player.attack_visibility_time.start()
 
 
 

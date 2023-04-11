@@ -87,6 +87,7 @@ grow_vertical = 2
 pivot_offset = Vector2(400, 400)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/UIControl/PlayerStatusControl"]
 layout_mode = 0

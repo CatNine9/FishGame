@@ -146,3 +146,11 @@ When the enemy strikes the player with it's mouth I want:
 Damage calculation:
 	Easiest way to do it would be to make physical attack a literal amount of hp taken off. This means, health would double as defence.
 	This won't work for attacks that have their own damage modifier, but it will work for the basic bite attack.
+	
+	
+	
+	
+	Note: Player attacking enemy seems to work ok, except the cooldown timer stopping doesn't seem to stop the enemy continuing to take damage when the player exits it's overlap. This only happens once, but it still needs to be fixed.
+	
+	
+Next, player doesn't get any rewards for killing an adversary. The easiest way to fix this would probably be to give a boosted reward for killing such an enemy. Later maybe have the enemy break up to be eaten like prey. But for now giving 5 points for a kill is good enough.

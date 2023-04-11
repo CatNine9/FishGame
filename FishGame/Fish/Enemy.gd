@@ -230,6 +230,7 @@ func take_damage(player_ref):
 		health = 0
 		health_points_string = health_points_format % [health, max_health]
 		health_value_label.text = health_points_string
+		get_parent().get_parent().increment_score(5)
 		enemy_dies()
 
 
