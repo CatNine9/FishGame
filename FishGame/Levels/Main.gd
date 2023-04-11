@@ -86,9 +86,7 @@ func _process(_delta):
 	# To test levelling up:
 	if Input.is_action_just_released("points_cheat"):
 		increment_score(1)
-	# To test player taking damage:
-	if Input.is_action_just_released("health_decrement"):
-		lose_health(1)
+
 
 
 
@@ -162,13 +160,18 @@ func increment_score(value):
 
 
 
-func lose_health(value):
+func lose_health(value, adversary):
 	health_points -= value
 	health_bar.value = health_points
 	health_points_string = health_points_format % [health_points, max_health]
 	health_bar_value.text = health_points_string
 	GlobalVariables.player_health = health_points
 	player.health = GlobalVariables.player_health
+	if player.health <= 0:
+		player.player_dies(adversary)
+		health_bar.value = 0
+		health_points_string = health_points_format % [0, max_health]
+		health_bar_value.text = health_points_string
 
 
 
@@ -201,6 +204,8 @@ func enemy_player_killed_by(enemy_predator):
 func adversary_mouth_overlaps_player(adversary):
 	adversary.attack_cooldown.start()
 	adversary.is_biting = true
+	adversary.attack_sprite.visible = true
+	adversary.attack_visibility_time.start()
 
 
 

@@ -75,7 +75,6 @@ func _ready():
 		size_label.visible = false
 	else:
 		size_label.visible = true
-
 	if GlobalVariables.debug_visibility == false:
 		debug_label.visible = false
 	else:
@@ -94,6 +93,8 @@ func _ready():
 	health_bar.value = max_health
 	health_points_string = health_points_format % [health, max_health]
 	health_value_label.text = health_points_string
+	
+	print(self_identifier)
 
 
 
@@ -282,7 +283,9 @@ func _on_attack_visible_time_timeout():
 
 func _on_attack_cooldown_time_timeout():
 	if is_biting == true:
-		get_parent().get_parent().lose_health(phys_attack)
+		get_parent().get_parent().lose_health(phys_attack, self_identifier)
+		attack_sprite.visible = true
+		attack_visibility_time.start()
 
 
 

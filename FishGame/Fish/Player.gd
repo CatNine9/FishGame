@@ -85,13 +85,11 @@ func _on_area_body_area_entered(area):
 	var enemy = area.get_parent()
 	if enemy.size_tier == "Predator":
 		# Enemy is Predator:
-		player_dies(area)
+		player_dies(enemy)
 	if enemy.size_tier == "Adversary":
 		# Enemy is adversary - default bite attack:
-		get_parent().lose_health(enemy.phys_attack)
+		get_parent().lose_health(enemy.phys_attack, enemy)
 		get_parent().adversary_mouth_overlaps_player(enemy)
-		if health <= 0:
-			player_dies(area)
 
 
 
@@ -161,5 +159,6 @@ func player_dies(enemy_area):
 	physical_body.set_deferred("disabled", true)
 	GlobalVariables.player_alive = false
 	get_parent().death_window.visible = true
-	var enemy_root_node = enemy_area.get_parent()
-	get_parent().enemy_player_killed_by(enemy_root_node)
+#	var enemy_root_node = enemy_area.get_parent()
+#	get_parent().enemy_player_killed_by(enemy_root_node)
+	get_parent().enemy_player_killed_by(enemy_area)
