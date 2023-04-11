@@ -104,7 +104,8 @@ func spawn_enemy():
 	var random_side_value = randi() % 4
 	var random_height_value = randi_range(0, 3832)
 	var random_width_value = randi_range(0, 3848)
-	var random_size_value = randf_range(player.scale.x * 0.5, player.scale.x * 1.5)
+	var random_size_tier = randi_range(1, 3)
+#	var random_size_value = randf_range(player.scale.x * 0.5, player.scale.x * 1.5)
 	var enemy_preload = preload("res://Fish/Enemy.tscn")
 	var enemy_spawn = enemy_preload.instantiate()
 	enemy_spawn.spawn_side = random_side_value
@@ -129,7 +130,12 @@ func spawn_enemy():
 	enemy_spawn.movement_mode = Species.loaded_movement_mode
 	enemy_spawn.facing_mode = Species.loaded_facing_mode
 	enemy_spawn.self_identifier = enemy_spawn
-	enemy_spawn.scale *= random_size_value
+	if random_size_tier == 1:
+		enemy_spawn.scale = player.scale * 0.5
+	elif random_size_tier == 2:
+		enemy_spawn.scale = player.scale * 1
+	elif random_size_tier == 3:
+		enemy_spawn.scale = player.scale * 1.5
 	enemy_spawn.max_health = Species.loaded_species_max_health
 	enemy_spawn.health = enemy_spawn.max_health
 	# ^^ Above: Pre-ready ^^
@@ -138,7 +144,6 @@ func spawn_enemy():
 	enemy_spawn.collision_shape.polygon = Species.loaded_collision_shape
 	enemy_spawn.mouth_shape.polygon = Species.loaded_mouth_shape
 	enemy_spawn.attack_sprite.position.x = Species.loaded_attack_graphic_xpos
-	enemy_spawn.physical_body.scale = Vector2(random_size_value, random_size_value)
 	enemy_spawn.sprite.texture = Species.loaded_species_sprite
 	enemy_spawn.speed = Species.loaded_speed
 	enemy_spawn.coasting_speed = Species.loaded_coasting_speed
