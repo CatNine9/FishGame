@@ -99,12 +99,13 @@ func _on_area_mouth_area_entered(area):
 	var enemy = area.get_parent()
 	if enemy.size_tier == "Prey" and can_attack == true:
 		can_attack = false
+		print("Can attack = ", can_attack)
 		attack_sprite.visible = true
 		attack_cooldown.start()
 		attack_visibility_time.start()
-		scale += Vector2(0.1, 0.1)
-		size_label.text = str(snapped(scale.x, 0.01))
-		get_parent().increment_score()
+		get_parent().increase_player_scale(0.1)
+		get_parent().increment_score(1)
+		get_parent().recover_health(1)
 		get_parent().player_changed_size()
 
 
@@ -122,6 +123,7 @@ func _on_attack_visible_time_timeout():
 
 func _on_attack_cooldown_time_timeout():
 	can_attack = true
+	print("Can attack = ", can_attack)
 	get_parent().continue_damage_enemy(enemy_overlapping_mouth)
 
 

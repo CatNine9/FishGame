@@ -167,6 +167,23 @@ func lose_health(value):
 
 
 
+func recover_health(value):
+	health_points += value
+	if health_points > max_health:
+		health_points = max_health
+	health_bar.value = health_points
+	health_points_string = health_points_format % [health_points, max_health]
+	health_bar_value.text = health_points_string
+	GlobalVariables.player_health = health_points
+	player.health = GlobalVariables.player_health
+
+
+
+func increase_player_scale(value):
+	player.scale += Vector2(value, value)
+	player.size_label.text = str(snapped(player.scale.x, 0.01))
+
+
 func enemy_player_killed_by(enemy_predator):
 	enemy_predator.is_in_kill_sequence = true
 	enemy_predator.is_stopped = true
@@ -184,6 +201,7 @@ func adversary_mouth_overlaps_player(adversary):
 
 func player_mouth_overlaps_adversary(adversary):
 	player.attack_cooldown.start()
+	player.can_attack = false
 	player.enemy_overlapping_mouth = adversary
 	player.attack_sprite.visible = true
 	player.attack_visibility_time.start()
@@ -197,6 +215,8 @@ func adversary_mouth_exited(adversary):
 
 func player_mouth_exited():
 	player.attack_cooldown.stop()
+	player.can_attack = true
+	print("Can attack = ", player.can_attack)
 	player.enemy_overlapping_mouth = null
 
 
